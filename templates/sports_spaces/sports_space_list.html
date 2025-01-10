@@ -1,0 +1,49 @@
+{% extends 'home/home.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Espacios Deportivos</h1>
+<div class="row">
+    {% for space in spaces %}
+    <div class="col-md-4">
+        <div class="card">
+            {% if space.images %}
+            <img src="{{ space.images.url }}" class="card-img-top" alt="{{ space.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ space.name }}</h5>
+                <p class="card-text">{{ space.description|truncatewords:20 }}</p>
+                <a href="{% url 'space_detail' space.pk %}" class="btn btn-primary">Ver más</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    
+    <div class="container mt-5">
+    <h2>Resultados de búsqueda</h2>
+    {% if spaces %}
+        <div class="row">
+            {% for space in spaces %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if space.images %}
+                            <img src="{{ space.images.url }}" class="card-img-top" alt="{{ space.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ space.name }}</h5>
+                            <p class="card-text">{{ space.description|truncatewords:15 }}</p>
+                            <p class="card-text"><strong>Ciudad:</strong> {{ space.city }}</p>
+                            <a href="{% url 'space_detail' space.pk %}" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No se encontraron resultados que coincidan con tu búsqueda.</p>
+    {% endif %}
+</div>
+    
+    
+{% endblock %}

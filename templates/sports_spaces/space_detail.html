@@ -1,0 +1,19 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<h1>{{ space.name }}</h1>
+<p><strong>Dirección:</strong> {{ space.address }}</p>
+<p><strong>Ciudad:</strong> {{ space.city }}</p>
+<p><strong>Horarios:</strong> {{ space.opening_time }} - {{ space.closing_time }}</p>
+<p><strong>Descripción:</strong> {{ space.description }}</p>
+<p><strong>Servicios Generales:</strong> {{ space.general_services }}</p>
+
+<h2>Áreas Disponibles</h2>
+<ul>
+    {% for area in space.areas.all %}
+    <li>{{ area.name }} ({{ area.sport_type }})</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'spaces_list' %}" class="btn btn-secondary">Volver a la lista</a>
+{% endblock %}
