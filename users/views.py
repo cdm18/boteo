@@ -4,19 +4,22 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 
-# Vista de Registro
 def register_view(request):
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data['first_name']  # Guardar el nombre
+            user.last_name = form.cleaned_data['last_name']  # Guardar el apellido
+            user.save()
             login(request, user)
             return redirect('home')
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
+
 
 # Vista de Inicio de Sesión
 def login_view(request):

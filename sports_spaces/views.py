@@ -1,7 +1,9 @@
 # sports_spaces/views.py
 from django.shortcuts import render, get_object_or_404
 from .models import SportsSpace
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def spaces_list(request):
     # Obtén los valores enviados desde el formulario
     sport = request.GET.get('sport', '')  # Tipo de deporte
@@ -22,6 +24,9 @@ def spaces_list(request):
     spaces = spaces.distinct()
 
     return render(request, 'sports_spaces/sports_space_list.html', {'spaces': spaces})
+
+
+@login_required
 def space_detail(request, pk):
     space = get_object_or_404(SportsSpace, pk=pk)
     return render(request, 'sports_spaces/space_detail.html', {'space': space})
