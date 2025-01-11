@@ -21,10 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/dashboard/', include('dashboard.urls')),
-    path('api/reservas/', include('gestion_de_reservas.urls')),
-    path('api/clientes/', include('gestion_de_clientes.urls')),
-    path('api/espacios/', include('gestion_de_espacios_deportivos.urls')),
+
     path('', include('users.urls')),
     path('home/', include('main.urls')),  #  principal
     path('spaces/', include('sports_spaces.urls')),

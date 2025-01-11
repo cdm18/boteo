@@ -14,8 +14,8 @@ def register_view(request):
             user.first_name = form.cleaned_data['first_name']  # Guardar el nombre
             user.last_name = form.cleaned_data['last_name']  # Guardar el apellido
             user.save()
-            login(request, user)
-            return redirect('home')
+            # login(request, user)
+            return redirect('login')
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
