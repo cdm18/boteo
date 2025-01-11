@@ -4,92 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="requirements.txt actualizado">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="estructura proyecto actualizada con frontend + backend funcionales (modulos user)">
+      <change afterPath="$PROJECT_DIR$/static/images/LogoBoteo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boteo/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boteo/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boteo/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boteo/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boteo/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boteo/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boteo/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boteo/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boteo/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boteo/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boteo/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/community/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_clientes/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_espacios_deportivos/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion_de_reservas/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +77,7 @@
       <updated>1734442652454</updated>
       <workItem from="1734442653482" duration="8000" />
       <workItem from="1736524063924" duration="5320000" />
-      <workItem from="1736611937805" duration="6708000" />
+      <workItem from="1736611937805" duration="7522000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -183,16 +103,44 @@
       <option name="project" value="LOCAL" />
       <updated>1736557371792</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="requirements.txt actualizado">
+      <option name="closed" value="true" />
+      <created>1736621648124</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1736621648124</updated>
+    </task>
+    <task id="LOCAL-00005" summary="estructura proyecto actualizada con frontend + backend funcionales (modulos user)">
+      <option name="closed" value="true" />
+      <created>1736621700244</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736621700244</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="apps faltantes" />
     <MESSAGE value="apps faltantes, login y register funcionales &amp; guards" />
     <MESSAGE value="requirements.txt actualizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt actualizado" />
+    <MESSAGE value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
+    <option name="LAST_COMMIT_MESSAGE" value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
   </component>
 </project>
