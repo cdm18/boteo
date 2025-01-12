@@ -38,11 +38,6 @@ def login_view(request):
         form = CustomAuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
 
-# Vista de Dashboard
-@login_required
-def dashboard_view(request):
-    return render(request, 'home/home.html')
-
 def logout_view(request):
     logout(request)
     return redirect('login')

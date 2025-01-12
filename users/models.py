@@ -14,5 +14,9 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'  # Email como identificador principal
     REQUIRED_FIELDS = ['username']  # Username será obligatorio además del email
 
+    class Meta:
+        verbose_name = "Usuario"
+        verbose_name_plural = "Usuarios"
+
     def __str__(self):
         return self.email

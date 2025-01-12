@@ -4,7 +4,7 @@ from .models import SportsSpace, Area
 class SportsSpaceForm(forms.ModelForm):
     class Meta:
         model = SportsSpace
-        fields = ['name', 'description', 'address', 'city', 'opening_hours', 'closing_hours', 'general_services', 'images']
+        fields = ['name', 'description', 'address', 'city', 'opening_hours', 'closing_hours', 'general_services', 'img']
 
 class AreaForm(forms.ModelForm):
     class Meta:
