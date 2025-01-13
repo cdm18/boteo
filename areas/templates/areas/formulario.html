@@ -1,0 +1,83 @@
+<form method="POST" enctype="multipart/form-data" action="">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">Nombre del Espacio Deportivo</label>
+        {{ form.name }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        {{ form.description }}
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Dirección</label>
+            {{ form.address }}
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Ciudad</label>
+            {{ form.city }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Hora de Apertura</label>
+            {{ form.opening_time }}
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Hora de Cierre</label>
+            {{ form.closing_time }}
+        </div>
+    </div>
+
+    <h6 class="mt-4">Servicios generales</h6>
+    <div class="row mb-3">
+        <div class="col-md-6">
+
+            <div class="form-check form-switch">
+                {{ form.has_parking }}
+                <label class="form-check-label"
+                       for="{{ form.has_parking.id_for_label }}">Estacionamiento</label>
+            </div>
+
+            <div class="form-check form-switch">
+                {{ form.has_lockers }}
+                <label class="form-check-label"
+                       for="{{ form.has_lockers.id_for_label }}">Casilleros</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-check form-switch">
+                {{ form.has_showers }}
+                <label class="form-check-label" for="{{ form.has_showers.id_for_label }}">Duchas</label>
+            </div>
+            <div class="form-check form-switch">
+                {{ form.has_equipment }}
+                <label class="form-check-label"
+                       for="{{ form.has_equipment.id_for_label }}">Equipamiento</label>
+            </div>
+        </div>
+    </div>
+
+    <h6 class="mt-4">Imágenes del Espacio</h6>
+    <div class="mb-3">
+        <label class="form-label">Subir Imágenes</label>
+        {{ form.images }}
+    </div>
+
+    {% if form.instance.images %}
+        <div class="vista-previa mt-2">
+            <p><strong>Vista Previa:</strong></p>
+            <img src="{{ form.instance.images.url }}" alt="Vista previa">
+        </div>
+    {% endif %}
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            Por favor, corrige los siguientes errores:
+            {{ form.errors }}
+        </div>
+    {% endif %}
