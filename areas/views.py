@@ -1,6 +1,8 @@
 from areas.models import Area
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+
+from sports_spaces.models import SportsSpace
 from .forms import AreaCreationForm
 from django.contrib import messages
 # Create your views here.
@@ -12,6 +14,7 @@ def areas_list_view(request):
 @login_required
 def area_detail(request, pk):
     area = get_object_or_404(Area, pk=pk)
+    sports_spaces =  SportsSpace.objects.filter(area=area)
     pk = area.pk
     if request.method == "POST" and request.POST.get('action') == 'delete':
         area.delete()
@@ -27,7 +30,7 @@ def area_detail(request, pk):
             messages.error(request, 'Por favor corrige los errores en el formulario.')
     if request.method == "GET":
         form = AreaCreationForm(instance=area)
-        return render(request, 'areas/area_detail.html', {'area': area,'form': form})
+        return render(request, 'areas/area_detail.html', {'area': area,'form': form,'sport_spaces': sports_spaces})
 
 
 @login_required
