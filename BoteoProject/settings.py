@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sports_spaces',
     'main',
     'areas',
+    'facturacion',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boteo',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'Cbhas123',
         'HOST': 'localhost',
         'PORT': '3306',
     }

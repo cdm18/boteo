@@ -5,16 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="estructura proyecto actualizada con frontend + backend funcionales (modulos user)">
-      <change afterPath="$PROJECT_DIR$/static/images/LogoBoteo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/templates/facturacion/crear_factura.html" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/templates/facturacion/crear_factura.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/templates/facturacion/gestion_factura.html" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/templates/facturacion/gestion_factura.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/facturacion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,18 +45,22 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2qLX6MLRWwJskUXeXoiIuc2sHxQ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -62,8 +76,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
-        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
+        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
@@ -78,6 +92,12 @@
       <workItem from="1734442653482" duration="8000" />
       <workItem from="1736524063924" duration="5320000" />
       <workItem from="1736611937805" duration="7522000" />
+      <workItem from="1736733398951" duration="1435000" />
+      <workItem from="1736735222683" duration="59000" />
+      <workItem from="1736770074787" duration="1719000" />
+      <workItem from="1736777425660" duration="2696000" />
+      <workItem from="1736780535248" duration="2146000" />
+      <workItem from="1736783521447" duration="476000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
