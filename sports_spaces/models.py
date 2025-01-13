@@ -4,7 +4,6 @@ from areas.models import Area
 class SportsSpace(models.Model):
     name = models.CharField(max_length=100)
 
-
     SPORTS_TYPES = [
         ('Fútbol', 'Fútbol'),
         ('Basketball', 'Basketball'),
