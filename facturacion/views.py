@@ -14,11 +14,12 @@ def marcar_pagado(request, id):
         return redirect('gestion_pagos')
     return redirect('gestion_pagos')
 
-def eliminar_pago(request, pk):
-    pago = get_object_or_404(Pago, pk=pk)
+def eliminar_pago(request, id):
+    pago = get_object_or_404(Pago, id=id)
     if request.method == 'POST':
         pago.delete()
         return redirect('gestion_pagos')
+    return HttpResponse('Método no permitido', status=405)
 
 def crear_factura(request):
     if request.method == 'POST':
