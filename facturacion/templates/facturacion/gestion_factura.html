@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación y Pagos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .factura-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .estado-pagado {
+            color: green;
+        }
+        .estado-pendiente {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3">Facturación y Pagos</h1>
+            <a href="{% url 'crear_factura' %}" class="btn btn-dark">Crear Factura</a>
+        </div>
+
+        {% for pago in pagos %}
+        <div class="factura-card bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ pago.cliente }}</h5>
+                    <p class="text-muted">{{ pago.correo }}</p>
+                </div>
+                <div>
+                    <span>${{ pago.monto }}</span>
+                </div>
+                <div>
+                    {% if pago.estado == 'Pagado' %}
+                        <span class="estado-pagado"><i class="bi bi-check-circle"></i> Pagado</span>
+                    {% else %}
+                        <form method="POST" action="{% url 'marcar_pagado' pago.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-sm me-2">Marcar como pagado</button>
+                        </form>
+                        <span class="estado-pendiente"><i class="bi bi-x-circle"></i> Pendiente</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay pagos registrados.</p>
+        {% endfor %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

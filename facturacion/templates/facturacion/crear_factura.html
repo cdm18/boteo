@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Factura</title>
+</head>
+<body>
+    <h1>Crear Nueva Factura</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required><br>
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo"><br>
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" name="monto" step="0.01" required><br>
+        <label for="estado">Estado:</label>
+        <select  id="estado" name="estado" required>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Pagado">Pagado</option>
+        </select><br>
+        <button type="submit">Crear Factura</button>
+    </form>
+</body>
+</html>
