@@ -1,74 +1,179 @@
- body {
-            background-color: #f8f9fa;
-            min-height: 100vh;
-        }
-        .sidebar {
-            width: 280px;
-            background-color: white;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            padding: 20px;
-            border-right: 1px solid #eee;
-        }
-        .main-content {
-            margin-left: 280px;
-            padding: 30px;
-        }
-        .nav-link {
-            color: #666;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-        .nav-link.active {
-            background-color: #3374F6;
-            color: white;
-        }
-        .nav-link i {
-            margin-right: 10px;
-        }
-        .sports-card {
-            border-radius: 12px;
-            overflow: hidden;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .sports-card img {
-            height: 200px;
-            object-fit: cover;
-        }
-        .btn-agregar {
-            background-color: #000;
-            color: white;
-            border-radius: 20px;
-            padding: 8px 20px;
-        }
-        .btn-ver {
-            background-color: #000;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 10px;
-        }
-        .rating {
-            color: #ffc107;
-        }
-        .facility-info {
-            padding: 20px;
-        }
-        .logout-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: calc(280px - 40px);
-            color: #3374F6;
-            background: white;
-            border: 1px solid #3374F6;
-            padding: 8px;
-            border-radius: 8px;
-        }
-        .row{
-            display: flex;
-        }
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    border-right: 1px solid #eee;
+}
+
+.main-content {
+    margin-left: 280px;
+    padding: 30px;
+}
+
+.nav-link {
+    color: #666;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.nav-link.active {
+    background-color: #3374F6;
+    color: white;
+}
+
+.nav-link i {
+    margin-right: 10px;
+}
+
+.sports-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sports-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.btn-agregar {
+    background-color: #000;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+
+.btn-ver {
+    background-color: #000;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+}
+
+.rating {
+    color: #ffc107;
+}
+
+.facility-info {
+    padding: 20px;
+}
+
+.logout-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: calc(280px - 40px);
+    color: #3374F6;
+    background: white;
+    border: 1px solid #3374F6;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.row {
+    display: flex;
+}
+
+
+.image-upload {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+}
+
+.uploaded-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.sports-area {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.status-badge {
+    color: #00C853;
+    font-weight: 500;
+}
+
+.btn-agregar {
+    background-color: #000;
+    color: white;
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+
+.btn-actualizar {
+    background-color: #000;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.breadcrumb {
+    margin-bottom: 24px;
+}
+
+.logout-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: calc(280px - 40px);
+    color: #3374F6;
+    background: white;
+    border: 1px solid #3374F6;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.form-container {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.breadcrumb li a {
+    font-size: xx-large;
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+.breadcrumb li {
+    font-size: xx-large;
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+.vista-previa img {
+    max-width: 100px;
+    max-height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    margin-top: 10px;
+}
