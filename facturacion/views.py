@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Pago
+
+
 def gestion_pagos(request):
     pagos = Pago.objects.all()
     return render(request, 'facturacion/gestion_factura.html', {'pagos': pagos})

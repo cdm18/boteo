@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'areas',
     'facturacion',
+    'publicaciones',
 ]
 
 MIDDLEWARE = [

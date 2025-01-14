@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from facturacion import views
+from publicaciones.views import community_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,10 +26,11 @@ urlpatterns = [
     path('', include('main.urls')),  #  principal
     path('spaces/', include('sports_spaces.urls')),
     path('my_areas/', include('areas.urls')),
-    path('facturacion/', views.gestion_pagos, name='gestion_pagos'),
-    path('facturacion/crear_factura/', views.crear_factura, name='crear_factura'),
+    path('billing/', views.gestion_pagos, name='gestion_pagos'),
+    path('billing/crear_factura/', views.crear_factura, name='crear_factura'),
     path('eliminar_pago/<int:id>/', views.eliminar_pago, name='eliminar_pago'),
-    path('facturacion/marcar_pagado/<int:id>/', views.marcar_pagado, name='marcar_pagado'),
+    path('billing/marcar_pagado/<int:id>/', views.marcar_pagado, name='marcar_pagado'),
+    path('community/', community_view, name='community'),
 ]
 
 if settings.DEBUG:

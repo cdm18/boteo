@@ -1,0 +1,57 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Publicaciones de la Comunidad{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<div class="text-center bg-dark text-white p-5 mb-4" style="background-image: url('{% static 'publicaciones/img/hero-bg.jpg' %}'); background-size: cover; background-position: center;">
+    <h2>Únete a la Comunidad Deportiva</h2><br>
+    <p>Conecta con otros deportistas, participa en eventos y comparte tus experiencias</p>
+</div>
+
+<!-- Tabs -->
+<ul class="nav nav-tabs justify-content-center mb-4">
+    <li class="nav-item">
+        <a class="nav-link" href="#">Eventos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Publicaciones</a>
+    </li>
+</ul>
+
+<!-- Publicaciones -->
+<div class="mb-4">
+    <h2 class="text-center">Publicaciones de la Comunidad</h2>
+    <p class="text-center text-muted">Descubre lo que otros deportistas están compartiendo</p>
+</div>
+
+<!-- Formulario -->
+<form method="POST" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        <textarea class="form-control" rows="3" placeholder="¿Qué estás pensando?" name="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Publicar</button>
+</form>
+
+<!-- Lista de publicaciones -->
+<div class="list-group">
+    {% for post in posts %}
+    <div class="list-group-item mb-3">
+        <div class="d-flex justify-content-between">
+            <h5>{{ post.author }}</h5>
+            <small class="text-muted">{{ post.created_at|date:"d M, H:i" }}</small>
+        </div>
+        <p>{{ post.content }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <button class="btn btn-outline-primary btn-sm me-2"><i class="bi bi-hand-thumbs-up"></i> {{ post.likes }}</button>
+                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-chat"></i> {{ post.comments }}</button>
+            </div>
+            <button class="btn btn-outline-success btn-sm">Compartir</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
