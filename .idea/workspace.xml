@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="estructura proyecto actualizada con frontend + backend funcionales (modulos user)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facturacion/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facturacion/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/facturacion/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +92,7 @@
       <workItem from="1736777425660" duration="2696000" />
       <workItem from="1736780535248" duration="2146000" />
       <workItem from="1736783521447" duration="476000" />
-      <workItem from="1736806036291" duration="6451000" />
+      <workItem from="1736806036291" duration="6896000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
