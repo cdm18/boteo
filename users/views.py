@@ -10,10 +10,7 @@ def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.first_name = form.cleaned_data['first_name']  # Guardar el nombre
-            user.last_name = form.cleaned_data['last_name']  # Guardar el apellido
-            user.save()
+            form.save()
             # login(request, user)
             return redirect('login')
     else:
@@ -21,7 +18,6 @@ def register_view(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-# Vista de Inicio de Sesión
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('home')  # Redirige a la página de inicio

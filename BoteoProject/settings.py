@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'areas',
     'facturacion',
+    'admin_panel',
 ]
 
 MIDDLEWARE = [
@@ -101,7 +102,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boteo',
         'USER': 'root',
-        'PASSWORD': 'Cbhas123',
+        'PASSWORD': 'piloto12',
         'HOST': 'localhost',
         'PORT': '3306',
     }
