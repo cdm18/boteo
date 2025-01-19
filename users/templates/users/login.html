@@ -11,61 +11,75 @@
 
 <body>
     {% load static %}
-    <div class="container mt-5 mb-5">
-        <div class="text-center">
+    <main class="container mt-5 mb-5">
+        <header class="text-center">
             <img src="{% static 'users/img/LogoBoteo.png' %}" alt="Boteo Logo" class="logo">
-        </div>
+        </header>
 
-        <div class="login-container">
-            <div class="card shadow-lg">
-                <div class="card-body p-4">
-                    <h4 class="text-center mb-2">Iniciar Sesión en Boteo</h4>
+        <section class="login-container">
+            <article class="card shadow-lg">
+                <section class="card-body p-4">
+                    <h1 class="text-center mb-2 h4">Iniciar Sesión en Boteo</h1>
                     <p class="text-center text-muted mb-4">Ingrese sus credenciales para acceder a su cuenta</p>
 
-                    <form  method="post" action="{% url 'login' %}">
-
-                         {% csrf_token %}
-                        <div class="mb-3">
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <fieldset>
                             <label for="id_username" class="form-label">Correo electrónico</label>
-                            <input type="email" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="254" required aria-invalid="true" class="form-control" id="id_password" placeholder="tu@email.com">
-                        </div>
-
-                        <div class="mb-3">
+                            <input
+                                type="email"
+                                name="username"
+                                id="id_username"
+                                class="form-control"
+                                placeholder="tu@email.com"
+                                autofocus
+                                autocomplete="username"
+                                maxlength="254"
+                                required
+                                aria-required="true">
+                        </fieldset>
+                        <br>
+                        <fieldset class="mb-3">
                             <label for="id_password" class="form-label">Contraseña</label>
-                            <input type="password" name="password" autocomplete="current-password" required aria-invalid="true" id="id_password" class="form-control"  placeholder="••••••••••">
-                        </div>
+                            <input
+                                type="password"
+                                name="password"
+                                id="id_password"
+                                class="form-control"
+                                placeholder="••••••••••"
+                                autocomplete="current-password"
+                                required
+                                aria-required="true">
+                        </fieldset>
 
-                        <div class="d-grid gap-2 mb-3">
+                        <nav class="d-grid gap-2 mb-3">
                             <button type="submit" class="btn btn-deportista py-2">
-                                <i class="bi bi-person"></i> Iniciar Sesión
+                                <i class="bi bi-person" aria-hidden="true"></i> Iniciar Sesión
                             </button>
                             <button class="btn btn-gerente py-2">
-                                <i class="bi bi-eye"></i> Ver Beneficios de Gerente
+                                <i class="bi bi-eye" aria-hidden="true"></i> Ver Beneficios de Gerente
                             </button>
-                        </div>
+                        </nav>
 
-                        <div class="text-center">
+                        <nav class="text-center">
                             <a href="#" class="text-decoration-none">¿Olvidó su contraseña?</a>
                             <p class="mt-3 mb-0">
                                 ¿No tiene una cuenta? <a href="{% url 'register' %}">Regístrate</a>
                             </p>
-                        </div>
+                        </nav>
 
                         {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
+                        <aside class="alert alert-danger" role="alert">
                             {{ form.non_field_errors }}
-                        </div>
+                        </aside>
                         {% endif %}
-
-
-
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br><br><br><br>
+                </section>
+            </article>
+        </section>
+    </main>
 
+    <!-- Footer comentado -->
     <!--
      <footer class="mt-5">
         <div class="container">
@@ -78,40 +92,13 @@
                         <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h6>Soporte</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Centro Ayuda</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6>Deportes</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Fútbol</a></li>
-                        <li><a href="#">EcuaVoley</a></li>
-                        <li><a href="#">Piscina</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6>Síguenos</h6>
-                    <div class="d-flex gap-3">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <small>©️ 2024 Boteo. Todos los derechos reservados.</small>
+                [... resto del footer comentado ...]
             </div>
         </div>
     </footer>
     -->
 
-        {% include 'main/footer.html' %}
-
+    {% include 'main/footer.html' %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">

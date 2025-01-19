@@ -2,21 +2,17 @@
 <link rel="stylesheet" href="{% static 'main/css/navbar.css' %}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="#">
+<header class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <nav class="container-fluid">
+        <a class="navbar-brand" href="#" aria-label="Inicio">
             <img src="{% static '/main/img/LogoBoteo.png' %}" alt="Boteo Logo" height="40">
         </a>
 
-        <!-- Botón de colapso en pantallas pequeñas -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Contenido de la barra -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <!-- Enlaces -->
+        <nav class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/' %}active text-primary{% endif %}" href="{% url 'home' %}">Inicio</a>
@@ -29,15 +25,14 @@
                 </li>
             </ul>
 
-            <!-- Acciones (botones) -->
-            <div class="d-flex ms-3">
+            <section class="d-flex ms-3">
                 {% if user.is_staff %}
                 <a href="{% url 'admin_panel' %}" class="btn btn-primary me-2">
-                    <i class="bi bi-gear-fill"></i> Panel Admin
+                    <i class="bi bi-gear-fill" aria-hidden="true"></i> Panel Admin
                 </a>
                 {% endif %}
                 <a href="#" class="btn btn-primary">Perfil</a>
-            </div>
-        </div>
-    </div>
-</nav>
+            </section>
+        </nav>
+    </nav>
+</header>

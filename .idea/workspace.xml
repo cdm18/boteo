@@ -4,27 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="migrations de areas/images">
-      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Implementacion de condicionales para la visualizacion del home para usuarios y gerentes. Se logro implementar alertas y controles para hacer intuitivo el UX. Se pudo culminar la landing page de usuario, faltaria modificar en base a el error de las areas y espacios, ya que se muestran al reves. Es funcional y se corrigieron errores que ahora permiten registrar usuarios de 2 tipos, gerente y usuario.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/templates/areas/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/main/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/main/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/templates/main/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_spaces/templates/sports_spaces/sports_space_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_spaces/templates/sports_spaces/sports_space_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +132,19 @@
       <workItem from="1736777425660" duration="2696000" />
       <workItem from="1736780535248" duration="2146000" />
       <workItem from="1736783521447" duration="476000" />
-      <workItem from="1736857724146" duration="13843000" />
+      <workItem from="1736857724146" duration="14028000" />
+      <workItem from="1736899929370" duration="1145000" />
+      <workItem from="1736943306823" duration="220000" />
+      <workItem from="1736953605408" duration="2506000" />
+      <workItem from="1736982573147" duration="55000" />
+      <workItem from="1736984025940" duration="3283000" />
+      <workItem from="1737038038660" duration="837000" />
+      <workItem from="1737061094356" duration="128000" />
+      <workItem from="1737151804500" duration="614000" />
+      <workItem from="1737153050186" duration="60000" />
+      <workItem from="1737153113969" duration="573000" />
+      <workItem from="1737153806840" duration="1686000" />
+      <workItem from="1737246416606" duration="693000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -188,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736621700244</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implementacion de condicionales para la visualizacion del home para usuarios y gerentes. Se logro implementar alertas y controles para hacer intuitivo el UX. Se pudo culminar la landing page de usuario, faltaria modificar en base a el error de las areas y espacios, ya que se muestran al reves. Es funcional y se corrigieron errores que ahora permiten registrar usuarios de 2 tipos, gerente y usuario.">
+      <option name="closed" value="true" />
+      <created>1736899878156</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1736899878156</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +216,8 @@
     <MESSAGE value="apps faltantes, login y register funcionales &amp; guards" />
     <MESSAGE value="requirements.txt actualizado" />
     <MESSAGE value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
-    <option name="LAST_COMMIT_MESSAGE" value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
+    <MESSAGE value="Implementacion de condicionales para la visualizacion del home para usuarios y gerentes. Se logro implementar alertas y controles para hacer intuitivo el UX. Se pudo culminar la landing page de usuario, faltaria modificar en base a el error de las areas y espacios, ya que se muestran al reves. Es funcional y se corrigieron errores que ahora permiten registrar usuarios de 2 tipos, gerente y usuario." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacion de condicionales para la visualizacion del home para usuarios y gerentes. Se logro implementar alertas y controles para hacer intuitivo el UX. Se pudo culminar la landing page de usuario, faltaria modificar en base a el error de las areas y espacios, ya que se muestran al reves. Es funcional y se corrigieron errores que ahora permiten registrar usuarios de 2 tipos, gerente y usuario." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BoteoProject$Test__users_tests_CustomUserTests_test_login_with_correct_credentials.coverage" NAME="Test: users.tests.CustomUserTests.test_login_with_correct_credentials Coverage Results" MODIFIED="1736833467500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
