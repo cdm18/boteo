@@ -1,49 +1,122 @@
 {% extends 'main/home.html' %}
 {% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
 {% block content %}
-<h1>Espacios Deportivos</h1>
-<div class="row">
-    {% for space in spaces %}
-    <div class="col-md-4">
-        <div class="card">
-            {% if space.images %}
-            <img src="{{ space.images.url }}" class="card-img-top" alt="{{ space.name }}">
-            {% endif %}
-            <div class="card-body">
-                <h5 class="card-title">{{ space.name }}</h5>
-                <p class="card-text">{{ space.description|truncatewords:20 }}</p>
-                <a href="{% url 'space_detail' space.pk %}" class="btn btn-primary">Ver más</a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
+    {% include 'main/navbar.html' %}
 
-    <div class="container mt-5">
-    <h2>Resultados de búsqueda</h2>
+<main class="container-fluid p-0">
+    <header class="position-relative text-white mb-5">
+        <img src="{% static 'sports_spaces/img/banner_spaces.png' %}" alt="Header background" class="w-100 object-fit-cover" style="height: 500px;">
+
+        <section class="position-absolute top-50 start-50 translate-middle text-center w-100">
+            <h1 class="display-4 mb-3">Explora Espacios Deportivos</h1>
+            <p class="lead">Encuentra y reserva el espacio perfecto para tu próxima actividad deportiva</p>
+
+            <form class="mt-4 mx-auto" style="max-width: 800px;">
+                <section class="row g-2 justify-content-center">
+                    <article class="col-md-3">
+                        <select name="deporte" class="form-select">
+                            <option value="">Seleccione un deporte</option>
+                            {% for sport_id, sport_name in sports %}
+                            <option value="{{ sport_id }}">{{ sport_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </article>
+                    <article class="col-md-3">
+                        <select name="ciudad" class="form-select">
+                            <option value="">Selecciona una ciudad</option>
+                            <option value="Loja">Loja</option>
+                        </select>
+                    </article>
+                    <article class="col-md-4">
+                        <input type="search" name="buscar" class="form-control" placeholder="Buscar por nombre...">
+                    </article>
+                    <article class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Buscar Espacios</button>
+                    </article>
+                </section>
+            </form>
+        </section>
+    </header>
+
+    <section class="container mb-5">
     {% if spaces %}
-        <div class="row">
+        <article class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             {% for space in spaces %}
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        {% if space.images %}
-                            <img src="{{ space.images.url }}" class="card-img-top" alt="{{ space.name }}">
+            <article class="col">
+                <article class="card h-100">
+                    {% if space.image %}
+                        <img src="{{ space.image.url }}" class="card-img-top" alt="{{ space.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        {% if space.sport_type == 'Fútbol' %}
+                            <img src="{% static 'img/futbol-default.jpg' %}" class="card-img-top" alt="{{ space.name }}" style="height: 200px; object-fit: cover;">
+                        {% elif space.sport_type == 'Ecuavoley' %}
+                            <img src="{% static 'img/ecuavoley-default.jpg' %}" class="card-img-top" alt="{{ space.name }}" style="height: 200px; object-fit: cover;">
+                        {% elif space.sport_type == 'Piscina' %}
+                            <img src="{% static 'img/piscina-default.jpg' %}" class="card-img-top" alt="{{ space.name }}" style="height: 200px; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'img/default.jpg' %}" class="card-img-top" alt="{{ space.name }}" style="height: 200px; object-fit: cover;">
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ space.name }}</h5>
-                            <p class="card-text">{{ space.description|truncatewords:15 }}</p>
-                            <p class="card-text"><strong>Ciudad:</strong> {{ space.city }}</p>
-                            <a href="{% url 'space_detail' space.pk %}" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
+                    {% endif %}
+                    <article class="card-body">
+                        <h5 class="card-title">{{ space.name }}</h5>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <i class="bi bi-geo-alt"></i> {{ space.location }}
+                            </small>
+                        </p>
+                        <p class="card-text">
+                            <strong>${{ space.cost_per_hour }}/hora</strong>
+                            <span class="float-end">
+                                <i class="bi bi-star-fill text-warning"></i> {{ space.rating }}
+                            </span>
+                        </p>
+                        <article class="d-flex justify-content-between">
+                            <a href="{% url 'space_detail' space.pk %}" class="btn btn-outline-primary">Detalles</a>
+                            <button class="btn btn-primary">Reservar</button>
+                        </article>
+                    </article>
+                </article>
+            </article>
             {% endfor %}
-        </div>
+        </article>
     {% else %}
-        <p>No se encontraron resultados que coincidan con tu búsqueda.</p>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>No se han encontrado espacios deportivos con esas características</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     {% endif %}
-</div>
 
+    {% if spaces %}
+        <nav aria-label="Paginación" class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if spaces.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ spaces.previous_page_number }}">Anterior</a>
+                </li>
+                {% endif %}
+
+                {% for num in spaces.paginator.page_range %}
+                <li class="page-item {% if spaces.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endfor %}
+
+                {% if spaces.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ spaces.next_page_number }}">Siguiente</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</section>
+
+</main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% include 'main/footer.html' %}
 
 {% endblock %}

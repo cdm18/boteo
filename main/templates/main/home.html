@@ -5,37 +5,43 @@
 
 {% if not user.is_staff %}
     <main>
+
         <!-- Hero Section -->
-        <section class="bg-dark text-white py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/banner.png' %}') center/cover;">
+        <section class="bg-dark text-white py-5" style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/banner.png' %}') center/cover;">
             <article class="container py-5">
                 <h1 class="display-4 text-center mb-4">Encuentra tu espacio deportivo ideal</h1>
                 <p class="lead text-center mb-5">Reserva canchas de fútbol, voley y piscinas en los mejores lugares de Ecuador</p>
 
-                <section class="bg-white p-4 rounded shadow">
-                    <form class="row g-3" role="search">
-                        <fieldset class="col-md-3">
-                            <select class="form-select" aria-label="Seleccionar deporte">
-                                <option selected>Seleccione un deporte</option>
-                                <option>Fútbol</option>
-                                <option>Ecuavoley</option>
-                                <option>Piscina</option>
+                <section class="position-absolute top-45 start-50 translate-middle text-center w-100">
+                <form class="mt-4 mx-auto" style="max-width: 800px;" method="GET">
+                    <section class="row g-2 justify-content-center">
+                        <article class="col-md-3">
+                            <select name="deporte" class="form-select">
+                                <option value="">Seleccione un deporte</option>
+                                {% for sport_id, sport_name in sports %}
+                                <option value="{{ sport_id }}" {% if request.GET.deporte == sport_id %}selected{% endif %}>{{ sport_name }}</option>
+                                {% endfor %}
                             </select>
-                        </fieldset>
-                        <fieldset class="col-md-3">
-                            <select class="form-select" aria-label="Seleccionar ciudad">
-                                <option selected>Selecciona una ciudad</option>
-                                <option>Loja</option>
-                                <option>Quito</option>
+                        </article>
+                        <article class="col-md-3">
+                            <select name="ciudad" class="form-select">
+                                <option value="">Selecciona una ciudad</option>
+                                <option value="Loja" {% if request.GET.ciudad == 'Loja' %}selected{% endif %}>Loja</option>
                             </select>
-                        </fieldset>
-                        <fieldset class="col-md-4">
-                            <input type="search" class="form-control" placeholder="Buscar por nombre..." aria-label="Búsqueda por nombre">
-                        </fieldset>
-                        <fieldset class="col-md-2">
+                        </article>
+                        <article class="col-md-4">
+                            <input type="search" name="buscar" class="form-control" placeholder="Buscar por nombre..." value="{{ request.GET.buscar|default:'' }}">
+                        </article>
+                        <article class="col-md-2">
                             <button type="submit" class="btn btn-primary w-100">Buscar Espacios</button>
-                        </fieldset>
-                    </form>
-                </section>
+                        </article>
+                    </section>
+                </form>
+
+                 </section>
+
+
+
             </article>
         </section>
 
@@ -96,7 +102,6 @@
                             </section>
                         </article>
                     </li>
-                    <!-- [Continúa con los demás elementos de características...] -->
                 </ul>
             </article>
         </section>
@@ -181,7 +186,81 @@
             </article>
         </section>
     </main>
+
+    {% elif user.is_staff %}
+        <!-- Vista para Gerentes -->
+        <main>
+            <!-- Hero Section -->
+            <section class="bg-dark text-white py-5" style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/banner.png' %}') center/cover;">
+                <article class="container py-5">
+                    <h1 class="display-4 text-center mb-4">Bienvenido, Gerente</h1>
+                    <p class="lead text-center mb-5">Accede al panel de administración para gestionar tus espacios deportivos</p>
+
+                    <section class="position-absolute top-45 start-50 translate-middle text-center w-100">
+                        <a href="{% url 'admin_panel' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>
+                    </section>
+                </article>
+            </section>
+
+            <!-- Estadísticas resumidas -->
+            <section class="bg-light py-5" aria-label="Estadísticas">
+                <article class="container">
+                    <h2 class="text-center mb-5">Estadísticas Clave</h2>
+                    <ul class="row text-center g-4 list-unstyled">
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-chart-line fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+30%</h2>
+                                    <p class="text-muted">Crecimiento de reservas</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-users fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+100</h2>
+                                    <p class="text-muted">Clientes activos</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-dollar-sign fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+$50,000</h2>
+                                    <p class="text-muted">Ingresos generados</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-trophy fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+20</h2>
+                                    <p class="text-muted">Torneos gestionados</p>
+                                </section>
+                            </article>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+    {% else %}
+        <!-- Vista para Administradores -->
+        <main>
+            <section class="py-5 text-center">
+                <article class="container">
+                    <h1 class="display-4">Panel de Administración</h1>
+                    <p class="lead">Accede a todas las herramientas de gestión de la plataforma.</p>
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>
+                </article>
+            </section>
+        </main>
 {% endif %}
+
 
     {% include 'main/footer.html' %}
 

@@ -1,31 +1,47 @@
-# sports_spaces/views.py
 from django.shortcuts import render, get_object_or_404
 from .models import SportsSpace
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 @login_required
 def spaces_list(request):
-    # Obtén los valores enviados desde el formulario
-    sport = request.GET.get('sport', '')  # Tipo de deporte
-    city = request.GET.get('city', '')    # Ciudad
-    name = request.GET.get('name', '')    # Nombre
+    sport = request.GET.get('deporte', '')
+    city = request.GET.get('ciudad', '')
+    search = request.GET.get('buscar', '')
 
-    # Filtra los espacios deportivos basados en los valores
     spaces = SportsSpace.objects.all()
 
     if sport:
-        spaces = spaces.filter(areas__sport_type=sport)
+        spaces = spaces.filter(sport_type=sport)
     if city:
-        spaces = spaces.filter(city__icontains=city)
-    if name:
-        spaces = spaces.filter(name__icontains=name)
+        spaces = spaces.filter(location__icontains=city)
+    if search:
+        spaces = spaces.filter(name__icontains=search)
 
-    # Asegúrate de no incluir duplicados al filtrar por áreas
-    spaces = spaces.distinct()
+    # Define imágenes por defecto según el tipo de deporte
+    for space in spaces:
+        if not space.image:
+            if space.sport_type == 'Fútbol':
+                space.default_image = 'img/futbol-default.jpg'
+            elif space.sport_type == 'Ecuavoley':
+                space.default_image = 'img/ecuavoley-default.jpg'
+            elif space.sport_type == 'Piscina':
+                space.default_image = 'img/piscina-default.jpg'
+            else:
+                space.default_image = 'img/default.jpg'
 
-    return render(request, 'sports_spaces/sports_space_list.html', {'spaces': spaces})
+    paginator = Paginator(spaces, 6)
+    page = request.GET.get('page')
+    spaces = paginator.get_page(page)
 
-
+    # parametros de busqueda
+    context = {
+        'spaces': spaces,
+        'sports': SportsSpace.SPORTS_TYPES,
+        'current_sport': sport,
+        'current_city': city,
+        'current_search': search,
+    }
+    return render(request, 'sports_spaces/sports_space_list.html', context)
 @login_required
 def space_detail(request, pk):
     space = get_object_or_404(SportsSpace, pk=pk)
