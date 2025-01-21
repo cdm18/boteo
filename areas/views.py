@@ -1,16 +1,24 @@
 from areas.models import Area
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.decorators import login_required, permission_required
 from sports_spaces.models import SportsSpace
 from .forms import AreaCreationForm
 from django.contrib import messages
-# Create your views here.
+
+
+# Configuración de redirección para los decoradores
+perm_config = {
+    'login_url': '/',  # URL de redirección
+    'raise_exception': False  # No lanzar excepción (403)
+}
+
+@permission_required('areas.view_all_areas', **perm_config)
 @login_required
 def areas_list_view(request):
     areas = Area.objects.filter(user=request.user)
     return render(request, "areas/areas.html", {'areas': areas})
 
+@permission_required('areas.view_all_areas', **perm_config)
 @login_required
 def area_detail(request, pk):
     area = get_object_or_404(Area, pk=pk)
@@ -32,7 +40,7 @@ def area_detail(request, pk):
         form = AreaCreationForm(instance=area)
         return render(request, 'areas/area_detail.html', {'area': area,'form': form,'sport_spaces': sports_spaces})
 
-
+@permission_required('areas.view_all_areas', **perm_config)
 @login_required
 def create_area(request):
     if request.method == 'POST':

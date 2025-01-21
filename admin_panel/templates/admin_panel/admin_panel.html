@@ -4,25 +4,60 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Panel de Administración</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    {% block styles %}{% endblock %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: #ffffff;
+            height: 100vh;
+            border-right: 1px solid #dee2e6;
+        }
+        .sidebar .nav-link {
+            color: #6c757d;
+            font-weight: 500;
+        }
+        .sidebar .nav-link.active {
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+        .sidebar .logout-btn {
+            border: 1px solid #007bff;
+            color: #007bff;
+            text-align: center;
+            margin-top: auto;
+        }
+        .card-custom {
+            border-radius: 10px;
+            background-color: #ffffff;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table thead th {
+            color: #6c757d;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="d-flex">
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar d-flex flex-column p-3" style="width: 250px;">
         <nav class="nav flex-column">
-            <a class="nav-link" href="#"><i class="bi bi-grid"></i> Dashboard</a>
-            <a class="nav-link" href="#"><i class="bi bi-calendar"></i> Gestión de Reservas</a>
-            <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Análisis y Reportes</a>
-            <a class="nav-link" href="#"><i class="bi bi-people"></i> Gestión de Clientes</a>
-            <a class="nav-link" href="#"><i class="bi bi-cash"></i> Facturación y Pagos</a>
-            <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notificaciones</a>
-            <a class="nav-link active" href="{% url 'my_areas' %}"><i class="bi bi-trophy"></i> Mis Espacios Deportivos</a>
-            <a class="nav-link" href="#"><i class="bi bi-gear"></i> Configuración</a>
+            <a class="nav-link active" href="#"><i class="bi bi-grid me-2"></i> Dashboard</a>
+            <a class="nav-link" href="#"><i class="bi bi-calendar me-2"></i> Gestión de Reservas</a>
+            <a class="nav-link" href="#"><i class="bi bi-bar-chart me-2"></i> Análisis y Reportes</a>
+            <a class="nav-link" href="#"><i class="bi bi-people me-2"></i> Gestión de Clientes</a>
+            <a class="nav-link" href="#"><i class="bi bi-cash me-2"></i> Facturación y Pagos</a>
+            <a class="nav-link" href="#"><i class="bi bi-bell me-2"></i> Notificaciones</a>
+            <a class="nav-link" href="{% url 'my_areas' %}"><i class="bi bi-trophy me-2"></i> Mis Espacios Deportivos</a>
+            <a class="nav-link" href="#"><i class="bi bi-gear me-2"></i> Configuración</a>
         </nav>
 
         <button class="logout-btn">
@@ -30,24 +65,77 @@
         </button>
     </div>
 
-    {% if messages %}
-        <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 1050;">
-            {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mt-3"
-                     role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <!-- Main Content -->
+    <div class="flex-grow-1 p-4">
+        <h2 class="fw-bold mb-4">Bienvenido a panel de administración</h2>
+
+        <!-- Cards Section -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card card-custom p-3">
+                    <h5>Resumen de Reservas</h5>
+                    <p class="text-muted mb-2">Total gastado este mes</p>
+                    <h3>24</h3>
+                    <p class="text-muted">Reservas para hoy</p>
+                    <a href="#" class="btn btn-outline-primary">Ver todas las reservas</a>
                 </div>
-            {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom p-3">
+                    <h5>Áreas Registradas</h5>
+                    <p class="text-muted mb-2">Tus áreas activas</p>
+                    <h3>3</h3>
+                    <p class="text-muted">Áreas activas</p>
+                    <a href="#" class="btn btn-dark">Agregar nueva área</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom p-3">
+                    <h5>Ingresos del Mes</h5>
+                    <p class="text-muted mb-2">Resumen financiero del mes actual</p>
+                    <h3>$1,250</h3>
+                    <p class="text-success">+15% vs. mes anterior</p>
+                    <a href="#" class="btn btn-outline-primary">Ver análisis completo</a>
+                </div>
+            </div>
         </div>
-    {% endif %}
-    <!-- Main Content Wrapper -->
-    <div class="main-wrapper">
-        {% block content %}{% endblock %}
+
+        <!-- Table Section -->
+        <h4 class="fw-bold mb-3">Próximas Reservas</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>CLIENTE</th>
+                        <th>ESPACIO</th>
+                        <th>FECHA</th>
+                        <th>HORA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Juan Perez</td>
+                        <td>Cancha de Fútbol 1</td>
+                        <td>2024-03-15</td>
+                        <td>14:00 - 16:00</td>
+                    </tr>
+                    <tr>
+                        <td>María Gonzales</td>
+                        <td>Piscina</td>
+                        <td>2024-03-15</td>
+                        <td>16:30</td>
+                    </tr>
+                    <tr>
+                        <td>Carlos Rodríguez</td>
+                        <td>Cancha de Fútbol 2</td>
+                        <td>2024-03-15</td>
+                        <td>21:00 - 22:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-{% block scripts %}{% endblock %}
 </body>
 </html>
