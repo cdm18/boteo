@@ -16,6 +16,10 @@ class Area(models.Model):
     has_equipment = models.BooleanField(default=False)
     images = models.ImageField(upload_to='area', verbose_name="Imágenes del Espacio", blank=True, null=True)
 
+    class Meta:
+        permissions = [
+            ('view_all_areas', 'Can view all areas'),
+        ]
 
     def __str__(self):
         return self.name

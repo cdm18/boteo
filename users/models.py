@@ -10,25 +10,6 @@ from django.contrib.contenttypes.models import ContentType
 from areas.models import Area
 
 
-@receiver(post_save, sender= AbstractUser)
-def assign_user_permissions(sender, instance, created, **kwargs):
-    if created:
-        # Obtener el content type para el modelo Area
-        area_content_type = ContentType.objects.get_for_model(Area)
-
-        if instance.user_type == 1:  # Si es gerente
-            # Asignar todos los permisos de áreas
-            permissions = Permission.objects.filter(content_type=area_content_type)
-            for permission in permissions:
-                instance.user_permissions.add(permission)
-        else:  # Si es usuario normal
-            # Solo puede ver sus propias áreas
-            view_permission = Permission.objects.get(
-                codename='view_area',
-                content_type=area_content_type
-            )
-            instance.user_permissions.add(view_permission)
-
 class CustomUser(AbstractUser):
     USER_TYPES = [
         (0, 'Usuario Normal'),
