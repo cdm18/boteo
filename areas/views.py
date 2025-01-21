@@ -16,21 +16,31 @@ def area_detail(request, pk):
     area = get_object_or_404(Area, pk=pk)
     sports_spaces =  SportsSpace.objects.filter(area=area)
     pk = area.pk
+
     if request.method == "POST" and request.POST.get('action') == 'delete':
+
         area.delete()
         messages.success(request, 'Espacio deportivo eliminado exitosamente.')
         return redirect('my_areas')
+
     if request.method == "POST":
         form = AreaCreationForm(request.POST, request.FILES, instance=area)
+
         if form.is_valid():
+
             area.save()
             messages.success(request, 'Espacio deportivo actualizado exitosamente.')
             return redirect('area_detail', pk=pk)
+
         else:
+
             messages.error(request, 'Por favor corrige los errores en el formulario.')
-    if request.method == "GET":
+
+    else:
+
         form = AreaCreationForm(instance=area)
-        return render(request, 'areas/area_detail.html', {'area': area,'form': form,'sport_spaces': sports_spaces})
+
+    return render(request, 'areas/area_detail.html', {'area': area,'form': form,'sport_spaces': sports_spaces})
 
 
 @login_required

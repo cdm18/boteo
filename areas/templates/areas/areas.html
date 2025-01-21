@@ -23,7 +23,13 @@
             {% for area in areas %}
                 <div class="mt-4 col-md-6 col-lg-4">
                     <div class="card sports-card">
-                        <img src="{{ area.images.url }}" alt="Campo de fútbol" class="card-img-top">
+                        {% if area.images %}
+                            <img src="{{ area.images.url }}" alt="Campo de fútbol" class="card-img-top">
+                        {% else %}
+                            <img src="{% static 'areas/img/default.jpg' %}" alt="Default" class="card-img-top">
+                        {% endif %}
+
+
                         <div class="facility-info">
                             <h4>{{ area.name }}</h4>
                             <p class="mb-2">
