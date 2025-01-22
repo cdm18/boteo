@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('users.urls')),
     path('', include('main.urls')),  #  principal
     path('spaces/', include('sports_spaces.urls')),
-    path('my_areas/', include('areas.urls')),
+    path('areas/', include('areas.urls')),
 
 ]
 

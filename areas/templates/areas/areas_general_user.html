@@ -1,0 +1,101 @@
+{% load static %}
+
+{% block content %}
+
+    {% include 'areas/navbar.html' %}
+
+    <!-- Hero Section -->
+    <section class="bg-dark text-white py-5"
+             style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/banner.png' %}') center/cover;">
+        <article class="container py-5">
+            <h1 class="display-4 text-center mb-4">Encuentra tu espacio deportivo ideal</h1>
+            <p class="lead text-center mb-5">Reserva canchas de fútbol, voley y piscinas en los mejores lugares
+                de Ecuador</p>
+
+            <section class="position-absolute top-45 start-50 translate-middle text-center w-100">
+                <form class="mt-4 mx-auto" style="max-width: 800px;" method="GET">
+                    <section class="row g-2 justify-content-center">
+                        <article class="col-md-3">
+                            <select name="deporte" class="form-select">
+                                <option value="">Seleccione un deporte</option>
+                                {% for sport_id, sport_name in sports %}
+                                    <option value="{{ sport_id }}"
+                                            {% if request.GET.deporte == sport_id %}selected{% endif %}>{{ sport_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </article>
+                        <article class="col-md-3">
+                            <select name="ciudad" class="form-select">
+                                <option value="">Selecciona una ciudad</option>
+                                <option value="Loja" {% if request.GET.ciudad == 'Loja' %}selected{% endif %}>
+                                    Loja
+                                </option>
+                            </select>
+                        </article>
+                        <article class="col-md-4">
+                            <input type="search" name="buscar" class="form-control"
+                                   placeholder="Buscar por nombre..."
+                                   value="{{ request.GET.buscar|default:'' }}">
+                        </article>
+                        <article class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">Buscar Espacios</button>
+                        </article>
+                    </section>
+                </form>
+
+            </section>
+
+
+        </article>
+    </section>
+
+    <div class="container mt-4 mb-5">
+        <div class="row g-4">
+            {% for area in areas %}
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        {% if area.images %}
+                            <img src="{{ area.images.url }}" class="card-img-top" alt="{{ area.name }}"
+                                 style="height: 200px; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'main/img/default-area.jpg' %}" class="card-img-top" alt="Default image"
+                                 style="height: 200px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ area.name }}</h5>
+                            <p class="card-text">
+                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                {{ area.city }}
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-primary fw-bold">${{ area.price }}/hora</span>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <span class="ms-1">4.8</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary flex-grow-1">Reservar</button>
+                                <a href="{% url 'area_detail_user_view' area.pk %}" class="btn btn-outline-primary">Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+{#        <nav class="mt-5">#}
+{#            <ul class="pagination justify-content-center">#}
+{#                <li class="page-item"><a class="page-link" href="#">Anterior</a></li>#}
+{#                <li class="page-item active"><a class="page-link" href="#">1</a></li>#}
+{#                <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#                <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+{#                <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>#}
+{#            </ul>#}
+{#        </nav>#}
+    </div>
+
+    {% include 'areas/footer.html' %}
+
+{% endblock %}

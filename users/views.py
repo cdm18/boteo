@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib.auth.decorators import login_required
 
+
 def register_view(request):
     if request.user.is_authenticated:
         return redirect('home')

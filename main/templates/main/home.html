@@ -1,74 +1,282 @@
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <title>Inicio | Boteo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <header>
-        {% include 'main/navbar.html' %}
-    </header>
-    <main style="background-image: {% static "url('/main/img/banner.png')" %}">
-        <section class="banner-section">
-            <div class="container">
-                <h1 class="text-center banner-title">Encuentra tu espacio deportivo ideal</h1>
-                <div class="search-container">
-                    <form method="get" action="#" class="d-flex">
-                        <select name="sport" class="form-select me-2">
-                            <option value="">Selecciona un deporte</option>
-                            <option value="Fútbol">Fútbol</option>
-                            <option value="Ecuavoley">Ecuavoley</option>
-                            <option value="Piscina">Piscina</option>
-                        </select>
-                        <select name="city" class="form-select me-2">
-                            <option value="">Selecciona una ciudad</option>
-                            <option value="Loja">Loja</option>
-                            <option value="Quito">Quito</option>
-                        </select>
-                        <input type="text" name="name" placeholder="Buscar por nombre..." class="form-control me-2">
-                        <button type="submit" class="btn btn-primary">Buscar Espacios</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+{% block content %}
+    {% include 'main/navbar.html' %}
 
-        <div class="container mt-5">
-            <div class="row">
-                {% for space in spaces %}
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="{{ space.image.url }}" class="card-img-top" alt="{{ space.name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ space.name }}</h5>
-                            <p class="card-text">{{ space.description }}</p>
-                            <p class="text-muted">{{ space.city }} - ${{ space.price_per_hour }}/hora</p>
-                            <a href="{% url 'space_detail' space.id %}" class="btn btn-primary">Detalles</a>
-                            <a href="{% url 'space_reserve' space.id %}" class="btn btn-success">Reservar</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+    {% if not user.is_staff %}
+        <main>
 
-            <h2 class="mt-5">Espacios Destacados</h2>
-            <div class="row">
-                {% for space in featured_spaces %}
-                <div class="col-md-4">
-                    <div class="card">
-                        {% if space.images %}
-                        <img src="{{ space.images.url }}" class="card-img-top" alt="{{ space.name }}">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ space.name }}</h5>
-                            <a href="{% url 'space_detail' space.pk %}" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+            <!-- Hero Section -->
+            <section class="bg-dark text-white py-5"
+                     style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/banner.png' %}') center/cover;">
+                <article class="container py-5">
+                    <h1 class="display-4 text-center mb-4">Encuentra tu espacio deportivo ideal</h1>
+                    <p class="lead text-center mb-5">Reserva canchas de fútbol, voley y piscinas en los mejores lugares
+                        de Ecuador</p>
+
+                    <section class="position-absolute top-45 start-50 translate-middle text-center w-100">
+                        <form class="mt-4 mx-auto" style="max-width: 800px;" method="GET">
+                            <section class="row g-2 justify-content-center">
+                                <article class="col-md-3">
+                                    <select name="deporte" class="form-select">
+                                        <option value="">Seleccione un deporte</option>
+                                        {% for sport_id, sport_name in sports %}
+                                            <option value="{{ sport_id }}"
+                                                    {% if request.GET.deporte == sport_id %}selected{% endif %}>{{ sport_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </article>
+                                <article class="col-md-3">
+                                    <select name="ciudad" class="form-select">
+                                        <option value="">Selecciona una ciudad</option>
+                                        <option value="Loja" {% if request.GET.ciudad == 'Loja' %}selected{% endif %}>
+                                            Loja
+                                        </option>
+                                    </select>
+                                </article>
+                                <article class="col-md-4">
+                                    <input type="search" name="buscar" class="form-control"
+                                           placeholder="Buscar por nombre..."
+                                           value="{{ request.GET.buscar|default:'' }}">
+                                </article>
+                                <article class="col-md-2">
+                                    <button type="submit" class="btn btn-primary w-100">Buscar Espacios</button>
+                                </article>
+                            </section>
+                        </form>
+
+                    </section>
+
+
+                </article>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="bg-light py-5" aria-label="Estadísticas">
+                <article class="container">
+                    <ul class="row text-center g-4 list-unstyled">
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-trophy fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+100 Torneos</h2>
+                                    <p class="text-muted">Organizados con éxito</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-users fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+1000</h2>
+                                    <p class="text-muted">Deportistas activos en nuestra plataforma</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-map-marker-alt fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+100 Espacios</h2>
+                                    <p class="text-muted">Deportivos registrados</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-comments fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+10,000</h2>
+                                    <p class="text-muted">Publicaciones en nuestro foro</p>
+                                </section>
+                            </article>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Features Section -->
+            <section class="py-5" aria-label="Características">
+                <article class="container">
+                    <h2 class="text-center mb-5">¿Por qué elegir Boteo?</h2>
+                    <ul class="row g-4 list-unstyled">
+                        <li class="col-md-6">
+                            <article class="card h-100 shadow-sm">
+                                <section class="card-body">
+                                    <h3 class="h5">Organización de Torneos</h3>
+                                    <p class="card-text text-muted">Crea y gestiona torneos de cualquier deporte con
+                                        facilidad.</p>
+                                </section>
+                            </article>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Tournaments Section -->
+            <section class="bg-primary text-white py-5" aria-label="Torneos">
+                <article class="container">
+                    <h2 class="text-center mb-5">Únete a Torneos Emocionantes</h2>
+                    <ul class="row g-4 list-unstyled">
+                        {% for i in '123'|make_list %}
+                            <li class="col-md-4">
+                                <article class="card">
+                                    <figure class="bg-light" style="height: 200px"></figure>
+                                    <section class="card-body">
+                                        <h3 class="h5 text-dark">Torneo de Fútbol</h3>
+                                        <p class="text-muted">Próximamente</p>
+                                        <p class="text-dark">¡Inscríbete ahora y demuestra tu talento!</p>
+                                        <a href="#" class="btn btn-primary">Ver detalles</a>
+                                    </section>
+                                </article>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Featured areas Section -->
+            <section class="py-5" aria-label="Áreas destacados">
+                <article class="container">
+                    <h2 class="text-center mb-5">Áreas Destacados</h2>
+                    <ul class="row g-4 list-unstyled">
+                        {% for area in featured_areas %}
+                            <li class="col-md-4">
+                                <article class="card h-100">
+                                    <figure class="m-0">
+                                        <img src="{{ area.img.url }}" class="card-img-top" alt="{{ area.name }}">
+                                    </figure>
+                                    <section class="card-body">
+                                        <h3 class="h5">{{ area.name }}</h3>
+                                        <p class="mb-2">
+                                            <i class="fas fa-map-marker-alt text-primary me-2" aria-hidden="true"></i>
+                                            <span>{{ area.city }}</span>
+                                        </p>
+                                        <p class="mb-2">
+                                            <i class="fas fa-dollar-sign text-primary me-2" aria-hidden="true"></i>
+                                            <span>${{ area.cost_per_hour }}/hora</span>
+                                        </p>
+                                        <p class="mb-3">
+                                            <i class="fas fa-star text-warning" aria-hidden="true"></i>
+                                            <span>5</span>
+                                        </p>
+                                        <nav class="d-grid gap-2">
+                                            <a href="{% url 'space_detail' area.pk %}"
+                                               class="btn btn-primary">Reservar</a>
+                                            <a href="{% url 'space_detail' area.pk %}" class="btn btn-outline-primary">Detalles</a>
+                                        </nav>
+                                    </section>
+                                </article>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Community Section -->
+            <section class="bg-light py-5" aria-label="Comunidad">
+                <article class="container">
+                    <h2 class="text-center mb-5">Únete a Nuestra Comunidad Vibrante</h2>
+                    <ul class="row g-4 list-unstyled">
+                        {% for i in '123'|make_list %}
+                            <li class="col-md-4">
+                                <article class="card h-100">
+                                    <section class="card-body">
+                                        <h3 class="h5">Consejos para mejorar tu resistencia</h3>
+                                        <p class="text-muted mb-2">Por Maria G.</p>
+                                        <p class="mb-3">24 respuestas</p>
+                                        <a href="#" class="btn btn-link px-0">Leer más</a>
+                                    </section>
+                                </article>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+    {% elif user.is_staff %}
+        <!-- Vista para Gerentes -->
+        <main>
+            <!-- Hero Section -->
+            <section class="bg-dark text-white py-5"
+                     style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/banner.png' %}') center/cover;">
+                <article class="container py-5">
+                    <h1 class="display-4 text-center mb-4">Bienvenido, Gerente</h1>
+                    <p class="lead text-center mb-5">Accede al panel de administración para gestionar tus espacios
+                        deportivos</p>
+
+                    <section class="position-absolute top-45 start-50 translate-middle text-center w-100">
+{#                        <a href="{% url 'admin_panel' %}" class="btn btn-primary btn-lg">Ir al Panel de#}
+{#                            Administración</a>#}
+                        <a href="" class="btn btn-primary btn-lg">Ir al Panel de
+                            Administración</a>
+                    </section>
+                </article>
+            </section>
+
+            <!-- Estadísticas resumidas -->
+            <section class="bg-light py-5" aria-label="Estadísticas">
+                <article class="container">
+                    <h2 class="text-center mb-5">Estadísticas Clave</h2>
+                    <ul class="row text-center g-4 list-unstyled">
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-chart-line fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+30%</h2>
+                                    <p class="text-muted">Crecimiento de reservas</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-users fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+100</h2>
+                                    <p class="text-muted">Clientes activos</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-dollar-sign fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+$50,000</h2>
+                                    <p class="text-muted">Ingresos generados</p>
+                                </section>
+                            </article>
+                        </li>
+                        <li class="col-md-3">
+                            <article class="card border-0 bg-transparent">
+                                <section class="card-body">
+                                    <i class="fas fa-trophy fs-1 text-primary mb-3" aria-hidden="true"></i>
+                                    <h2 class="h4">+20</h2>
+                                    <p class="text-muted">Torneos gestionados</p>
+                                </section>
+                            </article>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+
+    {% else %}
+        <!-- Vista para Administradores -->
+        <main>
+            <section class="py-5 text-center">
+                <article class="container">
+                    <h1 class="display-4">Panel de Administración</h1>
+                    <p class="lead">Accede a todas las herramientas de gestión de la plataforma.</p>
+{#                    <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>#}
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>
+
+                </article>
+            </section>
+        </main>
+    {% endif %}
+
+
+    {% include 'main/footer.html' %}
+
+{% endblock %}

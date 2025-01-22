@@ -48,11 +48,14 @@
                 </div>
             </div>
 
-            {% include "areas/formulario.html" %}
 
-            <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Espacio</button>
+                {% include "areas/formulario.html" %}
+
+                <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Espacio</button>
             </form>
+
         </div>
+
 
         <div class="form-container">
             <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
@@ -62,16 +65,16 @@
 
             <div class="row">
                 {% for sport_space in sport_spaces %}
-                <div class="col-md-6">
-                    <div class="sports-area">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="mb-0">{{ sport_space.name }}</h5>
-                            <span class="status-badge">Disponible</span>
+                    <div class="col-md-6">
+                        <div class="sports-area">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5 class="mb-0">{{ sport_space.name }}</h5>
+                                <span class="status-badge">Disponible</span>
+                            </div>
+                            <p class="mb-2"><i class="bi bi-dribbble"></i> {{ sport_space.sport_type }}</p>
+                            <p class="mb-0"><i class="bi bi-layers"></i> Superficie: {{ sport_space.surface }}</p>
                         </div>
-                        <p class="mb-2"><i class="bi bi-dribbble"></i> {{ sport_space.sport_type }}</p>
-                        <p class="mb-0"><i class="bi bi-layers"></i> Superficie: {{ sport_space.surface }}</p>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
