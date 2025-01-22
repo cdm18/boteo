@@ -118,5 +118,6 @@ def areas_list_user_view(request):
 @login_required
 def area_detail_user_view(request, pk):
     area = get_object_or_404(Area, pk=pk)
+    additional_services = AreaService.objects.filter(area=area).select_related('service')
     sports_spaces = SportsSpace.objects.filter(area=area)
-    return render(request, "areas/area_general_user_detail.html", {'area': area, 'sport_spaces': sports_spaces})
+    return render(request, "areas/area_general_user_detail.html", {'area': area, 'sport_spaces': sports_spaces, 'additional_services': additional_services})

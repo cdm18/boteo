@@ -23,13 +23,15 @@ import admin_panel
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
-    path('', include('main.urls')),  #  principal
+    path('', include('main.urls')),  # principal
     path('spaces/', include('sports_spaces.urls')),
     path('areas/', include('areas.urls')),
     path('', include('admin_panel.urls')),
-
+    path('account/', include('account_settings.urls')),
+    path('publications/', include('publications.urls')),
 ]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

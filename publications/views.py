@@ -2,8 +2,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .models import Publication, Like, Comment
-from .forms import PublicationForm, CommentForm
+from publications.models import Publication, Like, Comment
+from publications.forms import PublicationForm, CommentForm
 
 @login_required
 def publication_list(request):

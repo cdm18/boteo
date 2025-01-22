@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'main',
     'areas',
     'admin_panel',
+    'account_settings',
+    'publications'
 ]
 
 MIDDLEWARE = [

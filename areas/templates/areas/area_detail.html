@@ -6,103 +6,102 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Main Content -->
-    <div class="main-content">
+    <main class="main-content">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'my_areas' %}">Espacios Deportivos</a></li>
-                <li class="breadcrumb-item active">{{ area.name }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ area.name }}</li>
             </ol>
         </nav>
 
-        <div class="form-container">
-
-            <!-- Reemplaza el h4 actual por este div -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4 class="mb-0">Información General del Espacio</h4>
+        <section class="form-container">
+            <header class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h4 mb-0">Información General del Espacio</h1>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                    <i class="bi bi-trash"></i>
+                    <i class="bi bi-trash" aria-hidden="true"></i>
+                    <span class="visually-hidden">Eliminar espacio</span>
                 </button>
-            </div>
+            </header>
 
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                 aria-hidden="true">
+            <!-- Delete Modal -->
+            <dialog class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                    aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <article class="modal-content">
+                        <header class="modal-header">
+                            <h2 class="modal-title h5" id="deleteModalLabel">Confirmar Eliminación</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+                        </header>
                         <div class="modal-body">
-                            ¿Está seguro que desea eliminar este espacio deportivo?
+                            <p>¿Está seguro que desea eliminar este espacio deportivo?</p>
                         </div>
-                        <div class="modal-footer">
+                        <footer class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <form method="POST" action="{% url 'area_detail' area.pk %}" class="d-inline">
                                 {% csrf_token %}
                                 <input type="hidden" name="action" value="delete">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
-                        </div>
-                    </div>
+                        </footer>
+                    </article>
                 </div>
-            </div>
-
+            </dialog>
 
             {% include "areas/formulario.html" %}
 
             <button form="UpdateArea" type="submit" class="mt-4 btn btn-dark w-100">Actualizar Espacio</button>
-            </form>
+        </section>
 
-        </div>
-
-        <div class="form-container">
+        <section class="form-container">
             <form id="UpdateServices" method="POST" action="{% url 'area_detail' area.pk %}">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="update_services">
 
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h6 class="mt-4">Servicios generales</h6>
+                <header class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="h6 mt-4">Servicios generales</h2>
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newServiceModal">
-                        <i class="bi bi-plus-lg"></i> Nuevo Servicio
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i> Nuevo Servicio
                     </button>
-                </div>
+                </header>
 
                 <div class="row mb-3">
                     {% for service in additional_services %}
                         <div class="col-md-6">
                             <div class="form-check form-switch mb-2 d-flex align-items-center">
                                 <input class="form-check-input me-2" type="checkbox" role="switch"
+                                       id="service_{{ service.id }}"
                                        name="service_{{ service.id }}_status"
                                        {% if service.is_available %}checked{% endif %}>
-                                <label class="form-check-label flex-grow-1">{{ service.service.name }}</label>
+                                <label class="form-check-label flex-grow-1" for="service_{{ service.id }}">
+                                    {{ service.service.name }}
+                                </label>
                                 <button type="button" class="btn btn-link text-danger p-0 ms-2"
                                         data-bs-toggle="modal"
                                         data-bs-target="#deleteServiceModal_{{ service.id }}">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
+                                    <span class="visually-hidden">Eliminar servicio</span>
                                 </button>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
 
-                <button type="submit" value="update_services" class="mt-4 btn btn-dark w-100">Actualizar Servicios
-                </button>
+                <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Servicios</button>
             </form>
-        </div>
+        </section>
 
         {% for service in additional_services %}
-            <div class="modal fade" id="deleteServiceModal_{{ service.id }}" tabindex="-1">
+            <dialog class="modal fade" id="deleteServiceModal_{{ service.id }}" tabindex="-1">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Confirmar Eliminación de Servicio</h5>
+                    <article class="modal-content">
+                        <header class="modal-header">
+                            <h2 class="modal-title h5">Confirmar Eliminación de Servicio</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+                        </header>
                         <div class="modal-body">
-                            ¿Está seguro que desea eliminar el servicio "{{ service.service.name }}"?
+                            <p>¿Está seguro que desea eliminar el servicio "{{ service.service.name }}"?</p>
                         </div>
-                        <div class="modal-footer">
+                        <footer class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <form method="POST" action="{% url 'area_detail' area.pk %}">
                                 {% csrf_token %}
@@ -110,62 +109,65 @@
                                 <input type="hidden" name="service_id" value="{{ service.id }}">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
-                        </div>
-                    </div>
+                        </footer>
+                    </article>
                 </div>
-            </div>
+            </dialog>
         {% endfor %}
 
-        <div class="modal fade" id="newServiceModal" tabindex="-1">
+        <dialog class="modal fade" id="newServiceModal" tabindex="-1">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Nuevo Servicio Adicional</h5>
+                <article class="modal-content">
+                    <header class="modal-header">
+                        <h2 class="modal-title h5">Nuevo Servicio Adicional</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
+                    </header>
                     <form id="NewService" method="POST" action="{% url 'area_detail' area.pk %}">
                         {% csrf_token %}
                         <input type="hidden" name="action" value="create_service">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label class="form-label">Nombre del Servicio</label>
-                                <input type="text" class="form-control" name="service_name" required>
+                                <label for="service_name" class="form-label">Nombre del Servicio</label>
+                                <input type="text" class="form-control" id="service_name" name="service_name" required>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button form="NewService" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Cancelar
-                            </button>
-                            <button form="NewService" type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
+                        <footer class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </footer>
                     </form>
-                </div>
+                </article>
             </div>
-        </div>
+        </dialog>
 
-
-        <div class="form-container">
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
-                <h4>Áreas Deportivas</h4>
+        <section class="form-container">
+            <header class="d-flex justify-content-between align-items-center mb-4 mt-4">
+                <h2 class="h4">Áreas Deportivas</h2>
                 <button class="btn btn-agregar">Agregar Área</button>
-            </div>
+            </header>
 
             <div class="row">
                 {% for sport_space in sport_spaces %}
-                    <div class="col-md-6">
+                    <article class="col-md-6">
                         <div class="sports-area">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="mb-0">{{ sport_space.name }}</h5>
+                            <header class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h5 mb-0">{{ sport_space.name }}</h3>
                                 <span class="status-badge">Disponible</span>
-                            </div>
-                            <p class="mb-2"><i class="bi bi-dribbble"></i> {{ sport_space.sport_type }}</p>
-                            <p class="mb-0"><i class="bi bi-layers"></i> Superficie: {{ sport_space.surface }}</p>
+                            </header>
+                            <p class="mb-2">
+                                <i class="bi bi-dribbble" aria-hidden="true"></i>
+                                {{ sport_space.sport_type }}
+                            </p>
+                            <p class="mb-0">
+                                <i class="bi bi-layers" aria-hidden="true"></i>
+                                Superficie: {{ sport_space.surface }}
+                            </p>
                         </div>
-                    </div>
+                    </article>
                 {% endfor %}
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

@@ -1,55 +1,59 @@
-<form id="UpdateArea" method="POST" enctype="multipart/form-data" action="{% url 'area_detail' area.pk %}">
-
+<form id="UpdateArea" method="POST" enctype="multipart/form-data" action="">
     {% csrf_token %}
-    <div class="mb-3">
-        <label class="form-label">Nombre del Espacio Deportivo</label>
-        {{ form.name }}
-    </div>
 
-    <div class="mb-3">
-        <label class="form-label">Descripción</label>
-        {{ form.description }}
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <label class="form-label">Dirección</label>
-            {{ form.address }}
+    <fieldset>
+        <div class="mb-3">
+            <label for="{{ form.name.id_for_label }}" class="form-label">Nombre del Espacio Deportivo</label>
+            {{ form.name }}
         </div>
-        <div class="col-md-6">
-            <label class="form-label">Ciudad</label>
-            {{ form.city }}
-        </div>
-    </div>
 
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <label class="form-label">Hora de Apertura</label>
-            {{ form.opening_time }}
+        <div class="mb-3">
+            <label for="{{ form.description.id_for_label }}" class="form-label">Descripción</label>
+            {{ form.description }}
         </div>
-        <div class="col-md-6">
-            <label class="form-label">Hora de Cierre</label>
-            {{ form.closing_time }}
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="{{ form.address.id_for_label }}" class="form-label">Dirección</label>
+                {{ form.address }}
+            </div>
+            <div class="col-md-6">
+                <label for="{{ form.city.id_for_label }}" class="form-label">Ciudad</label>
+                {{ form.city }}
+            </div>
         </div>
-    </div>
 
-
-    <h6 class="mt-4">Imágenes del Espacio</h6>
-    <div class="mb-3">
-        <label class="form-label">Subir Imágenes</label>
-        {{ form.images }}
-    </div>
-
-    {% if form.instance.images %}
-        <div class="vista-previa mt-2">
-            <p><strong>Vista Previa:</strong></p>
-            <img src="{{ form.instance.images.url }}" alt="Vista previa">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="{{ form.opening_time.id_for_label }}" class="form-label">Hora de Apertura</label>
+                {{ form.opening_time }}
+            </div>
+            <div class="col-md-6">
+                <label for="{{ form.closing_time.id_for_label }}" class="form-label">Hora de Cierre</label>
+                {{ form.closing_time }}
+            </div>
         </div>
-    {% endif %}
+    </fieldset>
+
+    <fieldset>
+        <legend class="h6 mt-4">Imágenes del Espacio</legend>
+        <div class="mb-3">
+            <label for="{{ form.images.id_for_label }}" class="form-label">Subir Imágenes</label>
+            {{ form.images }}
+        </div>
+
+        {% if form.instance.images %}
+            <figure class="vista-previa mt-2">
+                <figcaption><strong>Vista Previa:</strong></figcaption>
+                <img src="{{ form.instance.images.url }}" alt="Vista previa del espacio deportivo">
+            </figure>
+        {% endif %}
+    </fieldset>
 
     {% if form.errors %}
-        <div class="mt-4 alert alert-danger">
-            Por favor, corrige los siguientes errores:
+        <div role="alert" class="mt-4 alert alert-danger">
+            <p>Por favor, corrige los siguientes errores:</p>
             {{ form.errors }}
         </div>
     {% endif %}
+</form>

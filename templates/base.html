@@ -11,10 +11,16 @@
     {% block styles %}{% endblock %}
 </head>
 <body>
+
+{#{% include 'navbar.html' %}#}
+
 <div class="wrapper">
     <!-- Sidebar -->
     <div class="sidebar">
-        <nav class="nav flex-column">
+        <a class="navbar-brand ms-5" href="{% url 'home' %}" aria-label="Inicio">
+            <img src="{% static '/main/img/LogoBoteo.png' %}" alt="Boteo Logo" height="40">
+        </a>
+        <nav class="nav flex-column mt-4">
             <a class="nav-link" href="#"><i class="bi bi-grid"></i> Dashboard</a>
             <a class="nav-link" href="#"><i class="bi bi-calendar"></i> Gestión de Reservas</a>
             <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Análisis y Reportes</a>

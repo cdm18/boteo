@@ -1,159 +1,174 @@
 {% include 'navbar.html' %}
 {% load static %}
-{#<link rel="stylesheet" href="{% static 'areas/css/styles.css' %}">#}
+
 {% block content %}
-<div class="container py-4">
+    <main class="container py-4">
+        <nav class="mb-4">
+            <a href="{% url 'areas_list_user_view' %}" class="text-decoration-none d-inline-block">
+                <i class="fas fa-arrow-left me-2" aria-hidden="true"></i>
+                Volver a Espacios
+            </a>
+        </nav>
 
-    <a href="{% url 'areas_list_user_view' %}" class="text-decoration-none mb-4 d-inline-block">
-        <i class="fas fa-arrow-left me-2"></i>
-        Volver a Espacios
-    </a>
-
-    <!-- Header Section -->
-    <h1 class="h2 mb-2">{{ area.name }}</h1>
-    <div class="d-flex align-items-center gap-3 mb-4">
-        <span class="text-muted">
-            <i class="fas fa-map-marker-alt me-1"></i>
-            {{ area.city }}, {{ area.address }}
-        </span>
-        <div class="d-flex align-items-center">
-            <i class="fas fa-star text-warning me-1"></i>
-            <span>4.5</span>
-        </div>
-        <span class="text-primary">${{ area.price }} 10 / hora</span>
-    </div>
-
-    <!-- Main Image -->
-    <div class="mb-4">
-        {% if area.images %}
-        <img src="{{ area.images.url }}" alt="{{ area.name }}" class="w-100 rounded" style="max-height: 500px; object-fit: cover;">
-        {% else %}
-        <img src="{% static 'main/img/default-area.jpg' %}" alt="Default image" class="w-100 rounded" style="max-height: 500px; object-fit: cover;">
-        {% endif %}
-    </div>
-
-    <!-- Description -->
-    <section class="mb-5">
-        <h2 class="h4 mb-3">Descripción</h2>
-        <p class="text-muted">{{ area.description }}</p>
-    </section>
-
-    <!-- Sports Spaces -->
-    <section class="mb-5">
-        <h2 class="h4 mb-3">Espacios</h2>
-        <div class="row g-4">
-            {% for space in sport_spaces %}
-            <div class="col-md-6">
-                <div class="bg-light rounded p-4">
-                    <h3 class="h5 mb-3">{{ space.name }}</h3>
-                    <div class="d-flex flex-column gap-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-ruler me-2 text-primary"></i>
-                            <span>Tamaño: {{ space.length }}m x {{ space.width }}m</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-users me-2 text-primary"></i>
-                            <span>Jugadores: {{ space.capacity }} personas</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-leaf me-2 text-primary"></i>
-                            <span>Superficie: {{ space.surface_type }}</span>
-                        </div>
-                    </div>
+        <header class="mb-4">
+            <h1 class="h2 mb-2">{{ area.name }}</h1>
+            <div class="d-flex align-items-center gap-3">
+                <address class="text-muted mb-0">
+                    <i class="fas fa-map-marker-alt me-1" aria-hidden="true"></i>
+                    {{ area.city }}, {{ area.address }}
+                </address>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-star text-warning me-1" aria-hidden="true"></i>
+                    <span>4.5</span>
                 </div>
+                <span class="text-primary">${{ area.price }} 10 / hora</span>
             </div>
-            {% endfor %}
-        </div>
-        <div class="text-center mt-4">
-            <button class="btn btn-primary px-5">Reserva Ahora</button>
-        </div>
-    </section>
+        </header>
 
-    <!-- Amenities -->
-    <section class="mb-5">
-        <h2 class="h4 mb-3">Amenidades</h2>
-        <div class="d-flex gap-3">
-            {% if area.has_parking %}
-            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-parking me-2"></i>
+        <figure class="mb-4">
+            {% if area.images %}
+                <img src="{{ area.images.url }}" alt="Vista completa de {{ area.name }}" class="w-100 rounded"
+                     style="max-height: 500px; object-fit: cover;">
+            {% else %}
+                <img src="{% static 'main/img/default-area.jpg' %}" alt="Imagen por defecto del espacio deportivo"
+                     class="w-100 rounded" style="max-height: 500px; object-fit: cover;">
+            {% endif %}
+        </figure>
+
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Descripción</h2>
+            <p class="text-muted">{{ area.description }}</p>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Espacios</h2>
+            <div class="row g-4">
+                {% for space in sport_spaces %}
+                    <article class="col-md-6">
+                        <div class="bg-light rounded p-4">
+                            <h3 class="h5 mb-3">{{ space.name }}</h3>
+                            <dl class="d-flex flex-column gap-2 mb-0">
+                                <div class="d-flex align-items-center">
+                                    <dt class="d-flex align-items-center me-2">
+                                        <i class="fas fa-ruler me-2 text-primary" aria-hidden="true"></i>
+                                        <span class="visually-hidden">Tamaño:</span>
+                                    </dt>
+                                    <dd class="mb-0">{{ space.length }}m x {{ space.width }}m</dd>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <dt class="d-flex align-items-center me-2">
+                                        <i class="fas fa-users me-2 text-primary" aria-hidden="true"></i>
+                                        <span class="visually-hidden">Capacidad:</span>
+                                    </dt>
+                                    <dd class="mb-0">{{ space.capacity }} personas</dd>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <dt class="d-flex align-items-center me-2">
+                                        <i class="fas fa-leaf me-2 text-primary" aria-hidden="true"></i>
+                                        <span class="visually-hidden">Superficie:</span>
+                                    </dt>
+                                    <dd class="mb-0">{{ space.surface_type }}</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary px-5">Reserva Ahora</button>
+            </div>
+        </section>
+
+        <section class="mb-5" aria-label="Amenidades">
+            <h2 class="h4 mb-3">Amenidades</h2>
+            <div class="d-flex gap-3">
+                {% if area.has_parking %}
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                <i class="fas fa-parking me-2" aria-hidden="true"></i>
                 Estacionamiento
             </span>
-            {% endif %}
+                {% endif %}
 
-            {% if area.has_showers %}
-            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-shower me-2"></i>
+                {% if area.has_showers %}
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                <i class="fas fa-shower me-2" aria-hidden="true"></i>
                 Vestidores
             </span>
-            {% endif %}
+                {% endif %}
 
-            {% if area.has_lockers %}
-            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-lock me-2"></i>
+                {% if area.has_lockers %}
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                <i class="fas fa-lock me-2" aria-hidden="true"></i>
                 Casilleros
             </span>
-            {% endif %}
+                {% endif %}
 
-            {% if area.has_equipment %}
-            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-futbol me-2"></i>
+                {% if area.has_equipment %}
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                <i class="fas fa-futbol me-2" aria-hidden="true"></i>
                 Equipamiento
             </span>
-            {% endif %}
-        </div>
-    </section>
+                {% endif %}
 
-    <!-- Schedule -->
-    <section class="mb-5">
-        <h2 class="h4 mb-3">Horarios</h2>
-        <div class="bg-light rounded p-4">
-            <div class="d-flex align-items-center mb-2">
-                <i class="far fa-clock me-2 text-primary"></i>
-                <span>Lunes - Domingo: {{ area.opening_time}} - {{ area.closing_time }}</span>
+                {% for service in additional_services %}
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                <i class="fas fa-futbol me-2" aria-hidden="true"></i>
+                {{ service.service.name }}
+            </span>
+                {% endfor %}
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Reviews -->
-    <section class="mb-5">
-        <h2 class="h4 mb-3">Reseñas</h2>
-        <div class="mb-4">
-            <div class="border rounded p-3 mb-3">
-                <textarea class="form-control border-0 mb-3" rows="3" placeholder="Escribe una reseña..."></textarea>
-                <button class="btn btn-link p-0">
-                    <i class="far fa-image text-primary"></i>
-                </button>
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Horarios</h2>
+            <div class="bg-light rounded p-4">
+                <time class="d-flex align-items-center">
+                    <i class="far fa-clock me-2 text-primary" aria-hidden="true"></i>
+                    <span>Lunes - Domingo: {{ area.opening_time }} - {{ area.closing_time }}</span>
+                </time>
             </div>
-        </div>
+        </section>
 
-        <!-- Sample Reviews -->
-        <div class="border-bottom pb-4 mb-4">
-            <div class="d-flex justify-content-between mb-2">
-                <span class="fw-bold">Juan P.</span>
-                <div class="text-warning">
-                    <i class="fas fa-star"></i>
-                    <span class="ms-1">4.5</span>
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Reseñas</h2>
+            <form class="mb-4">
+                <div class="border rounded p-3 mb-3">
+                    <label for="review-text" class="visually-hidden">Escribe una reseña</label>
+                    <textarea id="review-text" class="form-control border-0 mb-3" rows="3"
+                              placeholder="Escribe una reseña..."></textarea>
+                    <button type="button" class="btn btn-link p-0" aria-label="Añadir imagen">
+                        <i class="far fa-image text-primary" aria-hidden="true"></i>
+                    </button>
                 </div>
-            </div>
-            <p class="text-muted mb-0">Excelentes Instalaciones muy bien mantenidas.</p>
-        </div>
+            </form>
 
-        <div class="border-bottom pb-4 mb-4">
-            <div class="d-flex justify-content-between mb-2">
-                <span class="fw-bold">María L.</span>
-                <div class="text-warning">
-                    <i class="fas fa-star"></i>
-                    <span class="ms-1">4.5</span>
-                </div>
-            </div>
-            <p class="text-muted mb-0">Buena experiencia en general, el estacionamiento es amplio.</p>
-        </div>
-    </section>
-    
-    <div class="text-center">
-        <button class="btn btn-primary px-5">Reserva Ahora</button>
-    </div>
-</div>
+            <article class="border-bottom pb-4 mb-4">
+                <header class="d-flex justify-content-between mb-2">
+                    <cite class="fw-bold">Juan P.</cite>
+                    <div class="text-warning">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <span class="ms-1">4.5</span>
+                    </div>
+                </header>
+                <p class="text-muted mb-0">Excelentes Instalaciones muy bien mantenidas.</p>
+            </article>
 
-{% include 'areas/footer.html' %}
+            <article class="border-bottom pb-4 mb-4">
+                <header class="d-flex justify-content-between mb-2">
+                    <cite class="fw-bold">María L.</cite>
+                    <div class="text-warning">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <span class="ms-1">4.5</span>
+                    </div>
+                </header>
+                <p class="text-muted mb-0">Buena experiencia en general, el estacionamiento es amplio.</p>
+            </article>
+        </section>
+
+        <footer class="text-center">
+            <button class="btn btn-primary px-5">Reserva Ahora</button>
+        </footer>
+    </main>
+
+    {% include 'footer.html' %}
 {% endblock %}
