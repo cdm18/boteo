@@ -1,0 +1,196 @@
+{% include 'navbar.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil de usuario y reservas">
+    <title>Perfil de Usuario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .nav-link.active {
+            background-color: #0d6efd !important;
+            color: white !important;
+            border-radius: 0.25rem;
+        }
+        .profile-header {
+            background-color: #6c95e7;
+            color: white;
+            padding: 2rem 0;
+        }
+        .reservation-card {
+            transition: transform 0.2s;
+        }
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="profile-header">
+        <div class="container text-center">
+            <img src="https://via.placeholder.com/128" class="rounded-circle mb-3" width="128" height="128" alt="Foto de perfil">
+            <h1>{{ request.user.get_full_name }}</h1>
+            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                <i class="bi bi-pencil me-2" aria-hidden="true"></i>Editar Perfil
+            </button>
+        </div>
+    </header>
+
+    <!-- Edit Profile Modal -->
+    <dialog class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h2 class="modal-title" id="editProfileModalLabel">Editar perfil</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </header>
+                <form method="post" action="{% url 'account_settings:edit_profile' %}" id="editProfileForm">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <figure class="text-center mb-4">
+                            <img src="https://via.placeholder.com/128" class="rounded-circle mb-3" width="128" height="128" alt="Foto de perfil">
+                        </figure>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Nombres y Apellidos</label>
+                            <input type="text" class="form-control" id="fullName" value="{{ request.user.get_full_name }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="level" class="form-label">Nivel</label>
+                            <input type="text" class="form-control" id="level" value="" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sports" class="form-label">Deportes</label>
+                            <input type="text" class="form-control" id="sports" value="" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="about_me" class="form-label">Biografía</label>
+                            <textarea class="form-control" id="about_me" name="about_me" rows="3">{{ profile.about_me }}</textarea>
+                        </div>
+                    </div>
+                    <footer class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <main class="container py-4">
+        <div class="row g-4">
+            <aside class="col-md-4">
+                <!-- Statistics Card -->
+                <section class="card mb-4">
+                    <header class="card-header bg-white">
+                        <h2 class="h5 mb-0">Estadísticas</h2>
+                    </header>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Reservas</span>
+                                <span class="text-primary">{{ profile.stats_reservations }}</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Horas jugadas</span>
+                                <span class="text-primary">{{ profile.stats_played_hours }}</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Eventos asistidos</span>
+                                <span class="text-primary">{{ profile.stats_attended_events }}</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Me Card -->
+                <section class="card">
+                    <header class="card-header bg-white">
+                        <h2 class="h5 mb-0">Sobre mí</h2>
+                    </header>
+                    <div class="card-body">
+                        <p class="card-text">{{ profile.about_me }}</p>
+                    </div>
+                </section>
+            </aside>
+
+            <article class="col-md-8">
+                <!-- Reservations Card -->
+                <section class="card">
+                    <header class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h2 class="h5 mb-0">Mis Reservas</h2>
+                        <small class="text-muted">Historial de tus reservas pasadas y futuras</small>
+                    </header>
+                    <div class="card-body">
+                        {% for reservation in reservations %}
+                        <article class="card mb-3 reservation-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h3 class="h6 mb-1">{{ reservation.facility }}</h3>
+                                        <p class="mb-0 text-muted">
+                                            <i class="bi bi-calendar me-2" aria-hidden="true"></i>{{ reservation.date }}
+                                            <i class="bi bi-clock ms-3 me-2" aria-hidden="true"></i>{{ reservation.time }}
+                                        </p>
+                                    </div>
+                                    <span class="badge bg-success status-badge">{{ reservation.status }}</span>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AJAX form submission -->
+    <script>
+    document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Error al actualizar el perfil');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
