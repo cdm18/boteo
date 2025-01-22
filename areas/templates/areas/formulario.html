@@ -1,4 +1,4 @@
-<form method="POST" enctype="multipart/form-data" action="{% url 'area_detail' area.pk %}">
+<form id="UpdateArea" method="POST" enctype="multipart/form-data" action="{% url 'area_detail' area.pk %}">
 
     {% csrf_token %}
     <div class="mb-3">
@@ -33,87 +33,6 @@
         </div>
     </div>
 
-    <h6 class="mt-4">Servicios generales</h6>
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newServiceModal">
-            <i class="bi bi-plus-lg"></i> Nuevo Servicio
-        </button>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-6">
-
-            <div class="form-check form-switch">
-                {{ form.has_parking }}
-                <label class="form-check-label"
-                       for="{{ form.has_parking.id_for_label }}">Estacionamiento</label>
-            </div>
-
-            <div class="form-check form-switch">
-                {{ form.has_lockers }}
-                <label class="form-check-label"
-                       for="{{ form.has_lockers.id_for_label }}">Casilleros</label>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-check form-switch">
-                {{ form.has_showers }}
-                <label class="form-check-label" for="{{ form.has_showers.id_for_label }}">Duchas</label>
-            </div>
-            <div class="form-check form-switch">
-                {{ form.has_equipment }}
-                <label class="form-check-label"
-                       for="{{ form.has_equipment.id_for_label }}">Equipamiento</label>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row mb-3">
-        {% for service in additional_services %}
-            <div class="col-md-6">
-                <div class="form-check form-switch mb-2">
-                    <input class="form-check-input me-2" type="checkbox" role="switch"
-                           name="service_{{ service.id }}_status"
-                           {% if service.is_available %}checked{% endif %}>
-                    <label class="form-check-label flex-grow-1">{{ service.service.name }}</label>
-{#                    <form method="POST" action="{% url 'area_detail' area.pk %}" class="d-inline">#}
-{#                        {% csrf_token %}#}
-{#                        <input type="hidden" name="action" value="delete_service">#}
-{#                        <input type="hidden" name="service_id" value="{{ service.id }}">#}
-{#                        <button type="submit" class="btn btn-link text-danger p-0 ms-2"#}
-{#                                onclick="return confirm('¿Está seguro que desea eliminar este servicio?')">#}
-{#                            <i class="bi bi-trash"></i>#}
-{#                        </button>#}
-{#                    </form>#}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="modal fade" id="newServiceModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Nuevo Servicio Adicional</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-{#                <form method="POST" action="{% url 'area_detail' area.pk %}">#}
-{#                    {% csrf_token %}#}
-{#                    <input type="hidden" name="action" value="create_service">#}
-{#                    <div class="modal-body">#}
-{#                        <div class="mb-3">#}
-{#                            <label class="form-label">Nombre del Servicio</label>#}
-{#                            <input type="text" class="form-control" name="service_name" required>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="modal-footer">#}
-{#                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>#}
-{#                        <button type="submit" class="btn btn-primary">Guardar</button>#}
-{#                    </div>#}
-{#                </form>#}
-            </div>
-        </div>
-    </div>
 
     <h6 class="mt-4">Imágenes del Espacio</h6>
     <div class="mb-3">

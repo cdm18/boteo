@@ -1,7 +1,7 @@
 {% load static %}
 
 {% block content %}
-    {% include 'main/navbar.html' %}
+    {% include 'navbar.html' %}
 
     {% if not user.is_staff %}
         <main>
@@ -37,7 +37,7 @@
                                 <article class="col-md-4">
                                     <input type="search" name="buscar" class="form-control"
                                            placeholder="Buscar por nombre..."
-                                           value="{{ request.GET.buscar|default:'' }}">
+                                           value="{{ request.GET.buscar}}">
                                 </article>
                                 <article class="col-md-2">
                                     <button type="submit" class="btn btn-primary w-100">Buscar Espacios</button>
@@ -207,10 +207,9 @@
                         deportivos</p>
 
                     <section class="position-absolute top-45 start-50 translate-middle text-center w-100">
-{#                        <a href="{% url 'admin_panel' %}" class="btn btn-primary btn-lg">Ir al Panel de#}
-{#                            Administración</a>#}
-                        <a href="" class="btn btn-primary btn-lg">Ir al Panel de
+                        <a href="{% url 'admin_panel' %}" class="btn btn-primary btn-lg">Ir al Panel de
                             Administración</a>
+
                     </section>
                 </article>
             </section>
@@ -268,15 +267,13 @@
                 <article class="container">
                     <h1 class="display-4">Panel de Administración</h1>
                     <p class="lead">Accede a todas las herramientas de gestión de la plataforma.</p>
-{#                    <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>#}
-                    <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>
-
+                    <a href="{% url 'admin_panel' %}" class="btn btn-primary btn-lg">Ir al Panel de Administración</a>
                 </article>
             </section>
         </main>
     {% endif %}
 
 
-    {% include 'main/footer.html' %}
+    {% include 'footer.html' %}
 
 {% endblock %}

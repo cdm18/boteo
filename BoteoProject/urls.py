@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 
+import admin_panel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,7 @@ urlpatterns = [
     path('', include('main.urls')),  #  principal
     path('spaces/', include('sports_spaces.urls')),
     path('areas/', include('areas.urls')),
+    path('', include('admin_panel.urls')),
 
 ]
 

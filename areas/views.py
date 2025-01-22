@@ -3,10 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
-
 from sports_spaces.models import SportsSpace
 from .forms import AreaCreationForm
 from django.contrib import messages
+
+
 # Create your views here.
 
 def is_staff_user(user):
@@ -19,6 +20,7 @@ def areas_list_view(request):
     areas = Area.objects.filter(user=request.user)
     return render(request, "areas/areas.html", {'areas': areas})
 
+
 @login_required
 @user_passes_test(is_staff_user)
 def area_detail(request, pk):
@@ -27,12 +29,14 @@ def area_detail(request, pk):
     additional_services = AreaService.objects.filter(area=area).select_related('service')
 
     if request.method == "POST":
-        if request.POST.get('action') == 'delete':
+        action = request.POST.get('action')
+
+        if action == 'delete':
             area.delete()
             messages.success(request, 'Espacio deportivo eliminado exitosamente.')
             return redirect('my_areas')
 
-        elif request.POST.get('action') == 'delete_service':
+        elif action == 'delete_service':
             try:
                 service = AreaService.objects.get(
                     id=request.POST.get('service_id'),
@@ -44,7 +48,7 @@ def area_detail(request, pk):
             except AreaService.DoesNotExist:
                 messages.error(request, 'Servicio no encontrado.')
 
-        elif request.POST.get('action') == 'create_service':
+        elif action == 'create_service':
             service = AdditionalService.objects.create(
                 creator=request.user,
                 name=request.POST.get('service_name')
@@ -57,19 +61,22 @@ def area_detail(request, pk):
             messages.success(request, 'Servicio adicional creado exitosamente.')
             return redirect('area_detail', pk=pk)
 
+        elif action == 'update_services':
+            # Update service availability status
+            for service in additional_services:
+                status_field = f'service_{service.id}_status'
+                is_available = status_field in request.POST
+                if service.is_available != is_available:
+                    service.is_available = is_available
+                    service.save()
+            messages.success(request, 'Servicios actualizados exitosamente.')
+            return redirect('area_detail', pk=pk)
+
         else:
+            # Handle area update
             form = AreaCreationForm(request.POST, request.FILES, instance=area)
             if form.is_valid():
                 area = form.save()
-
-                # Actualizar estados de servicios adicionales
-                for service in additional_services:
-                    status_field = f'service_{service.id}_status'
-                    is_available = status_field in request.POST
-                    if service.is_available != is_available:
-                        service.is_available = is_available
-                        service.save()
-
                 messages.success(request, 'Espacio deportivo actualizado exitosamente.')
                 return redirect('area_detail', pk=pk)
             else:
@@ -83,6 +90,7 @@ def area_detail(request, pk):
         'sport_spaces': sports_spaces,
         'additional_services': additional_services
     })
+
 
 @login_required
 @user_passes_test(is_staff_user)
@@ -100,10 +108,12 @@ def create_area(request):
 
     return render(request, 'areas/create_area.html', {'form': form})
 
+
 @login_required
 def areas_list_user_view(request):
     areas = Area.objects.filter(user=request.user)
     return render(request, "areas/areas_general_user.html", {'areas': areas})
+
 
 @login_required
 def area_detail_user_view(request, pk):
