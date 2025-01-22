@@ -1,0 +1,191 @@
+{% include 'navbar.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container-fluid p-0">
+    <!-- Hero Section -->
+    <header class="bg-primary text-white py-5 mb-4">
+        <div class="container text-center">
+            <h1>Únete a la Comunidad Deportiva</h1>
+            <p class="lead">Conecta con otros deportistas, participa en eventos y comparte tus experiencias</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <nav class="d-flex justify-content-center mb-4" aria-label="Secciones de contenido">
+            <div class="btn-group" role="tablist">
+                <a href="#" class="btn btn-outline-primary" role="tab" aria-selected="false">Eventos</a>
+                <a href="#" class="btn btn-primary" role="tab" aria-selected="true">Publicaciones</a>
+            </div>
+        </nav>
+
+        <!-- Publication Form -->
+        <section class="card mb-4">
+            <div class="card-body">
+                <form method="post" action="{% url 'publications:publication_list' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="publicationContent" class="visually-hidden">Contenido de la publicación</label>
+                        <textarea class="form-control border-0"
+                                  id="publicationContent"
+                                  name="content"
+                                  rows="3"
+                                  placeholder="¿Qué estás pensando?"
+                                  style="resize: none;"></textarea>
+                    </div>
+                    <div class="text-end mt-3">
+                        <button type="submit" name="publication_submit" class="btn btn-primary px-4">Publicar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Publications Feed -->
+        <section class="publications-feed">
+            {% for publication in publications %}
+            <article class="card mb-3">
+                <div class="card-body">
+                    <!-- Author Information -->
+                    <header class="d-flex align-items-center mb-3">
+                        <img src="{% static 'images/default-avatar.png' %}"
+                             class="rounded-circle"
+                             width="40"
+                             height="40"
+                             alt="Avatar de {{ publication.user.get_full_name }}">
+                        <div class="ms-3">
+                            <h2 class="h6 mb-0">{{ publication.user.get_full_name }}</h2>
+                            <time class="text-muted small" datetime="{{ publication.created_at|date:'c' }}">
+                                Hace {{ publication.created_at|timesince }}
+                            </time>
+                        </div>
+                    </header>
+
+                    <!-- Publication Content -->
+                    <div class="card-text">{{ publication.content }}</div>
+
+                    <!-- Interaction Buttons -->
+                    <footer class="border-top pt-3 mt-3">
+                        <div class="d-flex">
+                            <button class="btn btn-link text-decoration-none me-3 like-btn"
+                                    data-publication-id="{{ publication.id }}"
+                                    aria-label="Me gusta">
+                                <i class="far fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="ms-1 like-count">{{ publication.likes.count }}</span>
+                            </button>
+                            <button class="btn btn-link text-decoration-none me-3"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#comments-{{ publication.id }}"
+                                    aria-expanded="false"
+                                    aria-controls="comments-{{ publication.id }}"
+                                    aria-label="Comentarios">
+                                <i class="far fa-comment" aria-hidden="true"></i>
+                                <span class="ms-1">{{ publication.comments.count }}</span>
+                            </button>
+                            <button class="btn btn-link text-decoration-none" aria-label="Compartir">
+                                <i class="far fa-share-square" aria-hidden="true"></i>
+                                <span class="ms-1">Compartir</span>
+                            </button>
+                        </div>
+                    </footer>
+
+                    <!-- Comments Section -->
+                    <section class="collapse mt-3" id="comments-{{ publication.id }}">
+                        <div class="border-top pt-3">
+                            <form class="comment-form mb-3" data-publication-id="{{ publication.id }}">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <label for="comment-input-{{ publication.id }}" class="visually-hidden">
+                                        Escribe un comentario
+                                    </label>
+                                    <input type="text"
+                                           id="comment-input-{{ publication.id }}"
+                                           class="form-control"
+                                           placeholder="Escribe un comentario..."
+                                           name="content">
+                                    <button class="btn btn-primary" type="submit">Comentar</button>
+                                </div>
+                            </form>
+
+                            <div id="comments-container-{{ publication.id }}" class="comments-list">
+                                {% for comment in publication.comments.all %}
+                                <article class="d-flex mb-2">
+                                    <img src="{% static 'images/default-avatar.png' %}"
+                                         class="rounded-circle me-2"
+                                         width="32"
+                                         height="32"
+                                         alt="Avatar de {{ comment.user.get_full_name }}">
+                                    <div class="bg-light p-2 rounded flex-grow-1">
+                                        <h3 class="h6 mb-1">{{ comment.user.get_full_name }}</h3>
+                                        <p class="mb-0">{{ comment.content }}</p>
+                                        <time class="text-muted small" datetime="{{ comment.created_at|date:'c' }}">
+                                            {{ comment.created_at|timesince }}
+                                        </time>
+                                    </div>
+                                </article>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Like functionality
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const publicationId = this.dataset.publicationId;
+            fetch(`/publications/like/${publicationId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                const icon = this.querySelector('i');
+                const countSpan = this.querySelector('.like-count');
+                icon.className = data.liked ? 'fas fa-thumbs-up' : 'far fa-thumbs-up';
+                countSpan.textContent = data.count;
+            });
+        });
+    });
+
+    // Comment functionality
+    document.querySelectorAll('.comment-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const publicationId = this.dataset.publicationId;
+            const content = this.querySelector('input[name="content"]').value;
+
+            if (!content.trim()) return;
+
+            fetch(`/publications/comment/${publicationId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `content=${encodeURIComponent(content)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    this.querySelector('input[name="content"]').value = '';
+                    location.reload();
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}
