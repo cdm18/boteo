@@ -1,4 +1,4 @@
-<form id="UpdateArea" method="POST" enctype="multipart/form-data" action="">
+<form method="POST" enctype="multipart/form-data" action="">
     {% csrf_token %}
 
     <fieldset>
@@ -56,4 +56,3 @@
             {{ form.errors }}
         </div>
     {% endif %}
-</form>
