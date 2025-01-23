@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'admin_panel',
     'account_settings',
     'publications',
+    'reservations',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +97,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -105,7 +105,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boteo',
         'USER': 'root',
-        'PASSWORD': 'Cbhas123',
+        'PASSWORD': 'piloto12',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -138,11 +138,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Guayaquil'
 
 USE_I18N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

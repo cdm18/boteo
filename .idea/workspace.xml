@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="estructura proyecto actualizada con frontend + backend funcionales (modulos user)">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="implementacion de app reservations (funcionalidad boton home pendiente)">
+      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/areas/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/area_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/area_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/area_general_user_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/area_general_user_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/areas_general_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/areas_general_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/templates/reservations/reservations_modal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_spaces/templates/sports_spaces/space_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_spaces/templates/sports_spaces/space_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_spaces/templates/sports_spaces/sports_space_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/sports_spaces/templates/sports_spaces/sports_space_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -32,12 +45,12 @@
     &quot;assignee&quot;: &quot;cdm18&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/cdm18/boteo.git",
-    "accountId": "af3eef48-ace9-4898-8977-16e9731b40ec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/cdm18/boteo.git&quot;,
+    &quot;accountId&quot;: &quot;af3eef48-ace9-4898-8977-16e9731b40ec&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -56,6 +69,7 @@
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "alex",
     "last_opened_file_path": "/Users/CarlosMejia/Desktop/boteo/boteo",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -88,7 +102,7 @@
       <workItem from="1736524063924" duration="5320000" />
       <workItem from="1736611937805" duration="7522000" />
       <workItem from="1737565142475" duration="202000" />
-      <workItem from="1737646553753" duration="1678000" />
+      <workItem from="1737646553753" duration="9257000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -130,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736621700244</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="implementacion de app reservations (funcionalidad boton home pendiente)">
+      <option name="closed" value="true" />
+      <created>1737649086240</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737649086240</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,17 +174,7 @@
     <MESSAGE value="apps faltantes, login y register funcionales &amp; guards" />
     <MESSAGE value="requirements.txt actualizado" />
     <MESSAGE value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
-    <option name="LAST_COMMIT_MESSAGE" value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/areas/forms.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="implementacion de app reservations (funcionalidad boton home pendiente)" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementacion de app reservations (funcionalidad boton home pendiente)" />
   </component>
 </project>

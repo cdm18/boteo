@@ -137,13 +137,13 @@
             <!-- Featured areas Section -->
             <section class="py-5" aria-label="Áreas destacados">
                 <article class="container">
-                    <h2 class="text-center mb-5">Áreas Destacados</h2>
+                    <h2 class="text-center mb-5">Áreas Destacadas</h2>
                     <ul class="row g-4 list-unstyled">
                         {% for area in featured_areas %}
                             <li class="col-md-4">
                                 <article class="card h-100">
                                     <figure class="m-0">
-                                        <img src="{{ area.img.url }}" class="card-img-top" alt="{{ area.name }}">
+                                        <img src="{{ area.images.url }}" class="card-img-top" alt="{{ area.name }}">
                                     </figure>
                                     <section class="card-body">
                                         <h3 class="h5">{{ area.name }}</h3>
@@ -163,9 +163,13 @@
 
 
 
-                                            <a href="{% url 'space_detail' area.pk %}" class="btn btn-outline-primary">Detalles</a>
+                                            <a href="{% url 'area_detail_user_view' area.pk %}" class="btn btn-primary">Reservar</a>
 
                                             <!-- Modal Trigger Button in home.html -->
+
+
+
+
 
 
                                         </nav>

@@ -25,5 +25,4 @@ class Reservation(models.Model):
         return f"Reservation by {self.user} for {self.space} on {self.date}"
 
     class Meta:
-        unique_together = ('space', 'date', 'start_time', 'end_time')
         ordering = ['-date', 'start_time']
