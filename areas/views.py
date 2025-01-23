@@ -111,7 +111,7 @@ def create_area(request):
 
 @login_required
 def areas_list_user_view(request):
-    areas = Area.objects.filter(user=request.user)
+    areas = Area.objects.all()
     return render(request, "areas/areas_general_user.html", {'areas': areas})
 
 
