@@ -2,7 +2,6 @@
 
 {% block content %}
     {% include 'navbar.html' %}
-
     {% if not user.is_staff %}
         <main>
 
@@ -161,9 +160,14 @@
                                             <span>5</span>
                                         </p>
                                         <nav class="d-grid gap-2">
-                                            <a href="{% url 'space_detail' area.pk %}"
-                                               class="btn btn-primary">Reservar</a>
+
+
+
                                             <a href="{% url 'space_detail' area.pk %}" class="btn btn-outline-primary">Detalles</a>
+
+                                            <!-- Modal Trigger Button in home.html -->
+
+
                                         </nav>
                                     </section>
                                 </article>
