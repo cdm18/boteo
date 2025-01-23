@@ -4,11 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="modelo de account_settings y publications">
+      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0003_alter_area_options_alter_area_images_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/areas_general_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/areas_general_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/main/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/main/css/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/main/img/LogoBoteo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo-boteo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/main/img/banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0002_customuser_user_type.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -19,12 +50,12 @@
     &quot;assignee&quot;: &quot;cdm18&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/cdm18/boteo.git",
-    "accountId": "9653bc8e-d17e-4aa2-b52b-5aac02a9cbb1"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/cdm18/boteo.git&quot;,
+    &quot;accountId&quot;: &quot;9a994f95-e7ef-4fcc-8529-0c2148bea2c9&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -36,12 +67,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "alex",
-    "last_opened_file_path": "C:/Users/Alex/Documents/Universidad/Ciclo V/Boteo",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -51,14 +83,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
+      <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\img" />
+      <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo" />
       <recent name="$PROJECT_DIR$/static/images" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
-        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
+        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
@@ -73,7 +108,9 @@
       <workItem from="1734442653482" duration="8000" />
       <workItem from="1736524063924" duration="5320000" />
       <workItem from="1736611937805" duration="7522000" />
-      <workItem from="1737565142475" duration="202000" />
+      <workItem from="1737558897468" duration="7564000" />
+      <workItem from="1737603792255" duration="523000" />
+      <workItem from="1737640170299" duration="2963000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -115,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736621700244</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modelo de account_settings y publications">
+      <option name="closed" value="true" />
+      <created>1737564573039</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737564573039</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +182,7 @@
     <MESSAGE value="apps faltantes, login y register funcionales &amp; guards" />
     <MESSAGE value="requirements.txt actualizado" />
     <MESSAGE value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
-    <option name="LAST_COMMIT_MESSAGE" value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
+    <MESSAGE value="modelo de account_settings y publications" />
+    <option name="LAST_COMMIT_MESSAGE" value="modelo de account_settings y publications" />
   </component>
 </project>

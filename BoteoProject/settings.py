@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'areas',
     'admin_panel',
     'account_settings',
-    'publications'
+    'publications',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +92,9 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 
 # Database
@@ -103,8 +105,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'boteo',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'PASSWORD': 'Cbhas123',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
