@@ -28,7 +28,11 @@ urlpatterns = [
     path('areas/', include('areas.urls')),
     path('', include('admin_panel.urls')),
     path('account/', include('account_settings.urls')),
+
     path('publications/', include('publications.urls')),
+
+    path('reservations/', include('reservations.urls')),
+
 ]
 
 if settings.DEBUG:

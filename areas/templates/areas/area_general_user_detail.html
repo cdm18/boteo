@@ -1,5 +1,32 @@
 {% include 'navbar.html' %}
 {% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* Hacer el modal más "smooth" */
+.modal.fade .modal-dialog {
+    transform: translateY(-30%);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Oscurecer el fondo */
+.modal-backdrop {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+/* Centrar modal verticalmente */
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
 
 {% block content %}
     <main class="container py-4">
@@ -74,9 +101,13 @@
                     </article>
                 {% endfor %}
             </div>
-            <div class="text-center mt-4">
-                <button class="btn btn-primary px-5">Reserva Ahora</button>
-            </div>
+
+            <button class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                Reserva Ahora
+            </button>
+
+
+
         </section>
 
         <section class="mb-5" aria-label="Amenidades">
@@ -165,10 +196,123 @@
             </article>
         </section>
 
-        <footer class="text-center">
-            <button class="btn btn-primary px-5">Reserva Ahora</button>
-        </footer>
+
     </main>
+
+
+
+
+            <!-- Modal de Reserva -->
+<!-- Modal de Reserva -->
+<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true" data-bs-backdrop="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservationModalLabel">Reservar Espacio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reservationForm">
+                    {% csrf_token %}
+                    <input type="hidden" name="area_id" value="{{ area.id }}">
+                    <div class="mb-3">
+                        <label for="space" class="form-label">Selecciona un Espacio</label>
+                        <select name="space" id="space" class="form-select" required>
+                            {% for space in sport_spaces %}
+                            <option value="{{ space.id }}">{{ space.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Fecha</label>
+                        <input type="date" name="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="start_time" class="form-label">Hora de Inicio</label>
+                        <input type="time" name="start_time" id="start_time" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="end_time" class="form-label">Hora de Fin</label>
+                        <input type="time" name="end_time" id="end_time" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Reservar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
     {% include 'footer.html' %}
 {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById('reservationForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita que el formulario recargue la página
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("{% url 'create_reservation' %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        const reservationModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
+        if (data.success) {
+            reservationModal.hide(); // Cierra el modal
+            showModal('success', data.message); // Muestra el mensaje de éxito
+        } else {
+            const errorMessages = Object.values(data.errors).map(err => `<li>${err}</li>`).join('');
+            showModal('error', `<ul>${errorMessages}</ul>`); // Muestra los errores
+        }
+    })
+    .catch(err => {
+        console.error('Error:', err);
+        showModal('error', 'Ocurrió un error al procesar la reserva.');
+    });
+});
+
+// Función para mostrar el modal de mensajes
+function showModal(type, message) {
+    const modal = document.createElement('div');
+    modal.className = `modal fade`;
+    modal.id = 'messageModal';
+    modal.tabIndex = -1;
+    modal.innerHTML = `
+        <div class="modal-dialog">
+            <div class="modal-content ${type === 'success' ? 'border-success' : 'border-danger'}">
+                <div class="modal-header ${type === 'success' ? 'bg-success text-white' : 'bg-danger text-white'}">
+                    <h5 class="modal-title">${type === 'success' ? 'Éxito' : 'Error'}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>${message}</p>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const bootstrapModal = new bootstrap.Modal(modal);
+    bootstrapModal.show();
+
+    // Eliminar el modal del DOM después de cerrarse
+    modal.addEventListener('hidden.bs.modal', () => {
+        modal.remove();
+
+
+    });
+
+
+}
+</script>
+
+
