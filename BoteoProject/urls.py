@@ -24,15 +24,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('', include('main.urls')),  # principal
-    path('spaces/', include('sports_spaces.urls')),
     path('areas/', include('areas.urls')),
     path('', include('admin_panel.urls')),
     path('account/', include('account_settings.urls')),
-
     path('publications/', include('publications.urls')),
-
     path('reservations/', include('reservations.urls')),
-
+    path('areas/my_areas/',include('sports_spaces.urls')),
 ]
 
 if settings.DEBUG:

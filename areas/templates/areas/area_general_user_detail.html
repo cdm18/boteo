@@ -3,29 +3,29 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-/* Hacer el modal más "smooth" */
-.modal.fade .modal-dialog {
-    transform: translateY(-30%);
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-}
+    /* Hacer el modal más "smooth" */
+    .modal.fade .modal-dialog {
+        transform: translateY(-30%);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+    }
 
-.modal.show .modal-dialog {
-    transform: translateY(0);
-    opacity: 1;
-}
+    .modal.show .modal-dialog {
+        transform: translateY(0);
+        opacity: 1;
+    }
 
-/* Oscurecer el fondo */
-.modal-backdrop {
-    background-color: rgb(0, 0, 0) !important;
-}
+    /* Oscurecer el fondo */
+    .modal-backdrop {
+        background-color: rgb(0, 0, 0) !important;
+    }
 
-/* Centrar modal verticalmente */
-.modal-dialog-centered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    /* Centrar modal verticalmente */
+    .modal-dialog-centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 
 {% block content %}
@@ -107,45 +107,19 @@
             </button>
 
 
-
         </section>
 
         <section class="mb-5" aria-label="Amenidades">
             <h2 class="h4 mb-3">Amenidades</h2>
             <div class="d-flex gap-3">
-                {% if area.has_parking %}
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-parking me-2" aria-hidden="true"></i>
-                Estacionamiento
-            </span>
-                {% endif %}
-
-                {% if area.has_showers %}
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-shower me-2" aria-hidden="true"></i>
-                Vestidores
-            </span>
-                {% endif %}
-
-                {% if area.has_lockers %}
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-lock me-2" aria-hidden="true"></i>
-                Casilleros
-            </span>
-                {% endif %}
-
-                {% if area.has_equipment %}
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                <i class="fas fa-futbol me-2" aria-hidden="true"></i>
-                Equipamiento
-            </span>
-                {% endif %}
 
                 {% for service in additional_services %}
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                    {% if service.is_available %}
+                        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
                 <i class="fas fa-futbol me-2" aria-hidden="true"></i>
                 {{ service.service.name }}
             </span>
+                    {% endif %}
                 {% endfor %}
             </div>
         </section>
@@ -202,45 +176,45 @@
 
 
 
-            <!-- Modal de Reserva -->
-<!-- Modal de Reserva -->
-<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true" data-bs-backdrop="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="reservationModalLabel">Reservar Espacio</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="reservationForm">
-                    {% csrf_token %}
-                    <input type="hidden" name="area_id" value="{{ area.id }}">
-                    <div class="mb-3">
-                        <label for="space" class="form-label">Selecciona un Espacio</label>
-                        <select name="space" id="space" class="form-select" required>
-                            {% for space in sport_spaces %}
-                            <option value="{{ space.id }}">{{ space.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Fecha</label>
-                        <input type="date" name="date" id="date" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="start_time" class="form-label">Hora de Inicio</label>
-                        <input type="time" name="start_time" id="start_time" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="end_time" class="form-label">Hora de Fin</label>
-                        <input type="time" name="end_time" id="end_time" class="form-control" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Reservar</button>
-                </form>
+    <!-- Modal de Reserva -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel"
+         aria-hidden="true" data-bs-backdrop="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reservationModalLabel">Reservar Espacio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reservationForm">
+                        {% csrf_token %}
+                        <input type="hidden" name="area_id" value="{{ area.id }}">
+                        <div class="mb-3">
+                            <label for="space" class="form-label">Selecciona un Espacio</label>
+                            <select name="space" id="space" class="form-select" required>
+                                {% for space in sport_spaces %}
+                                    <option value="{{ space.id }}">{{ space.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Fecha</label>
+                            <input type="date" name="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="start_time" class="form-label">Hora de Inicio</label>
+                            <input type="time" name="start_time" id="start_time" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="end_time" class="form-label">Hora de Fin</label>
+                            <input type="time" name="end_time" id="end_time" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Reservar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
@@ -250,43 +224,43 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-document.getElementById('reservationForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita que el formulario recargue la página
+    document.getElementById('reservationForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita que el formulario recargue la página
 
-    const form = e.target;
-    const formData = new FormData(form);
+        const form = e.target;
+        const formData = new FormData(form);
 
-    fetch("{% url 'create_reservation' %}", {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-        const reservationModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-        if (data.success) {
-            reservationModal.hide(); // Cierra el modal
-            showModal('success', data.message); // Muestra el mensaje de éxito
-        } else {
-            const errorMessages = Object.values(data.errors).map(err => `<li>${err}</li>`).join('');
-            showModal('error', `<ul>${errorMessages}</ul>`); // Muestra los errores
-        }
-    })
-    .catch(err => {
-        console.error('Error:', err);
-        showModal('error', 'Ocurrió un error al procesar la reserva.');
+        fetch("{% url 'create_reservation' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                const reservationModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
+                if (data.success) {
+                    reservationModal.hide(); // Cierra el modal
+                    showModal('success', data.message); // Muestra el mensaje de éxito
+                } else {
+                    const errorMessages = Object.values(data.errors).map(err => `<li>${err}</li>`).join('');
+                    showModal('error', `<ul>${errorMessages}</ul>`); // Muestra los errores
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                showModal('error', 'Ocurrió un error al procesar la reserva.');
+            });
     });
-});
 
-// Función para mostrar el modal de mensajes
-function showModal(type, message) {
-    const modal = document.createElement('div');
-    modal.className = `modal fade`;
-    modal.id = 'messageModal';
-    modal.tabIndex = -1;
-    modal.innerHTML = `
+    // Función para mostrar el modal de mensajes
+    function showModal(type, message) {
+        const modal = document.createElement('div');
+        modal.className = `modal fade`;
+        modal.id = 'messageModal';
+        modal.tabIndex = -1;
+        modal.innerHTML = `
         <div class="modal-dialog">
             <div class="modal-content ${type === 'success' ? 'border-success' : 'border-danger'}">
                 <div class="modal-header ${type === 'success' ? 'bg-success text-white' : 'bg-danger text-white'}">
@@ -299,20 +273,20 @@ function showModal(type, message) {
             </div>
         </div>
     `;
-    document.body.appendChild(modal);
+        document.body.appendChild(modal);
 
-    const bootstrapModal = new bootstrap.Modal(modal);
-    bootstrapModal.show();
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
 
-    // Eliminar el modal del DOM después de cerrarse
-    modal.addEventListener('hidden.bs.modal', () => {
-        modal.remove();
-
-
-    });
+        // Eliminar el modal del DOM después de cerrarse
+        modal.addEventListener('hidden.bs.modal', () => {
+            modal.remove();
 
 
-}
+        });
+
+
+    }
 </script>
 
 

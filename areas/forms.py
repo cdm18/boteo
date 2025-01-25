@@ -9,8 +9,7 @@ class AreaCreationForm(forms.ModelForm):
     class Meta:
         model = Area
         fields = ['name', 'description', 'address', 'city', 'opening_time',
-                  'closing_time', 'has_parking', 'has_showers', 'has_lockers',
-                  'has_equipment', 'images']
+                  'closing_time', 'images']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control'
@@ -37,22 +36,7 @@ class AreaCreationForm(forms.ModelForm):
                 'rows': 4,
                 'placeholder': 'Escribe la descripción aquí...',
             }),
-            'has_parking': forms.CheckboxInput(attrs={
-                'class': 'form-check-input',
-            }),
-            'has_lockers': forms.CheckboxInput(attrs={
-                'class': 'form-check-input',
-            }),
-            'has_showers': forms.CheckboxInput(attrs={
-                'class': 'form-check-input',
-            }),
-            'has_equipment': forms.CheckboxInput(attrs={
-                'class': 'form-check-input',
-            }),
-            'images': forms.ClearableFileInput(attrs={
-                'class': 'form-control',
-                'type': 'file',
-            })
+            'area': forms.Select(attrs={'class': 'form-control'}),
         }
 
         labels = {
@@ -62,10 +46,6 @@ class AreaCreationForm(forms.ModelForm):
             'description': 'Descripción',
             'address': 'Dirección',
             'city': 'Ciudad',
-            'has_parking': 'Estacionamiento',
-            'has_lockers': 'Casilleros',
-            'has_showers': 'Duchas',
-            'has_equipment': 'Equipamiento',
             'images': 'Imágenes'
         }
 

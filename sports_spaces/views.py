@@ -1,32 +1,61 @@
 # sports_spaces/views.py
-from django.shortcuts import render, get_object_or_404
-from .models import SportsSpace
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
+
+from areas.models import Area
+from sports_spaces.models import SportsSpace
+from django.contrib.auth.decorators import login_required, user_passes_test
+from sports_spaces.forms import SportsSpaceForm
+from django.contrib import messages
+
+
+
+def is_staff_user(user):
+    return user.is_staff
 
 @login_required
-def spaces_list(request):
-    # Obtén los valores enviados desde el formulario
-    sport = request.GET.get('sport', '')  # Tipo de deporte
-    city = request.GET.get('city', '')    # Ciudad
-    name = request.GET.get('name', '')    # Nombre
+@user_passes_test(is_staff_user)
+def sport_space_detail_view(request, pk):
+    sport_space = SportsSpace.objects.get(pk=pk)
+    area = SportsSpace.objects.get(pk=pk).area
+    form = SportsSpaceForm(request.POST, instance=sport_space)
+    area_link = 'my_areas/' + str(area.pk)
+    if request.method == "POST":
+        action = request.POST.get('action')
 
-    # Filtra los espacios deportivos basados en los valores
-    spaces = SportsSpace.objects.all()
+        if action == 'delete':
+            sport_space.delete()
+            messages.success(request, 'Área deportiva eliminada exitosamente.')
+            return redirect('area_detail', area.pk)
 
-    if sport:
-        spaces = spaces.filter(areas__sport_type=sport)
-    if city:
-        spaces = spaces.filter(city__icontains=city)
-    if name:
-        spaces = spaces.filter(name__icontains=name)
+        else:
+            if form.is_valid():
+                sport_space = form.save()
+                messages.success(request, 'Espacio deportivo actualizado exitosamente.')
+                return redirect('sport_space_detail', pk=pk)
+            else:
+                messages.error(request, 'Por favor corrige los errores en el formulario.')
+    else:
+        form = SportsSpaceForm(instance=sport_space)
 
-    # Asegúrate de no incluir duplicados al filtrar por áreas
-    spaces = spaces.distinct()
-
-    return render(request, 'sports_spaces/sports_space_list.html', {'spaces': spaces})
-
+    return render(request, 'sports_spaces/sport_space_detail.html',
+                  {'form': form,
+                   "sport_space": sport_space,
+                   "area": area,
+                   "area_link": area_link})
 
 @login_required
-def space_detail(request, pk):
-    space = get_object_or_404(SportsSpace, pk=pk)
-    return render(request, 'sports_spaces/space_detail.html', {'space': space})
+@user_passes_test(is_staff_user)
+def create_space_view(request, pk):
+    area = Area.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = SportsSpaceForm(request.POST)
+        if form.is_valid():
+            sport_space = form.save(commit=False)
+            sport_space.area = area
+            sport_space.save()
+            messages.success(request, 'Espacio deportivo guardado exitosamente.')
+            return redirect('area_detail', pk)  # O donde quieras redirigir después de crear
+    else:
+        form = SportsSpaceForm()
+
+    return render(request, 'sports_spaces/create_sport_space.html', {'form': form, 'area': area})

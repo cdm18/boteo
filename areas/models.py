@@ -13,10 +13,6 @@ class Area(models.Model):
     city = models.TextField()
     opening_time = models.TimeField(verbose_name="Hora de Apertura")
     closing_time = models.TimeField(verbose_name="Hora de Cierre")
-    has_parking = models.BooleanField(default=False)
-    has_showers = models.BooleanField(default=False)
-    has_lockers = models.BooleanField(default=False)
-    has_equipment = models.BooleanField(default=False)
     images = models.ImageField(upload_to='area', verbose_name="Imágenes del Espacio", blank=True, null=True)
 
     class Meta:

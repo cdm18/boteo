@@ -33,7 +33,7 @@ def area_detail(request, pk):
 
         if action == 'delete':
             area.delete()
-            messages.success(request, 'Espacio deportivo eliminado exitosamente.')
+            messages.success(request, 'Área deportiva eliminada exitosamente.')
             return redirect('my_areas')
 
         elif action == 'delete_service':
@@ -77,7 +77,7 @@ def area_detail(request, pk):
             form = AreaCreationForm(request.POST, request.FILES, instance=area)
             if form.is_valid():
                 area = form.save()
-                messages.success(request, 'Espacio deportivo actualizado exitosamente.')
+                messages.success(request, 'Área deportiva actualizado exitosamente.')
                 return redirect('area_detail', pk=pk)
             else:
                 messages.error(request, 'Por favor corrige los errores en el formulario.')
