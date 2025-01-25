@@ -30,6 +30,7 @@ urlpatterns = [
     path('publications/', include('publications.urls')),
     path('reservations/', include('reservations.urls')),
     path('areas/my_areas/',include('sports_spaces.urls')),
+    path('billing/', include('billing.urls')),
 ]
 
 if settings.DEBUG:
