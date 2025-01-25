@@ -13,13 +13,9 @@ class SportsSpaceForm(forms.ModelForm):
             'sport_type': forms.Select(choices=SportsSpace.SPORTS_TYPES, attrs={
                 'class': 'form-control'}),
             'length': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'type': 'decimal',
-                'min': '1'}),
+                'class': 'form-control', }),
             'width': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'type': 'decimal',
-                'min': '1'
             }),
             'surface': forms.Select(choices=SportsSpace.SURFACE_TYPES, attrs={
                 'class': 'form-control'}),
@@ -27,7 +23,5 @@ class SportsSpaceForm(forms.ModelForm):
                 'class': 'form-control'}),
             'cost_per_hour': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'type': 'decimal',
-                'min': '1'
             })
         }
