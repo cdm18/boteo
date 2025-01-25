@@ -5,20 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="modelo de account_settings y publications">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/areas/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_panel/templates/admin_panel/admin_panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/templates/admin_panel/admin_panel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0003_alter_area_options_alter_area_images_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/static/areas/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/area_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/area_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/areas.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/areas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/create_area.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/create_area.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/boteo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo-boteo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0002_customuser_user_type.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="Python Script" />
         <option value="CSS File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -46,23 +85,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;alex&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "alex",
+    "last_opened_file_path": "C:/Users/Sebastián/Documents/CursoDjango/boteo/static/css",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\img" />
@@ -92,6 +137,17 @@
       <workItem from="1737558897468" duration="7564000" />
       <workItem from="1737603792255" duration="523000" />
       <workItem from="1737640170299" duration="2963000" />
+      <workItem from="1737671486067" duration="1080000" />
+      <workItem from="1737673658218" duration="781000" />
+      <workItem from="1737726315439" duration="485000" />
+      <workItem from="1737726824107" duration="200000" />
+      <workItem from="1737732027526" duration="2668000" />
+      <workItem from="1737751493943" duration="612000" />
+      <workItem from="1737757098888" duration="1538000" />
+      <workItem from="1737766655616" duration="1028000" />
+      <workItem from="1737768216718" duration="1302000" />
+      <workItem from="1737780337235" duration="1460000" />
+      <workItem from="1737816872676" duration="7849000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />

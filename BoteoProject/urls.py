@@ -32,6 +32,7 @@ urlpatterns = [
     path('publications/', include('publications.urls')),
 
     path('reservations/', include('reservations.urls')),
+    path('billing/', include('billing.urls')),
 
 ]
 

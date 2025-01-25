@@ -143,7 +143,11 @@
                             <li class="col-md-4">
                                 <article class="card h-100">
                                     <figure class="m-0">
+                                        {% if area.images %}
                                         <img src="{{ area.images.url }}" class="card-img-top" alt="{{ area.name }}">
+                                        {% else %}
+                                <img src="{% static 'areas/img/default.jpg' %}" alt="Default" class="card-img-top">
+                            {% endif %}
                                     </figure>
                                     <section class="card-body">
                                         <h3 class="h5">{{ area.name }}</h3>
