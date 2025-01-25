@@ -18,14 +18,14 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a class="navbar-brand ms-5" href="{% url 'home' %}" aria-label="Inicio">
-            <img src="{% static 'img/boteo.png' %}" alt="Boteo Logo" height="40">
+            <img src="{% static 'img/logo-boteo.png' %}" alt="Boteo Logo" height="40">
         </a>
         <nav class="nav flex-column mt-4">
             <a class="nav-link {% if request.path == '/admin_panel/' %} active {% endif %}" href="{% url 'admin_panel' %}"><i class="bi bi-grid"></i> Dashboard</a>
             <a class="nav-link" href="#"><i class="bi bi-calendar"></i> Gestión de Reservas</a>
             <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Análisis y Reportes</a>
             <a class="nav-link" href="#"><i class="bi bi-people"></i> Gestión de Clientes</a>
-            <a class="nav-link" href="#"><i class="bi bi-cash"></i> Facturación y Pagos</a>
+            <a class="nav-link {% if 'billing' in request.path %}active{% endif %}" href="{% url 'bill_list' %}"><i class="bi bi-cash"></i> Facturación</a>
             <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notificaciones</a>
             <a class="nav-link {% if 'areas' in request.path %}active{% endif %} " href="{% url 'my_areas' %}"><i class="bi bi-trophy"></i> Mis Áreas Deportivos</a>
             <a class="nav-link" href="#"><i class="bi bi-gear"></i> Configuración</a>

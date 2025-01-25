@@ -5,8 +5,8 @@ from .forms import ReservationForm
 from django.http import JsonResponse
 from decimal import Decimal
 from datetime import datetime, date
-from reservations.models import Reservation
 
+Reservation = apps.get_model('reservations', 'Reservation')
 
 @login_required
 def reservation_list(request):
