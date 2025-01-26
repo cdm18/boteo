@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facturación</title>
-    {% load static %}
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-</head>
-<body>
-    {% include 'base.html' %}
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Facturación</title>
+    </head>
+    <body>
     <main class="main-content">
         <h1 class="mb-4">Facturación</h1>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Fecha</th>
-                        <th>Espacio</th>
-                        <th>Monto</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Espacio</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for bill in bills %}
+                {% for bill in bills %}
                     <tr>
                         <td>{{ bill.user.first_name }} {{ bill.user.last_name }}</td>
                         <td>{{ bill.reservation.date }}</td>
@@ -39,13 +45,16 @@
                             </span>
                         </td>
                         <td>
-                            <a href="{% url 'update_bill_status' bill.id %}" class="btn btn-sm btn-outline-primary">Editar estado</a>
+                            <a href="{% url 'update_bill_status' bill.id %}" class="btn btn-sm btn-outline-primary">Editar
+                                estado</a>
                         </td>
                     </tr>
-                    {% endfor %}
+                {% endfor %}
                 </tbody>
             </table>
         </div>
     </main>
-</body>
-</html>
+    </body>
+    </html>
+{% endblock %}
+

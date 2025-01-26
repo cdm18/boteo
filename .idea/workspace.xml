@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Commit de esteticos">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +35,12 @@
     &quot;assignee&quot;: &quot;cdm18&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/cdm18/boteo.git",
-    "accountId": "af3eef48-ace9-4898-8977-16e9731b40ec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/cdm18/boteo.git&quot;,
+    &quot;accountId&quot;: &quot;af3eef48-ace9-4898-8977-16e9731b40ec&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -116,6 +115,7 @@
       <workItem from="1737780337235" duration="1460000" />
       <workItem from="1737816872676" duration="7849000" />
       <workItem from="1737916280853" duration="2254000" />
+      <workItem from="1737920090284" duration="515000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -189,7 +189,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737866156254</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
+      <option name="closed" value="true" />
+      <created>1737920170149</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1737920170149</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
+      <option name="closed" value="true" />
+      <created>1737920260555</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1737920260555</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +231,10 @@
     <MESSAGE value="Implementacion de funcionalidad en home y areas donde si se buscan y se filtran adecuadamente, tambien la gestion de horarios para reservas y la realizacion de ellas tiene un control logico, se implemento la creacion rudimentaria de la gestion de reservas, aun no BILLING" />
     <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;BoteoProject/settings.py" />
     <MESSAGE value="Commit de esteticos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit de esteticos" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Commit" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;billing/apps.py" />
+    <MESSAGE value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
   </component>
 </project>
