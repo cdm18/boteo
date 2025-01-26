@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.apps import apps
+
+from billing.models import Bill
 from .forms import ReservationForm
 from django.http import JsonResponse
 from decimal import Decimal
@@ -43,6 +45,12 @@ def create_reservation(request):
             # Calcular el precio total
             reservation.price = reservation.space.cost_per_hour * hours
             reservation.save()
+
+            Bill.objects.create(
+                reservation=reservation,
+                user=request.user,
+                status='Pendiente'
+            )
 
             # Respuesta JSON para éxito
             return JsonResponse({'success': True, 'message': 'Espacio reservado con éxito.'})

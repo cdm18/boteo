@@ -8,7 +8,7 @@ class Reservation(models.Model):
     STATUS_CHOICES = [
         ('Pendiente', 'Pendiente'),
         ('Confirmado', 'Confirmado'),
-        ('Cancelado', 'Cancelado'),
+        ('Cancelada', 'Cancelada'),
     ]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)

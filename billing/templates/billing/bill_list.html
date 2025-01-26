@@ -8,12 +8,12 @@
 {% block content %}
     <div class="main-content">
         <h1 class="mb-4">Facturación</h1>
-        <a href="{% url 'create_bill' %}" class="btn btn-success">Crear Factura Manual</a>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Fecha</th>
                         <th>Espacio</th>
                         <th>Monto</th>
                         <th>Estado</th>
@@ -23,15 +23,16 @@
                 <tbody>
                     {% for bill in bills %}
                     <tr>
-                        <td>{{ bill.full_name }}</td>
-                        <td>{{ bill.space_name }}</td>
-                        <td>{{ bill.total_amount }}</td>
+                        <td>{{ bill.user.first_name }} {{ bill.user.last_name }}</td>
+                        <td>{{ bill.reservation.date }}</td>
+                        <td>{{ bill.reservation.space.name }}</td>
+                        <td>{{ bill.reservation.price }}</td>
                         <td>
                             <span class="badge
-                                {% if bill.status == 'pending' %}bg-warning
-                                {% elif bill.status == 'paid' %}bg-success
+                                {% if bill.status == 'Pendiente' %}bg-warning
+                                {% elif bill.status == 'Pagado' %}bg-success
                                 {% else %}bg-danger{% endif %}">
-                                {{ bill.get_status_display }}
+                                {{ bill.status }}
                             </span>
                         </td>
                         <td>
