@@ -1,12 +1,15 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block styles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Estado de Factura</title>
+    {% load static %}
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-{% endblock %}
-
-{% block content %}
-    <div class="main-content">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <main class="container my-5">
         <h1 class="mb-4">Actualizar Estado de Factura</h1>
         <form method="POST">
             {% csrf_token %}
@@ -21,6 +24,7 @@
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             <a href="{% url 'bill_list' %}" class="btn btn-secondary">Cancelar</a>
         </form>
-    </div>
-{% endblock %}
-{% include 'footer.html' %}
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>
