@@ -16,16 +16,17 @@
 
         <section class="form-container">
             <header class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="h4 mb-0">Información General del Espacio</h1>
+                <h1 class="h4 mb-0">Información General del Área</h1>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                     <i class="bi bi-trash" aria-hidden="true"></i>
-                    <span class="visually-hidden">Eliminar espacio</span>
+                    <span class="visually-hidden">Eliminar área</span>
                 </button>
             </header>
 
             <!-- Delete Modal -->
-            <dialog class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                    aria-hidden="true">
+            <dialog class="modal fade bg-black bg-opacity-25" id="deleteModal" tabindex="-1"
+                    aria-labelledby="deleteModalLabel"
+                    data-bs-backdrop="true" aria-hidden="true">
                 <div class="modal-dialog">
                     <article class="modal-content">
                         <header class="modal-header">
@@ -33,7 +34,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </header>
                         <div class="modal-body">
-                            <p>¿Está seguro que desea eliminar este espacio deportivo?</p>
+                            <p>¿Está seguro que desea eliminar esta área deportivo?</p>
                         </div>
                         <footer class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -50,10 +51,11 @@
             {% include "areas/formulario.html" %}
 
             <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Espacio</button>
+            </form>
         </section>
 
         <section class="form-container">
-            <form id="UpdateServices" method="POST" action="{% url 'area_detail' area.pk %}">
+            <form method="POST" action="{% url 'area_detail' area.pk %}">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="update_services">
 
@@ -91,7 +93,7 @@
         </section>
 
         {% for service in additional_services %}
-            <dialog class="modal fade" id="deleteServiceModal_{{ service.id }}" tabindex="-1">
+            <dialog class="modal fade bg-black bg-opacity-25" id="deleteServiceModal_{{ service.id }}" tabindex="-1">
                 <div class="modal-dialog">
                     <article class="modal-content">
                         <header class="modal-header">
@@ -115,7 +117,7 @@
             </dialog>
         {% endfor %}
 
-        <dialog class="modal fade" id="newServiceModal" tabindex="-1">
+        <dialog class="modal fade bg-black bg-opacity-25" id="newServiceModal" tabindex="-1">
             <div class="modal-dialog">
                 <article class="modal-content">
                     <header class="modal-header">
@@ -133,7 +135,7 @@
                         </div>
                         <footer class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary btn-dark">Guardar</button>
                         </footer>
                     </form>
                 </article>
@@ -142,8 +144,8 @@
 
         <section class="form-container">
             <header class="d-flex justify-content-between align-items-center mb-4 mt-4">
-                <h2 class="h4">Áreas Deportivas</h2>
-                <button class="btn btn-agregar">Agregar Área</button>
+                <h2 class="h4">Espacios Deportivos</h2>
+                <a class="btn btn-agregar" href="{% url 'create_sport_space' area.pk %}">Agregar Espacio</a>
             </header>
 
             <div class="row">
@@ -156,13 +158,15 @@
                             </header>
                             <p class="mb-2">
                                 <i class="bi bi-dribbble" aria-hidden="true"></i>
-                                {{ sport_space.sport_type }}
+                                <b>Tipo de cancha:</b> {{ sport_space.sport_type }}
                             </p>
                             <p class="mb-0">
                                 <i class="bi bi-layers" aria-hidden="true"></i>
-                                Superficie: {{ sports_space.surface }}
+                                <b>Superficie:</b> {{ sport_space.surface }}
                             </p>
+                            <a href="{% url 'sport_space_detail' sport_space.pk %}" class="btn btn-ver mt-4">Ver más</a>
                         </div>
+
                     </article>
                 {% endfor %}
             </div>

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <main class="main-content">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'my_areas' %}">Espacios Deportivos</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a
+                        href="{% url 'area_detail' area.pk %}">{{ area.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ sport_space.name }}</li>
+            </ol>
+        </nav>
+        <section class="form-container">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="d-flex justify-content-between align-items-center mb-4">
+                            <h1 class="h4 mb-0">Información General del Espacio</h1>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
+                                <i class="bi bi-trash" aria-hidden="true"></i>
+                                <span class="visually-hidden">Eliminar espacio</span>
+                            </button>
+                        </header>
+
+                        <!-- Delete Modal -->
+                        <dialog class="modal fade bg-black bg-opacity-25" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                                data-bs-backdrop="true" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <article class="modal-content">
+                                    <header class="modal-header">
+                                        <h2 class="modal-title h5" id="deleteModalLabel">Confirmar Eliminación</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </header>
+                                    <div class="modal-body">
+                                        <p>¿Está seguro que desea eliminar este espacio deportivo?</p>
+                                    </div>
+                                    <footer class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            Cancelar
+                                        </button>
+                                        <form method="POST" action="{% url 'sport_space_detail' sport_space.pk %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="action" value="delete">
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                    </footer>
+                                </article>
+                            </div>
+                        </dialog>
+
+
+                        {% include 'sports_spaces/formulario.html' %}
+                        <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Espacio</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
