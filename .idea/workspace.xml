@@ -4,33 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="modelo de account_settings y publications">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Mejora del modelo account_settings, más pequeñas modificaciones a otros modelos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/migrations/0002_alter_bill_reservation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/migrations/0003_bill_space_alter_bill_identification_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publications/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publications/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0002_alter_reservation_date.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0003_alter_reservation_date_alter_reservation_end_time_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0004_alter_reservation_date.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0005_alter_reservation_date_alter_reservation_end_time_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/areas/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/sports_spaces/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -138,7 +124,8 @@
       <workItem from="1737816872676" duration="8050000" />
       <workItem from="1737826714916" duration="5180000" />
       <workItem from="1737835954831" duration="1244000" />
-      <workItem from="1737848406631" duration="3019000" />
+      <workItem from="1737848406631" duration="9450000" />
+      <workItem from="1737859036036" duration="1608000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -188,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737564573039</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Mejora del modelo account_settings, más pequeñas modificaciones a otros modelos">
+      <option name="closed" value="true" />
+      <created>1737851729801</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737851729801</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +206,7 @@
     <MESSAGE value="requirements.txt actualizado" />
     <MESSAGE value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
     <MESSAGE value="modelo de account_settings y publications" />
-    <option name="LAST_COMMIT_MESSAGE" value="modelo de account_settings y publications" />
+    <MESSAGE value="Mejora del modelo account_settings, más pequeñas modificaciones a otros modelos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejora del modelo account_settings, más pequeñas modificaciones a otros modelos" />
   </component>
 </project>

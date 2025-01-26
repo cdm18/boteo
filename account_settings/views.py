@@ -9,7 +9,10 @@ from datetime import datetime
 
 @login_required
 def profile_view(request):
-    profile = UserProfile.objects.create(user=request.user)
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=request.user)
 
     # Obtener las reservas del usuario
     reservations = Reservation.objects.filter(user=request.user)
@@ -17,13 +20,11 @@ def profile_view(request):
 
     total_hours = 0
     for reservation in reservations:
-        # Convertir start_time y end_time a un formato de tiempo completo para evitar la confusión con el date
         start = datetime.combine(datetime.today(), reservation.start_time)
         end = datetime.combine(datetime.today(), reservation.end_time)
 
-        # Calcular la diferencia en tiempo y convertirla a horas
         delta = end - start
-        total_hours += delta.total_seconds() / 3600  # Convertimos de segundos a horas
+        total_hours += delta.total_seconds() / 3600
 
 
     context = {
@@ -34,7 +35,6 @@ def profile_view(request):
     }
 
     return render(request, 'account_settings/profile.html', context)
-
 
 
 @login_required
