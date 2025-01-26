@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from account_settings.models import UserProfile
 from account_settings.forms import UserProfileForm
+from reservations.models import Reservation
+from datetime import datetime
+
 
 @login_required
 def profile_view(request):
@@ -11,34 +14,28 @@ def profile_view(request):
     except UserProfile.DoesNotExist:
         profile = UserProfile.objects.create(user=request.user)
 
-    # Datos quemados para las reservas
-    mock_reservations = [
-        {
-            'facility': 'Centro Deportivo "Planeta Fútbol"',
-            'date': '2024-07-10',
-            'time': '15:00',
-            'status': 'Confirmada'
-        },
-        {
-            'facility': 'Complejo Deportivo Tenis Club',
-            'date': '2024-07-12',
-            'time': '10:00',
-            'status': 'Confirmada'
-        },
-        {
-            'facility': 'Piscina Olímpica Concentración',
-            'date': '2024-08-05',
-            'time': '14:00',
-            'status': 'Confirmada'
-        }
-    ]
+    # Obtener las reservas del usuario
+    reservations = Reservation.objects.filter(user=request.user)
+    total_reservations = len(reservations)
+
+    total_hours = 0
+    for reservation in reservations:
+        start = datetime.combine(datetime.today(), reservation.start_time)
+        end = datetime.combine(datetime.today(), reservation.end_time)
+
+        delta = end - start
+        total_hours += delta.total_seconds() / 3600
+
 
     context = {
         'profile': profile,
-        'reservations': mock_reservations
+        'reservations': reservations,
+        'total_hours': total_hours,
+        'total_reservations': total_reservations,
     }
 
     return render(request, 'account_settings/profile.html', context)
+
 
 @login_required
 def edit_profile(request):

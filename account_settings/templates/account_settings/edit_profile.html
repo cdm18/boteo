@@ -1,0 +1,17 @@
+{% block content %}
+<div class="container mt-4">
+    <h2>Editar Perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="sports">Deportes</label>
+            <input type="text" class="form-control" id="sports" name="sports" value="{{ profile.sports }}">
+        </div>
+        <div class="form-group">
+            <label for="about_me">Sobre mí</label>
+            <textarea class="form-control" id="about_me" name="about_me" rows="3">{{ profile.about_me }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>
+{% endblock %}

@@ -5,9 +5,9 @@ from reservations.models import Reservation
 
 class Bill(models.Model):
     BILL_STATUS_CHOICES = [
-        ('pending', 'Pendiente'),
-        ('paid', 'Pagada'),
-        ('rejected', 'Rechazada')
+        ('Pendiente', 'Pendiente'),
+        ('Confirmado', 'Confirmado'),
+        ('Cancelado', 'Cancelado'),
     ]
 
     reservation = models.ForeignKey(
@@ -26,7 +26,7 @@ class Bill(models.Model):
     status = models.CharField(
         max_length=10,
         choices=BILL_STATUS_CHOICES,
-        default='pending'
+        default='Pendiente'
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
