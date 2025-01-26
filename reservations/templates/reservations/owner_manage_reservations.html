@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid my-5">
+        <div class="row">
+            <!-- Contenido principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <h1 class="my-4">Gestión de Reservas</h1>
+                <section class="card shadow-sm mb-5">
+                    <header class="card-header py-3">
+                        <h2 class="h5 mb-0">Reservas Actuales</h2>
+                    </header>
+                    <div class="card-body py-4 px-4">
+                        {% if reservations %}
+                            <ul class="list-group">
+                                {% for reservation in reservations %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-4 mb-3 shadow-sm">
+                                        <div>
+                                            <i class="bi bi-calendar-check me-2"></i>
+                                            <strong>{{ reservation.date }}</strong> - {{ reservation.start_time }}
+                                            a {{ reservation.end_time }}<br>
+                                            <i class="bi bi-person-circle me-2"></i>{{ reservation.user.get_full_name }}<br>
+                                            <i class="bi bi-geo-alt me-2"></i>{{ reservation.space.name }}
+                                        </div>
+                                        <!-- Botón para abrir el modal -->
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-reservation-id="{{ reservation.id }}">
+                                            <i class="bi bi-trash"></i> Cancelar
+                                        </button>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-muted mb-0">No hay reservas actuales.</p>
+                        {% endif %}
+                    </div>
+                </section>
+
+                <!-- Modal para eliminar reserva -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                     data-bs-backdrop="true" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <article class="modal-content">
+                            <header class="modal-header">
+                                <h2 class="modal-title h5" id="deleteModalLabel">Confirmación de cancelación</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </header>
+                            <div class="modal-body">
+                                <p>¿Está seguro que desea cancelar esta reserva?</p>
+                            </div>
+                            <footer class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                                <!-- Formulario para enviar la solicitud de eliminación -->
+                                <form method="POST" id="delete-reservation-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="reservation_id" value="">
+                                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                                </form>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+<script>
+    // Asigna el ID de la reserva al formulario dentro del modal
+    const deleteModal = document.getElementById('deleteModal');
+    deleteModal.addEventListener('show.bs.modal', event => {
+        // Botón que disparó el modal
+        const button = event.relatedTarget;
+        // Extraer el ID de la reserva
+        const reservationId = button.getAttribute('data-reservation-id');
+        // Actualizar el valor del input en el formulario
+        const reservationInput = document.querySelector('#delete-reservation-form input[name="reservation_id"]');
+        reservationInput.value = reservationId;
+    });
+</script>
+{% endblock %}

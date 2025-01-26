@@ -52,10 +52,21 @@ class ReservationForm(forms.ModelForm):
         if start_time >= end_time:
             raise forms.ValidationError("La hora de inicio debe ser anterior a la hora de fin.")
 
-        # Verificar que la duración sea un múltiplo de una hora
-        duration_in_seconds = (datetime.combine(date.min, end_time) - datetime.combine(date.min, start_time)).seconds
+        # Validar que la duración sea un múltiplo de una hora
+        duration_in_seconds = (
+                datetime.combine(datetime.min, end_time) - datetime.combine(datetime.min, start_time)
+        ).seconds
         if duration_in_seconds % 3600 != 0:
             raise forms.ValidationError("La duración debe ser un múltiplo exacto de una hora.")
+
+        # Obtener el área asociada al espacio
+        area = space.area
+
+        # Verificar que las horas estén dentro del horario de apertura y cierre del área
+        if start_time < area.opening_time or end_time > area.closing_time:
+            raise forms.ValidationError(
+                f"El horario de este espacio es: {area.opening_time} - {area.closing_time}."
+            )
 
         # Validar conflictos de horario
         overlapping_reservations = Reservation.objects.filter(
