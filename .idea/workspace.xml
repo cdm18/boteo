@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Mejora del modelo billing, y pequeñas modificaciones a otros modelos">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Mejora del modelo billing y modelo reservations, y pequeñas modificaciones a otros modelos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +115,7 @@
       <workItem from="1737826714916" duration="5180000" />
       <workItem from="1737835954831" duration="1244000" />
       <workItem from="1737848406631" duration="9450000" />
-      <workItem from="1737859036036" duration="4940000" />
+      <workItem from="1737859036036" duration="6901000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -188,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737861002432</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Mejora del modelo billing y modelo reservations, y pequeñas modificaciones a otros modelos">
+      <option name="closed" value="true" />
+      <created>1737864267628</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737864267628</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +214,7 @@
     <MESSAGE value="modelo de account_settings y publications" />
     <MESSAGE value="Mejora del modelo account_settings, más pequeñas modificaciones a otros modelos" />
     <MESSAGE value="Mejora del modelo billing, y pequeñas modificaciones a otros modelos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mejora del modelo billing, y pequeñas modificaciones a otros modelos" />
+    <MESSAGE value="Mejora del modelo billing y modelo reservations, y pequeñas modificaciones a otros modelos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejora del modelo billing y modelo reservations, y pequeñas modificaciones a otros modelos" />
   </component>
 </project>
