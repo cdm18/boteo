@@ -89,13 +89,44 @@ def manage_reservations(request):
 
     if request.method == 'POST':
         reservation_id = request.POST.get('reservation_id')
+        action = request.POST.get('action')  # Nueva variable para manejar "accept" o "cancel"
+
         if reservation_id:
             try:
                 reservation = Reservation.objects.get(id=reservation_id)
-                reservation.delete()
-                messages.success(request, "La reserva se eliminó correctamente.")
+
+                # Manejo de aceptación de la reserva
+                if action == 'accept' and reservation.status == 'Pendiente':
+                    reservation.status = 'Confirmado'
+                    reservation.save()
+
+                    # Actualizar el estado de la factura a "Pagado"
+                    bill = Bill.objects.filter(reservation=reservation).first()
+                    if bill:
+                        bill.status = 'Pagado'
+                        bill.save()
+
+                    messages.success(request, f"La reserva {reservation.id} ha sido aceptada y la factura actualizada a 'Pagado'.")
+
+                # Manejo de cancelación de la reserva
+                elif action == 'cancel' and reservation.status in ['Pendiente', 'Confirmado']:
+                    reservation.status = 'Cancelada'
+                    reservation.save()
+
+                    # Actualizar el estado de la factura a "Cancelado"
+                    bill = Bill.objects.filter(reservation=reservation).first()
+                    if bill:
+                        bill.status = 'Cancelado'
+                        bill.save()
+
+                    messages.success(request, f"La reserva {reservation.id} ha sido cancelada y la factura actualizada a 'Cancelado'.")
+
+                else:
+                    messages.error(request, "Acción no permitida o estado inválido para la reserva.")
+
             except Reservation.DoesNotExist:
                 messages.error(request, "La reserva no existe.")
+
         return redirect('manage_reservations')
 
     return render(request, 'reservations/owner_manage_reservations.html', {'reservations': reservations})
