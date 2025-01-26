@@ -1,12 +1,15 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block styles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación</title>
+    {% load static %}
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-{% endblock %}
-
-{% block content %}
-    <div class="main-content">
+</head>
+<body>
+    {% include 'base.html' %}
+    <main class="main-content">
         <h1 class="mb-4">Facturación</h1>
         <div class="table-responsive">
             <table class="table table-striped">
@@ -43,6 +46,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-{% endblock %}
-{% include 'footer.html' %}
+    </main>
+</body>
+</html>
