@@ -4,45 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="modelo de account_settings y publications">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_panel/templates/admin_panel/admin_panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin_panel/templates/admin_panel/admin_panel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/migrations/0002_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/migrations/0003_alter_area_options_alter_area_images_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/static/areas/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/templates/areas/area_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/area_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/templates/areas/areas.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/areas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/areas/templates/areas/create_area.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/create_area.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/publications/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publications/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports_spaces/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/boteo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo-boteo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0002_customuser_user_type.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +38,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/cdm18/boteo.git&quot;,
-    &quot;accountId&quot;: &quot;9a994f95-e7ef-4fcc-8529-0c2148bea2c9&quot;
+    &quot;accountId&quot;: &quot;af3eef48-ace9-4898-8977-16e9731b40ec&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -85,30 +50,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "alex",
-    "last_opened_file_path": "C:/Users/Sebastián/Documents/CursoDjango/boteo/static/css",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;alex&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sebastián/Documents/CursoDjango/boteo/static/css&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/media/tournaments" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\img" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo" />
@@ -118,8 +84,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
-        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
+        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
       </set>
     </attachedChunks>
   </component>
@@ -148,6 +114,8 @@
       <workItem from="1737768216718" duration="1302000" />
       <workItem from="1737780337235" duration="1460000" />
       <workItem from="1737816872676" duration="7849000" />
+      <workItem from="1737916280853" duration="2254000" />
+      <workItem from="1737920090284" duration="515000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -197,7 +165,47 @@
       <option name="project" value="LOCAL" />
       <updated>1737564573039</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implementacion de funcionalidad en home y areas donde si se buscan y se filtran adecuadamente, tambien la gestion de horarios para reservas y la realizacion de ellas tiene un control logico, se implemento la creacion rudimentaria de la gestion de reservas, aun no BILLING">
+      <option name="closed" value="true" />
+      <created>1737862728733</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737862728733</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implementacion de funcionalidad en home y areas donde si se buscan y se filtran adecuadamente, tambien la gestion de horarios para reservas y la realizacion de ellas tiene un control logico, se implemento la creacion rudimentaria de la gestion de reservas, aun no BILLING">
+      <option name="closed" value="true" />
+      <created>1737864197937</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737864197937</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Commit de esteticos">
+      <option name="closed" value="true" />
+      <created>1737866156254</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737866156254</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
+      <option name="closed" value="true" />
+      <created>1737920170149</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1737920170149</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
+      <option name="closed" value="true" />
+      <created>1737920260555</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1737920260555</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +228,13 @@
     <MESSAGE value="requirements.txt actualizado" />
     <MESSAGE value="estructura proyecto actualizada con frontend + backend funcionales (modulos user)" />
     <MESSAGE value="modelo de account_settings y publications" />
-    <option name="LAST_COMMIT_MESSAGE" value="modelo de account_settings y publications" />
+    <MESSAGE value="Implementacion de funcionalidad en home y areas donde si se buscan y se filtran adecuadamente, tambien la gestion de horarios para reservas y la realizacion de ellas tiene un control logico, se implemento la creacion rudimentaria de la gestion de reservas, aun no BILLING" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;BoteoProject/settings.py" />
+    <MESSAGE value="Commit de esteticos" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Commit" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;billing/apps.py" />
+    <MESSAGE value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
   </component>
 </project>

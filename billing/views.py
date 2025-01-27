@@ -1,53 +1,47 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from billing.forms import BillForm
 from billing.models import Bill
 from reservations.models import Reservation
 
 
 @login_required
 def bill_list(request):
-    if request.user.user_type == 1:
-        bills = Bill.objects.all().order_by('-created_at')
-    else:
-        bills = Bill.objects.all().order_by('-created_at')
-
+    # Obtiene todas las facturas ordenadas por fecha de creación descendente
+    bills = Bill.objects.all().order_by('-created_at')
     return render(request, 'billing/bill_list.html', {'bills': bills})
 
 @login_required
 def update_bill_status(request, bill_id):
+    # Obtiene la factura específica por su ID
     bill = get_object_or_404(Bill, id=bill_id)
 
     if request.method == 'POST':
+        # Obtiene el nuevo estado enviado en el formulario
         new_status = request.POST.get('status')
+        # Verifica si el nuevo estado es válido
         if new_status in dict(Bill.BILL_STATUS_CHOICES):
+            # Actualiza el estado de la factura
             bill.status = new_status
+            # Obtiene la reserva asociada a la factura
+            reservation = bill.reservation
+            # Actualiza el estado de la reserva según el nuevo estado de la factura
+            if new_status == Bill.BILL_STATUS_CHOICES[1][0]:
+                reservation.status = Reservation.STATUS_CHOICES[1][0]
+            elif new_status == Bill.BILL_STATUS_CHOICES[2][0]:
+                reservation.status = Reservation.STATUS_CHOICES[2][0]
+            else:
+                reservation.status = Reservation.STATUS_CHOICES[2][0]
+            # Guarda los cambios en la reserva y la factura
+            reservation.save()
             bill.save()
+            # Muestra un mensaje de éxito
             messages.success(request, f"El estado de la factura {bill.id} se actualizó a {bill.get_status_display()}.")
         else:
+            # Muestra un mensaje de error si el estado es inválido
             messages.error(request, "Estado inválido seleccionado.")
+        # Redirige a la lista de facturas
         return redirect('bill_list')
 
+    # Renderiza el formulario de actualización de estado de factura
     return render(request, 'billing/update_bill_status.html', {'bill': bill})
-
-@login_required
-def create_bill(request):
-    if request.method == 'POST':
-        form = BillForm(request.POST, user=request.user)
-        if form.is_valid():
-            bill = form.save(commit=False)
-
-            if not bill.reservation:
-                dummy_reservation = Reservation.objects.create(
-                    user=request.user,
-                    space=bill.space,
-                )
-                bill.reservation = dummy_reservation
-
-            bill.save()
-            return redirect('billing:bill_list')
-    else:
-        form = BillForm(user=request.user)
-
-    return render(request, 'billing/create_bill.html', {'form': form})

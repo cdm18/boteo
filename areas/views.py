@@ -112,7 +112,27 @@ def create_area(request):
 @login_required
 def areas_list_user_view(request):
     areas = Area.objects.all()
-    return render(request, "areas/areas_general_user.html", {'areas': areas})
+    # Filtra según los parámetros GET (deporte, ciudad y búsqueda)
+    deporte = request.GET.get('deporte', '')
+    ciudad = request.GET.get('ciudad', '')
+    buscar = request.GET.get('buscar', '')
+
+    if deporte:
+        areas = areas.filter(css__sport_type=deporte)
+
+    if ciudad:
+        areas = areas.filter(city__icontains=ciudad)
+
+    if buscar:
+        areas = areas.filter(name__icontains=buscar)
+
+    # No duplicados
+    areas = areas.distinct()
+
+    # Pasa las áreas filtradas al contexto
+    return render(request, "areas/areas_general_user.html", {'areas': areas,
+                                                             'sports': SportsSpace.SPORTS_TYPES},
+)
 
 
 @login_required
@@ -120,4 +140,5 @@ def area_detail_user_view(request, pk):
     area = get_object_or_404(Area, pk=pk)
     additional_services = AreaService.objects.filter(area=area).select_related('service')
     sports_spaces = SportsSpace.objects.filter(area=area)
-    return render(request, "areas/area_general_user_detail.html", {'area': area, 'sport_spaces': sports_spaces, 'additional_services': additional_services})
+    return render(request, "areas/area_general_user_detail.html",
+                  {'area': area, 'sport_spaces': sports_spaces, 'additional_services': additional_services})
