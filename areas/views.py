@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
+from reservations.models import Reservation
 from sports_spaces.models import SportsSpace
 from .forms import AreaCreationForm
 from django.contrib import messages
@@ -17,13 +18,15 @@ def is_staff_user(user):
 @login_required
 @user_passes_test(is_staff_user)
 def areas_list_view(request):
+    reservationCount = Reservation.objects.filter(status='Pendiente').count()
     areas = Area.objects.filter(user=request.user)
-    return render(request, "areas/areas.html", {'areas': areas})
+    return render(request, "areas/areas.html", {'areas': areas, 'reservationCount': reservationCount})
 
 
 @login_required
 @user_passes_test(is_staff_user)
 def area_detail(request, pk):
+    reservationCount = Reservation.objects.filter(status='Pendiente').count()
     area = get_object_or_404(Area, pk=pk)
     sports_spaces = SportsSpace.objects.filter(area=area)
     additional_services = AreaService.objects.filter(area=area).select_related('service')
@@ -88,13 +91,15 @@ def area_detail(request, pk):
         'area': area,
         'form': form,
         'sport_spaces': sports_spaces,
-        'additional_services': additional_services
+        'additional_services': additional_services,
+        'reservationCount': reservationCount
     })
 
 
 @login_required
 @user_passes_test(is_staff_user)
 def create_area(request):
+    reservationCount = Reservation.objects.filter(status='Pendiente').count()
     if request.method == 'POST':
         form = AreaCreationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -106,7 +111,7 @@ def create_area(request):
     else:
         form = AreaCreationForm()
 
-    return render(request, 'areas/create_area.html', {'form': form})
+    return render(request, 'areas/create_area.html', {'form': form, 'reservationCount': reservationCount})
 
 
 @login_required
@@ -128,6 +133,7 @@ def areas_list_user_view(request):
 
     # No duplicados
     areas = areas.distinct()
+
 
     # Pasa las áreas filtradas al contexto
     return render(request, "areas/areas_general_user.html", {'areas': areas,

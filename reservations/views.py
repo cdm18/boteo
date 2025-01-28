@@ -86,7 +86,7 @@ def create_reservation(request):
 @user_passes_test(is_staff_user)
 def manage_reservations(request):
     reservations = Reservation.objects.all().order_by('-date', 'start_time')
-
+    reservationCount = reservations.count()
     if request.method == 'POST':
         reservation_id = request.POST.get('reservation_id')
         action = request.POST.get('action')  # Nueva variable para manejar "accept" o "cancel"
@@ -129,4 +129,4 @@ def manage_reservations(request):
 
         return redirect('manage_reservations')
 
-    return render(request, 'reservations/owner_manage_reservations.html', {'reservations': reservations})
+    return render(request, 'reservations/owner_manage_reservations.html', {'reservations': reservations, 'reservationCount': reservationCount})
