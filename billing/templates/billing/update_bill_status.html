@@ -1,41 +1,22 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-{% endblock %}
-
-
-{% block content %}
-
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Actualizar Estado de Factura</title>
-
-    </head>
-    <body>
-
-    <main class="container my-5">
-        <h1 class="mb-4">Actualizar Estado de Factura</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="status" class="form-label">Estado:</label>
-                <select class="form-select" id="status" name="status">
-                    {% for value, display in bill.BILL_STATUS_CHOICES %}
-                        <option value="{{ value }}"
-                                {% if bill.status == value %}selected{% endif %}>{{ display }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <a href="{% url 'bill_list' %}" class="btn btn-secondary">Cancelar</a>
-        </form>
+<body>
+    {% include 'navbar.html' %}
+    <main class="main-content">
+        <main class="container my-5">
+            <h1 class="mb-4">Actualizar Estado de Factura</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Estado:</label>
+                    <select class="form-select" id="status" name="status">
+                        {% for value, display in bill.BILL_STATUS_CHOICES %}
+                        <option value="{{ value }}" {% if bill.status == value %}selected{% endif %}>{{ display }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="{% url 'bill_list' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </main>
     </main>
-    </body>
-    </html>
-{% endblock %}
-
-
+    {% include 'footer.html' %}
+</body>
