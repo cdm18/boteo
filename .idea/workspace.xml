@@ -4,23 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Mejora del modelo account_settings">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Se añadió comentarios a mis modelos creados para poder repasar y se mejoró la mayoría de mis modelos creados.">
+      <change afterPath="$PROJECT_DIR$/account_settings/migrations/0003_alter_userprofile_profile_picture.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/default_profile.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/user_profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account_settings/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/signals.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/templates/billing/create_bill.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/billing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/billing/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/publications/templates/publications/publication_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/publications/templates/publications/publication_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/publications/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,27 +65,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;alex&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sebastián/Documents/CursoDjango/boteo/static/css&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "alex",
+    "last_opened_file_path": "C:/Users/Sebastián/Documents/CursoDjango/boteo/static/img",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\img" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -131,7 +134,11 @@
       <workItem from="1737848406631" duration="9450000" />
       <workItem from="1737859036036" duration="7162000" />
       <workItem from="1737867993138" duration="2293000" />
-      <workItem from="1737907218486" duration="4224000" />
+      <workItem from="1737907218486" duration="4483000" />
+      <workItem from="1737993834362" duration="12000" />
+      <workItem from="1738112083587" duration="1128000" />
+      <workItem from="1738120718651" duration="3615000" />
+      <workItem from="1738156158668" duration="4314000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -213,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737866076485</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Se añadió comentarios a mis modelos creados para poder repasar y se mejoró la mayoría de mis modelos creados.">
+      <option name="closed" value="true" />
+      <created>1737911708089</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1737911708089</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +255,7 @@
     <MESSAGE value="Mejora del modelo billing, y pequeñas modificaciones a otros modelos" />
     <MESSAGE value="Mejora del modelo billing y modelo reservations, y pequeñas modificaciones a otros modelos" />
     <MESSAGE value="Mejora del modelo account_settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mejora del modelo account_settings" />
+    <MESSAGE value="Se añadió comentarios a mis modelos creados para poder repasar y se mejoró la mayoría de mis modelos creados." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se añadió comentarios a mis modelos creados para poder repasar y se mejoró la mayoría de mis modelos creados." />
   </component>
 </project>

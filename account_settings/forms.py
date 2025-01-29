@@ -5,7 +5,7 @@ from account_settings.models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['profile_picture', 'about_me', 'favorite_sports']  # Campos editables
+        fields = ['profile_picture', 'about_me', 'favorite_sports']
         widgets = {
             'about_me': forms.Textarea(attrs={
                 'class': 'form-control',
