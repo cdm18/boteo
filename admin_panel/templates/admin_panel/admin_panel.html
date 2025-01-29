@@ -5,75 +5,50 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 {% endblock %}
 
+{% block title %}Panel{% endblock %}
+
 {% block content %}
     <div class="main-content">
-        <div class="container-fluid">
-            <h1 class="mb-4">Bienvenido a tu Dashboard de Boteo</h1>
+        <h1 class="h2 mb-4">Bienvenido a tu Dashboard de Boteo</h1>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Resumen de Reservas</h5>
-                            <p class="card-text">Total gastado este mes: 24 Reservas para hoy</p>
-                            <a href="#" class="btn btn-primary">Ver todas las reservas</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Áreas Registradas</h5>
-                            <p class="card-text">Tus áreas activas: 3 Áreas activas</p>
-                            <a href="#" class="btn btn-primary">Agregar nueva área</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Ingresos del Mes</h5>
-                            <p class="card-text">Resumen financiero del mes actual: $1,250 (+15% vs. mes anterior)</p>
-                            <a href="#" class="btn btn-primary">Ver análisis completo</a>
-                        </div>
+        <div class="row g-4">
+            <!-- Resumen de Reservas -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted mb-3">Resumen de Reservas</h5>
+                        <p class="text-muted mb-1">Total gastado este mes</p>
+                        <h2 class="mb-3">24</h2>
+                        <p class="text-muted mb-4">Reservas para hoy</p>
+                        <button class="btn btn-outline-secondary w-100">Ver todas las reservas</button>
                     </div>
                 </div>
             </div>
 
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h5 class="card-title">Próximas Reservas</h5>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Cliente</th>
-                                <th>Espacio</th>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Juan Perez</td>
-                                <td>Cancha de Fútbol 1</td>
-                                <td>2024-03-15</td>
-                                <td>14:00 - 16:00</td>
-                            </tr>
-                            <tr>
-                                <td>María Gonzales</td>
-                                <td>Piscina</td>
-                                <td>2024-03-15</td>
-                                <td>16:30</td>
-                            </tr>
-                            <tr>
-                                <td>Carlos Rodriguez</td>
-                                <td>Cancha de Fútbol 2</td>
-                                <td>2024-03-15</td>
-                                <td>21:00 - 22:00</td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <!-- Áreas Registradas -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted mb-3">Áreas Registradas</h5>
+                        <p class="text-muted mb-1">Tus áreas activas</p>
+                        <h2 class="mb-3">3</h2>
+                        <p class="text-muted mb-4">Áreas activas</p>
+                        <button class="btn btn-dark w-100">Agregar nueva área</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingresos del Mes -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted mb-3">Ingresos del Mes</h5>
+                        <p class="text-muted mb-1">Resumen financiero del mes actual</p>
+                        <h2 class="mb-2">$1,250</h2>
+                        <p class="text-success mb-4">
+                            <small>+15% vs. mes anterior</small>
+                        </p>
+                        <button class="btn btn-outline-secondary w-100">Ver análisis completo</button>
                     </div>
                 </div>
             </div>
