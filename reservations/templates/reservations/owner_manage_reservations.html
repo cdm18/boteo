@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid my-5">
+        <div class="row">
+            <!-- Contenido principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <h1 class="my-4">Gestión de Reservas</h1>
+                <section class="card shadow-sm mb-5">
+                    <header class="card-header py-3">
+                        <h2 class="h5 mb-0">Reservas Actuales</h2>
+                    </header>
+                    <div class="card-body py-4 px-4">
+                        {% if reservations %}
+                            <ul class="list-group">
+                                {% for reservation in reservations %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-4 mb-3 shadow-sm">
+                                        <div>
+                                            <i class="bi bi-calendar-check me-2"></i>
+                                            <strong>{{ reservation.date }}</strong> - {{ reservation.start_time }}
+                                            a {{ reservation.end_time }}<br>
+                                            <i class="bi bi-person-circle me-2"></i>{{ reservation.user.get_full_name }}<br>
+                                            <i class="bi bi-geo-alt me-2"></i>{{ reservation.space.name }}<br>
+                                            <span class="badge bg-secondary">{{ reservation.status }}</span>
+                                        </div>
+                                        <div>
+                                            {% if reservation.status == 'Pendiente' %}
+                                                <button type="button" class="btn btn-success btn-sm me-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#acceptModal"
+                                                        data-reservation-id="{{ reservation.id }}">
+                                                    <i class="bi bi-check-circle"></i> Aceptar
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#cancelModal"
+                                                        data-reservation-id="{{ reservation.id }}">
+                                                    <i class="bi bi-trash"></i> Cancelar
+                                                </button>
+                                            {% else %}
+                                                <span class="text-muted">No se pueden realizar acciones</span>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+
+                        {% else %}
+                            <p class="text-muted mb-0">No hay reservas actuales.</p>
+                        {% endif %}
+                    </div>
+                </section>
+
+                <!-- Modal para cancelar reserva -->
+                <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel"
+                     data-bs-backdrop="true" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <article class="modal-content">
+                            <header class="modal-header">
+                                <h2 class="modal-title h5" id="cancelModalLabel">Confirmación de cancelación</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </header>
+                            <div class="modal-body">
+                                <p>¿Está seguro que desea cancelar esta reserva?</p>
+                            </div>
+                            <footer class="modal-footer">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="reservation_id" value="">
+                                    <input type="hidden" name="action" value="cancel">
+                                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver
+                                    </button>
+                                </form>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+
+
+                <!-- Modal para aceptar reserva -->
+                <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel"
+                     data-bs-backdrop="true"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <article class="modal-content">
+                            <header class="modal-header">
+                                <h2 class="modal-title h5" id="acceptModalLabel">Confirmación de aceptación</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </header>
+                            <div class="modal-body">
+                                <p>¿Está seguro que desea aceptar esta reserva?</p>
+                            </div>
+                            <footer class="modal-footer">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="reservation_id" value="">
+                                    <input type="hidden" name="action" value="accept">
+                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                                    </button>
+                                </form>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        // Configurar modales para aceptar o cancelar reserva
+        const acceptModal = document.getElementById('acceptModal');
+        acceptModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            const reservationId = button.getAttribute('data-reservation-id');
+            acceptModal.querySelector('input[name="reservation_id"]').value = reservationId;
+        });
+
+        const cancelModal = document.getElementById('cancelModal');
+        cancelModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            const reservationId = button.getAttribute('data-reservation-id');
+            cancelModal.querySelector('input[name="reservation_id"]').value = reservationId;
+        });
+    </script>
+
+{% endblock %}

@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from areas.models import Area
+from reservations.models import Reservation
 from sports_spaces.models import SportsSpace
 from django.contrib.auth.decorators import login_required, user_passes_test
 from sports_spaces.forms import SportsSpaceForm
@@ -15,6 +16,7 @@ def is_staff_user(user):
 @login_required
 @user_passes_test(is_staff_user)
 def sport_space_detail_view(request, pk):
+    reservationCount = Reservation.objects.filter(status='Pendiente').count()
     sport_space = SportsSpace.objects.get(pk=pk)
     area = SportsSpace.objects.get(pk=pk).area
     form = SportsSpaceForm(request.POST, instance=sport_space)
@@ -41,11 +43,13 @@ def sport_space_detail_view(request, pk):
                   {'form': form,
                    "sport_space": sport_space,
                    "area": area,
-                   "area_link": area_link})
+                   "area_link": area_link,
+                   'reservationCount': reservationCount})
 
 @login_required
 @user_passes_test(is_staff_user)
 def create_space_view(request, pk):
+    reservationCount = Reservation.objects.filter(status='Pendiente').count()
     area = Area.objects.get(pk=pk)
     if request.method == 'POST':
         form = SportsSpaceForm(request.POST)
@@ -58,4 +62,4 @@ def create_space_view(request, pk):
     else:
         form = SportsSpaceForm()
 
-    return render(request, 'sports_spaces/create_sport_space.html', {'form': form, 'area': area})
+    return render(request, 'sports_spaces/create_sport_space.html', {'form': form, 'area': area,'reservationCount': reservationCount})

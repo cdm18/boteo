@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from BoteoProject import settings
@@ -11,6 +12,7 @@ class Reservation(models.Model):
         ('Cancelada', 'Cancelada'),
     ]
 
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     space = models.ForeignKey(SportsSpace, on_delete=models.CASCADE, related_name='reservations')
     date = models.DateField()
@@ -23,6 +25,8 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"Reservation by {self.user} for {self.space} on {self.date}"
+
+
 
     class Meta:
         ordering = ['-date', 'start_time']

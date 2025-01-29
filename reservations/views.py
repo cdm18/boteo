@@ -7,8 +7,14 @@ from .forms import ReservationForm
 from django.http import JsonResponse
 from decimal import Decimal
 from datetime import datetime, date
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib import messages
 
 Reservation = apps.get_model('reservations', 'Reservation')
+
+def is_staff_user(user):
+    return user.is_staff
+
 
 @login_required
 def reservation_list(request):
@@ -33,6 +39,20 @@ def create_reservation(request):
             # Obtener horas de inicio y fin
             start_time = form.cleaned_data['start_time']
             end_time = form.cleaned_data['end_time']
+
+            # Obtener el espacio y el área asociada
+            space = form.cleaned_data['space']
+            area = space.area
+
+            # Validar que las horas estén dentro del horario permitido del área
+            if start_time < area.opening_time or end_time > area.closing_time:
+                return JsonResponse(
+                    {
+                        'success': False,
+                        'message': f"El horario debe estar dentro del rango: {area.opening_time} - {area.closing_time}.",
+                    },
+                    status=400,
+                )
 
             # Calcular la duración de la reserva en horas
             duration = (datetime.combine(date.min, end_time) - datetime.combine(date.min, start_time)).seconds / 3600
@@ -60,3 +80,53 @@ def create_reservation(request):
 
     # Respuesta en caso de método no permitido
     return JsonResponse({'success': False, 'message': 'Método no permitido.'}, status=405)
+
+
+@login_required
+@user_passes_test(is_staff_user)
+def manage_reservations(request):
+    reservations = Reservation.objects.all().order_by('-date', 'start_time')
+    reservationCount = reservations.count()
+    if request.method == 'POST':
+        reservation_id = request.POST.get('reservation_id')
+        action = request.POST.get('action')  # Nueva variable para manejar "accept" o "cancel"
+
+        if reservation_id:
+            try:
+                reservation = Reservation.objects.get(id=reservation_id)
+
+                # Manejo de aceptación de la reserva
+                if action == 'accept' and reservation.status == 'Pendiente':
+                    reservation.status = 'Confirmado'
+                    reservation.save()
+
+                    # Actualizar el estado de la factura a "Pagado"
+                    bill = Bill.objects.filter(reservation=reservation).first()
+                    if bill:
+                        bill.status = 'Pagado'
+                        bill.save()
+
+                    messages.success(request, f"La reserva {reservation.id} ha sido aceptada y la factura actualizada a 'Pagado'.")
+
+                # Manejo de cancelación de la reserva
+                elif action == 'cancel' and reservation.status in ['Pendiente', 'Confirmado']:
+                    reservation.status = 'Cancelada'
+                    reservation.save()
+
+                    # Actualizar el estado de la factura a "Cancelado"
+                    bill = Bill.objects.filter(reservation=reservation).first()
+                    if bill:
+                        bill.status = 'Cancelado'
+                        bill.save()
+
+                    messages.success(request, f"La reserva {reservation.id} ha sido cancelada y la factura actualizada a 'Cancelado'.")
+
+                else:
+                    messages.error(request, "Acción no permitida o estado inválido para la reserva.")
+
+            except Reservation.DoesNotExist:
+                messages.error(request, "La reserva no existe.")
+
+        return redirect('manage_reservations')
+
+    return render(request, 'reservations/owner_manage_reservations.html', {'reservations': reservations, 'reservationCount': reservationCount})

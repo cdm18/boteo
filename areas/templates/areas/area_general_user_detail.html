@@ -73,28 +73,35 @@
                 {% for space in sport_spaces %}
                     <article class="col-md-6">
                         <div class="bg-light rounded p-4">
-                            <h3 class="h5 mb-3">{{ space.name }}</h3>
+                            <h3 class="h5 mb-3">{{ space.name }} - {{ space.sport_type   }}</h3>
                             <dl class="d-flex flex-column gap-2 mb-0">
                                 <div class="d-flex align-items-center">
                                     <dt class="d-flex align-items-center me-2">
                                         <i class="fas fa-ruler me-2 text-primary" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Tamaño:</span>
+                                        <span class="">Dimensiones:</span>
                                     </dt>
                                     <dd class="mb-0">{{ space.length }}m x {{ space.width }}m</dd>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <dt class="d-flex align-items-center me-2">
                                         <i class="fas fa-users me-2 text-primary" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Capacidad:</span>
+                                        <span class="">Capacidad recomendada:</span>
                                     </dt>
                                     <dd class="mb-0">{{ space.recommended_capacity }} personas</dd>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <dt class="d-flex align-items-center me-2">
                                         <i class="fas fa-leaf me-2 text-primary" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Superficie:</span>
+                                        <span class="">Superficie:</span>
                                     </dt>
                                     <dd class="mb-0">{{ space.surface }}</dd>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <dt class="d-flex align-items-center me-2">
+                                        <i class="fas fa-dollar me-3 text-primary" aria-hidden="true"></i>
+                                        <span class="">Precio por hora:</span>
+                                    </dt>
+                                    <dd class="mb-0">{{ space.cost_per_hour }}</dd>
                                 </div>
                             </dl>
                         </div>
@@ -214,9 +221,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     {% include 'footer.html' %}
 {% endblock %}

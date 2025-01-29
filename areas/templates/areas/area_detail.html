@@ -5,6 +5,8 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 {% endblock %}
 
+{% block title %}Área - {{ area.name }}{% endblock %}
+
 {% block content %}
     <main class="main-content">
         <nav aria-label="breadcrumb">
@@ -34,7 +36,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </header>
                         <div class="modal-body">
-                            <p>¿Está seguro que desea eliminar esta área deportivo?</p>
+                            <p>¿Está seguro que desea eliminar esta área deportiva?</p>
                         </div>
                         <footer class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
