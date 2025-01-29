@@ -1,6 +1,13 @@
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-    {% include 'navbar.html' %}
+{% block styles %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Facturación - Edición{% endblock %}
+
+{% block content %}
     <main class="main-content">
         <main class="container my-5">
             <h1 class="mb-4">Actualizar Estado de Factura</h1>
@@ -19,5 +26,5 @@
             </form>
         </main>
     </main>
-    {% include 'footer.html' %}
-</body>
+
+{% endblock %}

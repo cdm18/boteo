@@ -77,4 +77,37 @@
     </main>
     <!-- Pie de página -->
     {% include 'footer.html' %}
+
+    <style>
+    body {
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+    }
+
+    body.loaded {
+        transform: translateX(0);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("loaded");
+
+        document.querySelectorAll("a").forEach(link => {
+            if (link.hostname === window.location.hostname) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.href;
+                    document.body.style.transform = "translateX(-100%)";
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            }
+        });
+    });
+</script>
+
+
+
 </body>

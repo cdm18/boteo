@@ -1,8 +1,9 @@
+# models.py
 from django.core.exceptions import ValidationError
 from django.db import models
-
 from BoteoProject import settings
 from sports_spaces.models import SportsSpace
+from areas.models import Area
 
 
 class Reservation(models.Model):
@@ -11,7 +12,6 @@ class Reservation(models.Model):
         ('Confirmado', 'Confirmado'),
         ('Cancelada', 'Cancelada'),
     ]
-
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     space = models.ForeignKey(SportsSpace, on_delete=models.CASCADE, related_name='reservations')
@@ -26,7 +26,7 @@ class Reservation(models.Model):
     def __str__(self):
         return f"Reservation by {self.user} for {self.space} on {self.date}"
 
-
-
     class Meta:
         ordering = ['-date', 'start_time']
+        # unique_together = ['space', 'date', 'start_time', 'end_time']
+

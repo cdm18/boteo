@@ -1,25 +1,42 @@
-<body>
-    {% load static %}
-    {% include 'base.html' %}
-    {% block styles %}
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    {% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Facturación{% endblock %}
+
+{% block content %}
     <main class="main-content">
-        <h1 class="mb-4">Facturación</h1>
+        <h1 class="my-4">Facturación</h1>
+
+        <form method="GET" class="mb-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <select name="status" class="form-select" onchange="this.form.submit()">
+                        <option value="">Todos los estados</option>
+                        <option value="Pendiente" {% if selected_status == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                        <option value="Pagado" {% if selected_status == 'Pagado' %}selected{% endif %}>Pagado</option>
+                        <option value="Cancelado" {% if selected_status == 'Cancelado' %}selected{% endif %}>Cancelado</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Fecha</th>
-                        <th>Espacio</th>
-                        <th>Monto</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Espacio</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {% for bill in bills %}
+                {% for bill in bills %}
                     <tr>
                         <td>{{ bill.user.first_name }} {{ bill.user.last_name }}</td>
                         <td>{{ bill.reservation.date }}</td>
@@ -33,13 +50,10 @@
                                 {{ bill.status }}
                             </span>
                         </td>
-                        <td>
-                            <a href="{% url 'update_bill_status' bill.id %}" class="btn btn-sm btn-outline-primary">Editar estado</a>
-                        </td>
                     </tr>
-                    {% endfor %}
+                {% endfor %}
                 </tbody>
             </table>
         </div>
     </main>
-</body>
+{% endblock %}

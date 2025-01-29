@@ -1,4 +1,5 @@
-body {
+
+.body {
     background-color: #f8f9fa;
     min-height: 100vh;
 }
@@ -188,3 +189,105 @@ body {
     background-color: #000;
     opacity: 0.5;
 }
+
+@media (max-width: 768px) {
+
+    .modal-dialog {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important; /* Ajustar el ancho */
+        max-width: 400px !important;
+        margin: 0 !important;
+    }
+
+    .modal-content {
+        width: 100% !important;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .modal-header, .modal-body, .modal-footer {
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .modal-footer {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .modal-footer button {
+        width: 100% !important;
+        margin-bottom: 5px;
+    }
+
+    .main-content {
+        padding: 10px;
+        margin-left: 20%;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .list-group-item {
+        flex-direction: column;
+        align-items: flex-start !important;
+        text-align: left;
+    }
+
+    .list-group-item div {
+        width: 100%;
+    }
+
+    .list-group-item div:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .modal-dialog {
+        max-width: 90%;
+    }
+
+    .modal-footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    .btn-uniform {
+        width: 100%; /* Asegura que todos los botones ocupen el mismo ancho */
+        padding: 12px; /* Espaciado uniforme */
+        font-size: 1rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px; /* Espaciado entre icono y texto */
+    }
+
+    .card-body .btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Espaciado entre los botones */
+    }
+
+
+}
+
+
+
+

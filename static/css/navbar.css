@@ -2,70 +2,84 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
     font-family: 'Arial', sans-serif;
-    height: 60px;
-}
-.navbar-right {
-    display: flex;
-    align-items: center;
 }
 
-.navbar-logo {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-logo img {
+/* Logo */
+.navbar-brand img {
     height: 40px;
-    margin-right: 10px;
 }
 
-.brand-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0057ff;
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+    outline: none;
 }
 
 /* Navbar links */
-.navbar-links {
-    list-style: none;
+.navbar-nav {
     display: flex;
-    margin-left: 73%;
-    margin-top: 20px;
-    padding: 0;
+    justify-content: center;
+    align-items: center;
 }
 
-.navbar-links li {
-    margin: 0 15px;
+.navbar-nav .nav-item {
+    margin: 0 10px;
 }
 
-.navbar-links a {
-    text-decoration: none;
+.navbar-nav .nav-link {
     font-size: 16px;
     color: #333;
     transition: color 0.3s ease;
 }
 
-.navbar-links a.active,
-.navbar-links a:hover {
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
     color: #0057ff;
     font-weight: bold;
 }
 
-/* Profile button */
-.navbar-profile .btn-profile {
-    background-color: #0057ff;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+/* Profile and Admin Buttons */
+.navbar .btn {
+    font-size: 14px;
+    padding: 8px 14px;
 }
 
-.navbar-profile .btn-profile:hover {
-    background-color: #003ea6;
+/* Responsividad */
+@media (max-width: 992px) {
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .navbar .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+    }
+
+    .navbar-nav {
+        display: block;
+        text-align: center;
+    }
+
+    .navbar .btn {
+        width: 100%;
+    }
 }

@@ -10,8 +10,8 @@
 {% block content %}
     <main class="main-content">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'my_areas' %}">Espacios Deportivos</a></li>
+            <ol class="breadcrumb my-4">
+                <li class="breadcrumb-item"><a href="{% url 'my_areas' %}"><h1>Áreas Deportivas</h1></a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ area.name }}</li>
             </ol>
         </nav>
@@ -52,7 +52,7 @@
 
             {% include "areas/formulario.html" %}
 
-            <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Espacio</button>
+            <button type="submit" class="mt-4 btn btn-dark w-100">Actualizar Área</button>
             </form>
         </section>
 

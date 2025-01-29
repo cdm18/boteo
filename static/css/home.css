@@ -1,68 +1,42 @@
-/* Add this to your static/css/styles.css file */
-
+/* Asegurar que ambas secciones tienen el mismo tamaño y alineación */
 .hero-section {
+    height: auto;
     min-height: 500px;
-    display: flex;
-    align-items: center;
-    background-position: center;
-    background-size: cover;
-    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{% static "main/img/banner.png" %}') center/cover;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
+/* Unificación de la caja de búsqueda en Inicio y Áreas */
 .search-container {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
     padding: 20px;
     margin-top: 2rem;
+    max-width: 800px;
 }
 
-.stat-item {
-    padding: 20px;
-    transition: transform 0.3s ease;
+/* Asegurar que los formularios de búsqueda sean del mismo tamaño */
+.search-container form {
+    max-width: 800px;
+    margin: auto;
 }
 
-.stat-item:hover {
-    transform: translateY(-5px);
+/* Ajuste de los inputs para que sean visualmente iguales */
+.search-container .input-group-text {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
 }
 
-.stat-item i {
-    font-size: 2.5rem;
-    color: #0d6efd;
+.search-container .form-select,
+.search-container .form-control {
+    border: 1px solid #0d6efd;
 }
 
-.feature-item {
-    height: 100%;
-    transition: all 0.3s ease;
+/* Responsividad en móviles */
+@media (max-width: 768px) {
+    .search-container .col-12 {
+        margin-bottom: 10px;
+    }
 }
-
-.feature-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.tournament-card {
-    transition: transform 0.3s ease;
-}
-
-.tournament-card:hover {
-    transform: translateY(-5px);
-}
-
-.space-card {
-    transition: transform 0.3s ease;
-}
-
-.space-card:hover {
-    transform: translateY(-5px);
-}
-
-.community-post {
-    transition: all 0.3s ease;
-    background: white;
-}
-
-.community-post:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-

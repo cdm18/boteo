@@ -4,89 +4,141 @@
     {% include 'navbar.html' %}
 
     <!-- Hero Section -->
-    <header class="bg-dark text-white py-5"
-            style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/../../../static/img/banner.png' %}') center/cover;">
-        <div class="container py-5">
-            <h1 class="display-4 text-center mb-4">Encuentra tu espacio deportivo ideal</h1>
-            <p class="lead text-center mb-5">Reserva canchas de fútbol, voley y piscinas en los mejores lugares
-                de Ecuador</p>
-
-            <div class="position-absolute top-45 start-50 translate-middle text-center w-100">
-                <form class="mt-4 mx-auto" style="max-width: 800px;" method="GET"
-                              action="{% url 'areas_list_user_view' %}">
-                            <section class="row g-2 justify-content-center">
-                                <article class="col-md-3">
-                                    <select name="deporte" class="form-select">
+    <!-- Hero Section -->
+            <section class="bg-dark text-white py-5 text-center position-relative"
+                     style="height: auto; min-height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{% static 'main/img/../../../static/img/banner.png' %}') center/cover;">
+                <article class="container py-5">
+                    <h1 class="display-4 mb-5">Encuentra tu espacio deportivo ideal</h1>
+                    <p class="lead mb-4">Reserva canchas de fútbol, voley y piscinas en los mejores lugares de
+                        Ecuador</p>
+                    <form class="mx-auto" style="max-width: 800px;" method="GET"
+                          action="{% url 'areas_list_user_view' %}">
+                        <section class="row g-2">
+                            <article class="col-12 col-md-3">
+                                <div class="input-group input-group-sm">
+                                    <label class="input-group-text bg-primary text-white border-primary"
+                                           for="deporte">⚽</label>
+                                    <select id="deporte" name="deporte" class="form-select border-primary">
                                         <option value="">Seleccione un deporte</option>
                                         {% for sport_id, sport_name in sports %}
                                             <option value="{{ sport_id }}"
                                                     {% if request.GET.deporte == sport_id %}selected{% endif %}>{{ sport_name }}</option>
                                         {% endfor %}
                                     </select>
-                                </article>
-                                <article class="col-md-3">
-                                    <select name="ciudad" class="form-select">
+                                </div>
+                            </article>
+                            <article class="col-12 col-md-3">
+                                <div class="input-group input-group-sm">
+                                    <label class="input-group-text bg-primary text-white border-primary"
+                                           for="ciudad">📍</label>
+                                    <select id="ciudad" name="ciudad" class="form-select border-primary">
                                         <option value="">Selecciona una ciudad</option>
                                         <option value="Loja" {% if request.GET.ciudad == 'Loja' %}selected{% endif %}>
                                             Loja
                                         </option>
                                     </select>
-                                </article>
-                                <article class="col-md-4">
-                                    <input type="search" name="buscar" class="form-control"
-                                           placeholder="Buscar por nombre..."
-                                           value="{{ request.GET.buscar }}">
-                                </article>
-                                <article class="col-md-2">
-                                    <button type="submit" class="btn btn-primary w-100">Buscar Areas</button>
-                                </article>
-                            </section>
-                        </form>
-            </div>
-        </div>
-    </header>
+                                </div>
+                            </article>
+                            <article class="col-12 col-md-4">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-text bg-primary text-white border-primary">🔍</span>
+                                    <input type="search" name="buscar" class="form-control border-primary"
+                                           placeholder="Buscar por nombre..." value="{{ request.GET.buscar }}">
+                                </div>
+                            </article>
+                            <article class="col-12 col-md-2">
+                                <button type="submit" class="btn btn-primary w-100 btn-sm">Buscar</button>
+                            </article>
+                        </section>
+                    </form>
+                </article>
+            </section>
 
-<main class="container mt-4 mb-5">
-    {% if areas %}
-        <section class="row g-4">
-            {% for area in areas %}
-                <article class="col-md-4">
-                    <section class="card h-100">
-                        {% if area.images %}
-                            <img src="{{ area.images.url }}" class="card-img-top"
-                                 alt="Espacio deportivo {{ area.name }}"
-                                 style="height: 200px; object-fit: cover;">
-                        {% else %}
-                            <img src="{% static 'main/img/default-area.jpg' %}" class="card-img-top"
-                                 alt="Imagen por defecto del espacio deportivo"
-                                 style="height: 200px; object-fit: cover;">
-                        {% endif %}
-                        <section class="card-body">
-                            <h2 class="h5 card-title">{{ area.name }}</h2>
-                            <p class="card-text">
-                                <i class="fas fa-map-marker-alt text-primary me-2" aria-hidden="true"></i>
-                                {{ area.city }}
-                            </p>
-                            <section class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="text-primary fw-bold">{{ area.address }}</span>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-star text-warning" aria-hidden="true"></i>
-                                    <span class="ms-1">4.8</span>
+    <!-- Sección de resultados de áreas -->
+    <main class="container mt-4 mb-5">
+        {% if areas %}
+            <section class="row g-4">
+                {% for area in areas %}
+                    <article class="col-md-4">
+                        <section class="card h-100">
+                            {% if area.images %}
+                                <img src="{{ area.images.url }}" class="card-img-top"
+                                     alt="Espacio deportivo {{ area.name }}"
+                                     style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="{% static 'main/img/default-area.jpg' %}" class="card-img-top"
+                                     alt="Imagen por defecto del espacio deportivo"
+                                     style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            <section class="card-body">
+                                <h2 class="h5 card-title">{{ area.name }}</h2>
+                                <p class="card-text">
+                                    <i class="fas fa-map-marker-alt text-primary me-2" aria-hidden="true"></i>
+                                    {{ area.city }}
+                                </p>
+                                <section class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-primary fw-bold">{{ area.address }}</span>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-star text-warning" aria-hidden="true"></i>
+                                        <span class="ms-1">4.8</span>
+                                    </div>
+                                </section>
+                                <div class="d-flex gap-2">
+                                    <a href="{% url 'area_detail_user_view' area.pk %}"
+                                       class="btn btn-primary flex-grow-1">Reservar</a>
                                 </div>
                             </section>
-                            <div class="d-flex gap-2">
-                                <a href="{% url 'area_detail_user_view' area.pk %}" class="btn btn-primary flex-grow-1">Reservar</a>
-                            </div>
                         </section>
-                    </section>
-                </article>
-            {% endfor %}
-        </section>
-    {% else %}
-        <div class="alert alert-warning text-center" role="alert">
-            No se encontraron resultados para tu búsqueda. Intenta con otros filtros.
-        </div>
-    {% endif %}
-</main>
+                    </article>
+                {% endfor %}
+            </section>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">
+                No se encontraron resultados para tu búsqueda. Intenta con otros filtros.
+            </div>
+        {% endif %}
+    </main>
+
     {% include 'footer.html' %}
 {% endblock %}
+
+<!-- Estilos para mejorar la navbar en móvil -->
+<style>
+    @media (max-width: 768px) {
+        .profile-btn {
+            font-size: 12px;
+            padding: 4px 8px;
+            width: 80px;
+            text-align: center;
+        }
+    }
+   body {
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+    }
+
+    body.loaded {
+        transform: translateX(0);
+    }
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("loaded");
+
+        document.querySelectorAll("a").forEach(link => {
+            if (link.hostname === window.location.hostname) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const href = this.href;
+                    document.body.style.transform = "translateX(-100%)";
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                });
+            }
+        });
+    });
+</script>
+

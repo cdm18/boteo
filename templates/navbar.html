@@ -10,13 +10,14 @@
             <img src="{% static 'img/logo-boteo.png' %}" alt="Boteo Logo" height="40">
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Botón de hamburguesa solo para móvil -->
+        <button class="navbar-toggler d-lg-none" type="button" id="navbarToggler" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <nav class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Contenido de la navbar -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/' %}active text-primary{% endif %}"
                        href="{% url 'home' %}">Inicio</a>
@@ -26,19 +27,103 @@
                        href="{% url 'areas_list_user_view' %}">Áreas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/publications/' %}active text-primary{% endif %}" href="{% url 'publications:publication_list' %}">Comunidad</a>
+                    <a class="nav-link {% if request.path == '/publications/' %}active text-primary{% endif %}"
+                       href="{% url 'publications:publication_list' %}">Comunidad</a>
                 </li>
             </ul>
 
-            <section class="d-flex ms-3">
+            <section class="d-flex ms-3 text-center">
                 {% if user.is_staff %}
                     <a href="{% url 'admin_panel' %}" class="btn btn-primary me-2">
-
                         <i class="bi bi-gear-fill" aria-hidden="true"></i> Panel Admin
                     </a>
                 {% endif %}
-                <a href="{% url 'account_settings:profile' %}" class="btn btn-primary">Perfil</a>
+                <a href="{% url 'account_settings:profile' %}" class="btn btn-primary profile-btn">Perfil</a>
             </section>
-        </nav>
+        </div>
     </nav>
 </header>
+
+<!-- Estilos para mantener la navbar visible en web y animaciones en móvil -->
+<style>
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .navbar-collapse.show {
+            max-height: 500px;
+            opacity: 1;
+            display: block;
+        }
+    }
+
+    /* Perfil más pequeño en móvil */
+    @media (max-width: 768px) {
+        .profile-btn {
+            font-size: 12px;
+            padding: 4px 8px;
+            width: 80px;
+            text-align: center;
+        }
+    }
+</style>
+
+<!-- Script para animación smooth al abrir y cerrar -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var navbarToggler = document.getElementById("navbarToggler");
+        var navbarContent = document.getElementById("navbarContent");
+
+        // Solo aplicar la animación en móvil
+        if (window.innerWidth <= 991) {
+            navbarToggler.addEventListener("click", function () {
+                if (navbarContent.classList.contains("show")) {
+                    // Cierra suavemente
+                    navbarContent.style.maxHeight = "0";
+                    navbarContent.style.opacity = "0";
+                    setTimeout(() => {
+                        navbarContent.classList.remove("show");
+                        navbarContent.style.display = "none";
+                    }, 400);
+                } else {
+                    // Abre suavemente
+                    navbarContent.style.display = "block";
+                    setTimeout(() => {
+                        navbarContent.classList.add("show");
+                        navbarContent.style.maxHeight = "500px";
+                        navbarContent.style.opacity = "1";
+                    }, 10);
+                }
+            });
+
+            // Cierra la navbar en móvil al hacer clic en un enlace
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", function () {
+                    navbarContent.style.maxHeight = "0";
+                    navbarContent.style.opacity = "0";
+                    setTimeout(() => {
+                        navbarContent.classList.remove("show");
+                        navbarContent.style.display = "none";
+                    }, 400);
+                });
+            });
+
+            // Cierra la navbar en móvil si se hace clic fuera de ella
+            document.addEventListener("click", function (event) {
+                if (!navbarToggler.contains(event.target) && !navbarContent.contains(event.target)) {
+                    navbarContent.style.maxHeight = "0";
+                    navbarContent.style.opacity = "0";
+                    setTimeout(() => {
+                        navbarContent.classList.remove("show");
+                        navbarContent.style.display = "none";
+                    }, 400);
+                }
+            });
+        }
+    });
+</script>
