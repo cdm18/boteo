@@ -24,7 +24,7 @@
         </a>
         <nav class="nav flex-column mt-4">
             <a class="nav-link {% if request.path == '/admin_panel/' %} active {% endif %}" href="{% url 'admin_panel' %}"><i class="bi bi-grid"></i> Dashboard</a>
-            <a class="nav-link {% if 'manage/' in request.path %} active {% endif %}" href="{% url 'manage_reservations' %}"> <i class="bi bi-calendar"></i> Gestión de Reservas</a>
+            <a class="nav-link {% if 'manage/' in request.path %} active {% endif %}" href="{% url 'manage_reservations' %}"> <i class="bi bi-calendar"></i> Gestión de Reservas {% if 'reservations' not in request.path  %}{% if reservationCount %}<span class="text-bg-danger rounded-2 bi-bell"> {{ reservationCount }} </span>{% endif %}{% endif %}</a>
             <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Análisis y Reportes</a>
             <a class="nav-link" href="#"><i class="bi bi-people"></i> Gestión de Clientes</a>
             <a class="nav-link {% if 'billing' in request.path %}active{% endif %}" href="{% url 'bill_list' %}"><i class="bi bi-cash"></i> Facturación</a>
