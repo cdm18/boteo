@@ -24,31 +24,70 @@
                                             <i class="bi bi-calendar-check me-2"></i>
                                             <strong>{{ reservation.date }}</strong> - {{ reservation.start_time }}
                                             a {{ reservation.end_time }}<br>
-                                            <i class="bi bi-person-circle me-2"></i>{{ reservation.user.get_full_name }}<br>
-                                            <i class="bi bi-geo-alt me-2"></i>{{ reservation.space.name }}<br>
-                                            <span class="badge bg-secondary">{{ reservation.status }}</span>
+                                            <i class="bi bi-person-circle me-2"></i> {{ reservation.user.get_full_name }}<br>
+                                            <i class="bi bi-geo-alt me-2"></i> {{ reservation.space.name }}<br>
+
+                                            <!-- Muestra el estado de la reserva con colores -->
+                                            <span class="badge
+                    {% if reservation.status == 'Pendiente' %} bg-warning
+                    {% elif reservation.status == 'Confirmado' %} bg-primary
+                    {% elif reservation.status == 'Cancelada' %} bg-danger
+                    {% endif %}">
+                    {{ reservation.status }}
+                </span>
+
+                                            {% with reservation.bills.first as bill %}
+                                                {% if bill %}
+                                                    <span class="badge
+                            {% if bill.status == 'Pendiente' %} bg-warning
+                            {% elif bill.status == 'Pagado' %} bg-success
+                            {% elif bill.status == 'Cancelado' %} bg-danger
+                            {% endif %}">
+                            Factura: {{ bill.status }}
+                        </span>
+                                                {% endif %}
+                                            {% endwith %}
                                         </div>
                                         <div>
-                                            {% if reservation.status == 'Pendiente' %}
-                                                <button type="button" class="btn btn-success btn-sm me-2"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#acceptModal"
-                                                        data-reservation-id="{{ reservation.id }}">
-                                                    <i class="bi bi-check-circle"></i> Aceptar
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#cancelModal"
-                                                        data-reservation-id="{{ reservation.id }}">
-                                                    <i class="bi bi-trash"></i> Cancelar
-                                                </button>
-                                            {% else %}
-                                                <span class="text-muted">No se pueden realizar acciones</span>
-                                            {% endif %}
+                                            {% with reservation.bills.first as bill %}
+                                                <!-- Si la factura NO está pagada, mostrar acciones -->
+                                                {% if not bill or bill.status != 'Pagado' %}
+                                                    {% if reservation.status == 'Pendiente' %}
+                                                        <button type="button" class="btn btn-success btn-sm me-2"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#acceptModal"
+                                                                data-reservation-id="{{ reservation.id }}">
+                                                            <i class="bi bi-check-circle"></i> Aceptar
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#cancelModal"
+                                                                data-reservation-id="{{ reservation.id }}">
+                                                            <i class="bi bi-trash"></i> Cancelar
+                                                        </button>
+                                                    {% elif reservation.status == 'Confirmado' %}
+                                                        <button type="button" class="btn btn-success btn-sm me-2"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#markPaidModal"
+                                                                data-reservation-id="{{ reservation.id }}">
+                                                            <i class="bi bi-credit-card"></i> Marcar como Pagado
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#cancelModal"
+                                                                data-reservation-id="{{ reservation.id }}">
+                                                            <i class="bi bi-trash"></i> Cancelar
+                                                        </button>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <span class="text-muted">Reserva completada</span>
+                                                {% endif %}
+                                            {% endwith %}
                                         </div>
                                     </li>
                                 {% endfor %}
                             </ul>
+
 
                         {% else %}
                             <p class="text-muted mb-0">No hay reservas actuales.</p>
@@ -84,10 +123,8 @@
                 </div>
 
 
-                <!-- Modal para aceptar reserva -->
                 <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel"
-                     data-bs-backdrop="true"
-                     aria-hidden="true">
+                     data-bs-backdrop="true" aria-hidden="true">
                     <div class="modal-dialog">
                         <article class="modal-content">
                             <header class="modal-header">
@@ -104,13 +141,37 @@
                                     <input type="hidden" name="reservation_id" value="">
                                     <input type="hidden" name="action" value="accept">
                                     <button type="submit" class="btn btn-success">Aceptar</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                                    </button>
                                 </form>
                             </footer>
                         </article>
                     </div>
                 </div>
+
+
+                <div class="modal fade" id="markPaidModal" tabindex="-1" aria-labelledby="markPaidModalLabel"
+                     data-bs-backdrop="true" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <article class="modal-content">
+                            <header class="modal-header">
+                                <h2 class="modal-title h5" id="markPaidModalLabel">Confirmación de pago</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </header>
+                            <div class="modal-body">
+                                <p>¿Está seguro que desea marcar esta reserva como pagada?</p>
+                            </div>
+                            <footer class="modal-footer">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="reservation_id" value="">
+                                    <input type="hidden" name="action" value="mark_paid">
+                                    <button type="submit" class="btn btn-primary">Marcar como Pagado</button>
+                                </form>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+
 
             </main>
         </div>
@@ -135,6 +196,25 @@
             const reservationId = button.getAttribute('data-reservation-id');
             cancelModal.querySelector('input[name="reservation_id"]').value = reservationId;
         });
+
+        function setReservationId(modalId, reservationId) {
+            const modal = document.getElementById(modalId);
+            modal.querySelector('input[name="reservation_id"]').value = reservationId;
+        }
+
+        document.querySelectorAll('[data-bs-target="#acceptModal"]').forEach(button => {
+            button.addEventListener('click', () => setReservationId('acceptModal', button.dataset.reservationId));
+        });
+
+        document.querySelectorAll('[data-bs-target="#cancelModal"]').forEach(button => {
+            button.addEventListener('click', () => setReservationId('cancelModal', button.dataset.reservationId));
+        });
+
+        document.querySelectorAll('[data-bs-target="#markPaidModal"]').forEach(button => {
+            button.addEventListener('click', () => setReservationId('markPaidModal', button.dataset.reservationId));
+        });
+
+
     </script>
 
 {% endblock %}

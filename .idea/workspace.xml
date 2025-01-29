@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Correcion de estilos en app billing (solo frontend)">
+      <change afterPath="$PROJECT_DIR$/media/area/imagen-general-balon-futbol-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/profile_pictures/2/1920-1080-windows-7s-harmony-without-ai-upscaling-v0-atltf59pafde1.png.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/profile_pictures/4/IMG_1701.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservations/migrations/0004_reservation_unique_reservation_active.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservations/migrations/0005_remove_reservation_unique_reservation_active.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservations/migrations/0006_alter_reservation_unique_together.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reservations/migrations/0007_alter_reservation_unique_together.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +124,11 @@
       <workItem from="1737780337235" duration="1460000" />
       <workItem from="1737816872676" duration="7849000" />
       <workItem from="1737916280853" duration="2254000" />
-      <workItem from="1737920090284" duration="515000" />
+      <workItem from="1737920090284" duration="657000" />
+      <workItem from="1737928234028" duration="157000" />
+      <workItem from="1737988286226" duration="1428000" />
+      <workItem from="1738103500625" duration="10586000" />
+      <workItem from="1738152307829" duration="631000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -205,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737920260555</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Correcion de estilos en app billing (solo frontend)">
+      <option name="closed" value="true" />
+      <created>1737920719856</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1737920719856</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +256,7 @@
     <MESSAGE value="Commit" />
     <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;billing/apps.py" />
     <MESSAGE value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
+    <MESSAGE value="Correcion de estilos en app billing (solo frontend)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcion de estilos en app billing (solo frontend)" />
   </component>
 </project>
