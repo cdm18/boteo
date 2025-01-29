@@ -15,7 +15,8 @@ class SportsSpace(models.Model):
     SURFACE_TYPES = [
         ("Sintética", "Sintética"),
         ("Pasto Natural", "Pasto Natural"),
-        ("Cemento", "Cemento")
+        ("Cemento", "Cemento"),
+        ("Piscina", "Piscina")
     ]
 
     sport_type = models.CharField(max_length=100, choices=SPORTS_TYPES, verbose_name="Tipo de Deporte",
