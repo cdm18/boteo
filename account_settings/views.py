@@ -7,7 +7,7 @@ from account_settings.models import UserProfile
 from reservations.models import Reservation
 
 # Vista para mostrar el perfil del usuario
-@login_required  # Requiere que el usuario inicie sesión
+@login_required
 def profile_view(request):
     try:
         # Obtener el perfil del usuario actual
@@ -18,17 +18,17 @@ def profile_view(request):
 
     # Obtener todas las reservas del usuario
     reservations = Reservation.objects.filter(user=request.user)
-    total_reservations = len(reservations)  # Total de reservas realizadas
+    total_reservations = len(reservations)
 
-    total_hours = 0  # Inicializar el contador de horas
+    total_hours = 0
     for reservation in reservations:
         # Calcular la duración de cada reserva
         start = datetime.combine(datetime.today(), reservation.start_time)
         end = datetime.combine(datetime.today(), reservation.end_time)
         delta = end - start
-        total_hours += delta.total_seconds() / 3600  # Convertir a horas
+        total_hours += delta.total_seconds() / 3600
 
-    total_hours = int(total_hours)  # Redondear las horas totales
+    total_hours = int(total_hours)
 
     context = {
         'profile': profile,
@@ -36,12 +36,10 @@ def profile_view(request):
         'total_hours': total_hours,
         'total_reservations': total_reservations,
     }
-
-    # Renderizar la plantilla con el contexto
     return render(request, 'account_settings/profile.html', context)
 
 # Vista para editar el perfil del usuario
-@login_required  # Requiere que el usuario inicie sesión
+@login_required
 def edit_profile(request):
     try:
         # Obtener el perfil del usuario actual
@@ -51,14 +49,12 @@ def edit_profile(request):
         profile = UserProfile.objects.create(user=request.user)
 
     if request.method == 'POST':
-        # Procesar el formulario cuando se envía por POST
         form = UserProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
-            form.save()  # Guardar los cambios
-            return redirect('account_settings:profile')  # Redirigir al perfil
+            form.save()
+            return redirect('account_settings:profile')
     else:
         # Cargar el formulario con los datos actuales
         form = UserProfileForm(instance=profile)
 
-    # Renderizar la plantilla con el formulario
     return render(request, 'account_settings/edit_profile.html', {'form': form})

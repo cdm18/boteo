@@ -8,8 +8,7 @@ from publications.forms import PublicationForm, CommentForm
 @login_required
 def publication_list(request):
     # Obtener todas las publicaciones, junto con los comentarios, usuarios y likes asociados
-    publications = Publication.objects.all().select_related('user').prefetch_related('comments', 'comments__user',
-                                                                                     'likes')
+    publications = Publication.objects.all().select_related('user').prefetch_related('comments', 'comments__user', 'likes')
 
     # Formularios para crear una nueva publicación y un comentario
     publication_form = PublicationForm()
@@ -17,17 +16,13 @@ def publication_list(request):
 
     # Comprobar si la petición es un POST (cuando el usuario envía un formulario)
     if request.method == 'POST':
-        # Si el formulario es para crear una nueva publicación
         if 'publication_submit' in request.POST:
             publication_form = PublicationForm(request.POST)
             if publication_form.is_valid():
-                # Crear la publicación, pero no la guarda inmediatamente
                 publication = publication_form.save(commit=False)
                 # Asociar la publicación con el usuario actual
                 publication.user = request.user
-                # Guardar la publicación en la base de datos
                 publication.save()
-                # Redirigir al usuario de nuevo a la lista de publicaciones
                 return redirect('publications:publication_list')
 
         # Si el formulario es para crear un nuevo comentario
@@ -42,7 +37,6 @@ def publication_list(request):
                 comment.user = request.user
                 comment.publication = publication
                 comment.save()
-                # Redirigir a la lista de publicaciones
                 return redirect('publications:publication_list')
 
         # Si el formulario es para agregar o quitar un like de una publicación
@@ -57,15 +51,12 @@ def publication_list(request):
             )
             if not created:
                 like.delete()
-            # Redirigir de nuevo a la lista de publicaciones
             return redirect('publications:publication_list')
 
-    # Contexto para pasar los datos a la plantilla HTML
     context = {
-        'publications': publications,  # Las publicaciones que se mostrarán
-        'publication_form': publication_form,  # El formulario para crear una nueva publicación
-        'comment_form': comment_form,  # El formulario para crear un comentario
+        'publications': publications,
+        'publication_form': publication_form,
+        'comment_form': comment_form,
     }
 
-    # Renderizar la página con la lista de publicaciones y los formularios
     return render(request, 'publications/publication_list.html', context)

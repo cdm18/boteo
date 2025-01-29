@@ -6,11 +6,11 @@ class PublicationForm(forms.ModelForm):
     # Definimos el campo 'content' como un campo de texto (CharField)
     content = forms.CharField(
         widget=forms.Textarea(attrs={
-            'class': 'form-control',  # Clase para el estilo del formulario (Bootstrap)
-            'placeholder': '¿Qué estás pensando?',  # Texto de sugerencia dentro del campo
-            'rows': '2'  # Número de filas (altura del área de texto)
+            'class': 'form-control',
+            'placeholder': '¿Qué estás pensando?',
+            'rows': '2'
         }),
-        label=''  # No ponemos una etiqueta visible para el campo
+        label=''
     )
 
     class Meta:
@@ -25,11 +25,11 @@ class CommentForm(forms.ModelForm):
     # Definimos el campo 'content' como un campo de texto (CharField)
     content = forms.CharField(
         widget=forms.Textarea(attrs={
-            'class': 'form-control',  # Clase para el estilo del formulario (Bootstrap)
-            'placeholder': 'Escribe un comentario...',  # Texto de sugerencia dentro del campo
-            'rows': '1'  # Número de filas (altura del área de texto)
+            'class': 'form-control',
+            'placeholder': 'Escribe un comentario...',
+            'rows': '1'
         }),
-        label=''  # No ponemos una etiqueta visible para el campo
+        label=''
     )
 
     class Meta:
