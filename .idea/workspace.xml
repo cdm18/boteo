@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Correcion de estilos en app billing (solo frontend)">
-      <change afterPath="$PROJECT_DIR$/media/area/imagen-general-balon-futbol-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/profile_pictures/2/1920-1080-windows-7s-harmony-without-ai-upscaling-v0-atltf59pafde1.png.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/profile_pictures/4/IMG_1701.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reservations/migrations/0004_reservation_unique_reservation_active.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reservations/migrations/0005_remove_reservation_unique_reservation_active.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reservations/migrations/0006_alter_reservation_unique_together.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reservations/migrations/0007_alter_reservation_unique_together.py" afterDir="false" />
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Modulo reservas completado, implementacion de modals para confirmacion y logica de reservas actualizada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +119,7 @@
       <workItem from="1737988286226" duration="1428000" />
       <workItem from="1738103500625" duration="10586000" />
       <workItem from="1738152307829" duration="631000" />
+      <workItem from="1738155861401" duration="3673000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
