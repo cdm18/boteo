@@ -51,7 +51,7 @@
         <section class="row g-4">
             {% for area in areas %}
                 <article class="col-md-4">
-                    <div class="card h-100">
+                    <section class="card h-100">
                         {% if area.images %}
                             <img src="{{ area.images.url }}" class="card-img-top"
                                  alt="Espacio deportivo {{ area.name }}"
@@ -61,24 +61,24 @@
                                  alt="Imagen por defecto del espacio deportivo"
                                  style="height: 200px; object-fit: cover;">
                         {% endif %}
-                        <div class="card-body">
+                        <section class="card-body">
                             <h2 class="h5 card-title">{{ area.name }}</h2>
                             <p class="card-text">
                                 <i class="fas fa-map-marker-alt text-primary me-2" aria-hidden="true"></i>
                                 {{ area.city }}
                             </p>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
+                            <section class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="text-primary fw-bold">{{ area.address }}</span>
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-star text-warning" aria-hidden="true"></i>
                                     <span class="ms-1">4.8</span>
                                 </div>
-                            </div>
+                            </section>
                             <div class="d-flex gap-2">
                                 <a href="{% url 'area_detail_user_view' area.pk %}" class="btn btn-primary flex-grow-1">Reservar</a>
                             </div>
-                        </div>
-                    </div>
+                        </section>
+                    </section>
                 </article>
             {% endfor %}
         </section>
