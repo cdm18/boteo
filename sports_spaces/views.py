@@ -26,7 +26,7 @@ def sport_space_detail_view(request, pk):
 
         if action == 'delete':
             sport_space.delete()
-            messages.success(request, 'Área deportiva eliminada exitosamente.')
+            messages.success(request, 'Espacio deportivo eliminado exitosamente.')
             return redirect('area_detail', area.pk)
 
         else:

@@ -29,7 +29,7 @@
             <a class="nav-link" href="#"><i class="bi bi-people"></i> Gestión de Clientes</a>
             <a class="nav-link {% if 'billing' in request.path %}active{% endif %}" href="{% url 'bill_list' %}"><i class="bi bi-cash"></i> Facturación</a>
             <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notificaciones</a>
-            <a class="nav-link {% if 'areas' in request.path %}active{% endif %} " href="{% url 'my_areas' %}"><i class="bi bi-trophy"></i> Mis Áreas Deportivos</a>
+            <a class="nav-link {% if 'areas' in request.path %}active{% endif %} " href="{% url 'my_areas' %}"><i class="bi bi-trophy"></i> Mis Áreas Deportivas</a>
             <a class="nav-link" href="#"><i class="bi bi-gear"></i> Configuración</a>
         </nav>
 
@@ -41,7 +41,7 @@
     {% if messages %}
         <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 1050;">
             {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mt-3"
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mt-3 "
                      role="alert">
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

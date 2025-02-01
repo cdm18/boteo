@@ -2,7 +2,7 @@
     {% csrf_token %}
     <fieldset>
         <div class="mb-3">
-            <label for="{{ form.name.id_for_label }}" class="form-label">Nombre del Espacio Deportivo</label>
+            <label for="{{ form.name.id_for_label }}" class="form-label">Nombre del Área Deportiva</label>
             {{ form.name }}
         </div>
 
@@ -35,16 +35,16 @@
     </fieldset>
 
     <fieldset>
-        <legend class="h6 mt-4">Imágenes del Espacio</legend>
+        <legend class="h6 mt-4">Imágen del Área</legend>
         <div class="mb-3">
-            <label for="{{ form.images.id_for_label }}" class="form-label">Subir Imágenes</label>
+            <label for="{{ form.images.id_for_label }}" class="form-label">Subir Imágen</label>
             {{ form.images }}
         </div>
 
         {% if form.instance.images %}
             <figure class="vista-previa mt-2">
                 <figcaption><strong>Vista Previa:</strong></figcaption>
-                <img src="{{ form.instance.images.url }}" alt="Vista previa del espacio deportivo">
+                <img src="{{ form.instance.images.url }}" alt="Imagen del Área">
             </figure>
         {% endif %}
     </fieldset>

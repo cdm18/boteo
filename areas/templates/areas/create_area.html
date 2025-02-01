@@ -10,19 +10,19 @@
     <main class="main-content">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'my_areas' %}">Espacios Deportivos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Nuevo Espacio</li>
+                <li class="breadcrumb-item"><a href="{% url 'my_areas' %}">Áreas Deportivas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nueva Área</li>
             </ol>
         </nav>
 
         <section class="form-container">
             <header>
-                <h1 class="h4 mb-4">Información General del Espacio</h1>
+                <h1 class="h4 mb-4">Información General del Área</h1>
             </header>
 
             {% include "areas/formulario.html" %}
 
-            <button type="submit" class="mt-4 btn btn-dark w-100">Guardar Espacio</button>
+            <button type="submit" class="mt-4 btn btn-dark w-100">Guardar Área</button>
 
             </form>
         </section>

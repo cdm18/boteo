@@ -41,12 +41,12 @@ def profile_view(request):
 # Vista para editar el perfil del usuario
 @login_required
 def edit_profile(request):
-    try:
+    # try:
         # Obtener el perfil del usuario actual
-        profile = request.user.userprofile
-    except UserProfile.DoesNotExist:
-        # Si no existe, se crea un perfil por defecto
-        profile = UserProfile.objects.create(user=request.user)
+    profile = request.user.userprofile
+    # except UserProfile.DoesNotExist:
+    #     # Si no existe, se crea un perfil por defecto
+    #     profile = UserProfile.objects.create(user=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=profile)
