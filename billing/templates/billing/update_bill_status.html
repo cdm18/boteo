@@ -1,6 +1,5 @@
-<body>
-
-    {% include 'navbar.html' %}
+{% include 'navbar.html' %}
+{% block content %}
     <main class="main-content">
         <main class="container my-5">
             <h1 class="mb-4">Actualizar Estado de Factura</h1>
@@ -19,5 +18,5 @@
             </form>
         </main>
     </main>
-    {% include 'footer.html' %}
-</body>
+{% endblock %}
+{% include 'footer.html' %}

@@ -6,7 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Modulo reservas completado, implementacion de modals para confirmacion y logica de reservas actualizada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0002_alter_reservation_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0003_alter_reservation_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0004_reservation_unique_reservation_active.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0005_remove_reservation_unique_reservation_active.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0006_alter_reservation_unique_together.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/0007_alter_reservation_unique_together.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/migrations/__init__.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +48,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/cdm18/boteo.git&quot;,
-    &quot;accountId&quot;: &quot;af3eef48-ace9-4898-8977-16e9731b40ec&quot;
+    &quot;accountId&quot;: &quot;9a994f95-e7ef-4fcc-8529-0c2148bea2c9&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -83,8 +94,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
-        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
+        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
@@ -120,6 +131,10 @@
       <workItem from="1738103500625" duration="10586000" />
       <workItem from="1738152307829" duration="631000" />
       <workItem from="1738155861401" duration="3673000" />
+      <workItem from="1738213943173" duration="243000" />
+      <workItem from="1738241675569" duration="449000" />
+      <workItem from="1738271062921" duration="181000" />
+      <workItem from="1738440680152" duration="323000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />

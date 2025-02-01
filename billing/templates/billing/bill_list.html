@@ -1,9 +1,14 @@
-<body>
-    {% load static %}
-    {% include 'base.html' %}
-    {% block styles %}
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    {% endblock %}
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Facturación{% endblock %}
+
+{% block content %}
     <main class="main-content">
         <h1 class="mb-4">Facturación</h1>
         <div class="table-responsive">
@@ -15,7 +20,6 @@
                         <th>Espacio</th>
                         <th>Monto</th>
                         <th>Estado</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,13 +37,10 @@
                                 {{ bill.status }}
                             </span>
                         </td>
-                        <td>
-                            <a href="{% url 'update_bill_status' bill.id %}" class="btn btn-sm btn-outline-primary">Editar estado</a>
-                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </main>
-</body>
+{% endblock %}
