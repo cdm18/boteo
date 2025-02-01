@@ -19,7 +19,6 @@
                     <th>Espacio</th>
                     <th>Monto</th>
                     <th>Estado</th>
-                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,10 +35,6 @@
                                 {% else %}bg-danger{% endif %}">
                                 {{ bill.status }}
                             </span>
-                        </td>
-                        <td>
-                            <a href="{% url 'update_bill_status' bill.id %}" class="btn btn-sm btn-outline-primary">Editar
-                                estado</a>
                         </td>
                     </tr>
                 {% endfor %}

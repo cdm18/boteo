@@ -17,10 +17,11 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title text-muted mb-3">Resumen de Reservas</h5>
-                        <p class="text-muted mb-1">Total gastado este mes</p>
-                        <h2 class="mb-3">24</h2>
-                        <p class="text-muted mb-4">Reservas para hoy</p>
-                        <button class="btn btn-outline-secondary w-100">Ver todas las reservas</button>
+                        <p class="text-muted mb-1">Reservas totales:</p>
+                        <h3 class="mb-3">{{ totalReservations }}</h3>
+                        <p class="text-muted mb-1">Reservas para hoy: </p>
+                        <h3 class="mb-3">{{ todayReservations }}</h3>
+                        <a href="{% url 'manage_reservations' %}" class="btn btn-outline-secondary w-100">Ver todas las reservas</a>
                     </div>
                 </div>
             </div>
@@ -31,9 +32,10 @@
                     <div class="card-body">
                         <h5 class="card-title text-muted mb-3">Áreas Registradas</h5>
                         <p class="text-muted mb-1">Tus áreas activas</p>
-                        <h2 class="mb-3">3</h2>
-                        <p class="text-muted mb-4">Áreas activas</p>
-                        <button class="btn btn-dark w-100">Agregar nueva área</button>
+                        <h3 class="mb-3">{{ totalAreas }}</h3>
+                        <p class="text-muted mb-1">Espacios activos</p>
+                        <h3 class="mb-3">{{ totalSpaces }}</h3>
+                        <a  href="{% url 'create_area' %}" class="btn btn-dark w-100">Agregar nueva área</a>
                     </div>
                 </div>
             </div>
@@ -42,12 +44,13 @@
             <div class="col-md-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title text-muted mb-3">Ingresos del Mes</h5>
-                        <p class="text-muted mb-1">Resumen financiero del mes actual</p>
-                        <h2 class="mb-2">$1,250</h2>
-                        <p class="text-success mb-4">
-                            <small>+15% vs. mes anterior</small>
+                        <h5 class="card-title text-muted mb-3">Ingresos Totales</h5>
+                        <p class="text-muted mb-1">Resumen financiero</p>
+                        <h3 class="mb-3">${{ totalIncome }}</h3>
+                        <p class="mb-2">
+                            Facturas pagadas
                         </p>
+                        <h3> {{ payedBills }}</h3>
                         <button class="btn btn-outline-secondary w-100">Ver análisis completo</button>
                     </div>
                 </div>
