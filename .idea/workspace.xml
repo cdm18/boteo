@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Modulo reservas completado, implementacion de modals para confirmacion y logica de reservas actualizada">
+    <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Correción del modulo billing">
+      <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/bill_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/billing/templates/billing/update_bill_status.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0002_alter_reservation_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0003_alter_reservation_status.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0004_reservation_unique_reservation_active.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0005_remove_reservation_unique_reservation_active.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0006_alter_reservation_unique_together.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/0007_alter_reservation_unique_together.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservations/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +125,7 @@
       <workItem from="1738241675569" duration="449000" />
       <workItem from="1738271062921" duration="181000" />
       <workItem from="1738440680152" duration="323000" />
+      <workItem from="1738513022595" duration="755000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -232,7 +223,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737920719856</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Correción del modulo billing">
+      <option name="closed" value="true" />
+      <created>1738513499803</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738513499803</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Correción del modulo billing">
+      <option name="closed" value="true" />
+      <created>1738513524435</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738513524435</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +270,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/alex' into alex&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;billing/apps.py" />
     <MESSAGE value="Commit de gestion de reservas implementado con logica para cancelacion y aceptacion de reservas (posterior cambios a billing en torno a reservas aceptas y canceladas)" />
     <MESSAGE value="Correcion de estilos en app billing (solo frontend)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcion de estilos en app billing (solo frontend)" />
+    <MESSAGE value="Correción del modulo billing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correción del modulo billing" />
   </component>
 </project>
