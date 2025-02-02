@@ -2,6 +2,15 @@
 <link rel ="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
 <body>
+    <!-- Mensajes de Django -->
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <!-- Barra de navegación -->
     {% include 'navbar.html' %}
 
