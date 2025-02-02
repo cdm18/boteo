@@ -39,3 +39,21 @@ def update_bill_status(request, bill_id):
         return redirect('bill_list')
 
     return render(request, 'billing/update_bill_status.html', {'bill': bill})
+
+
+@login_required
+def bill_list(request):
+    selected_status = request.GET.get('status')
+
+    bills = Bill.objects.all().order_by('-created_at')
+
+    # Aplicar filtro si se seleccionó un estado
+    if selected_status:
+        bills = bills.filter(status=selected_status)
+
+    context = {
+        'bills': bills,
+        'selected_status': selected_status
+    }
+
+    return render(request, 'billing/bill_list.html', context)
