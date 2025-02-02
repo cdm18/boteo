@@ -1,5 +1,6 @@
 from django import forms
-from .models import Publication, Comment  # Importamos los modelos Publication y Comment
+from django.core.exceptions import ValidationError
+from .models import Publication, Comment
 
 # Formulario para crear una publicación
 class PublicationForm(forms.ModelForm):
@@ -14,10 +15,15 @@ class PublicationForm(forms.ModelForm):
     )
 
     class Meta:
-        # Le decimos a Django que este formulario está basado en el modelo Publication
         model = Publication
-        # Especificamos qué campo(s) queremos incluir en el formulario (solo 'content' en este caso)
         fields = ['content']
+
+    # Validación del contenido para que no exceda los 500 caracteres
+    def clean_content(self):
+        content = self.cleaned_data.get('content')
+        if len(content) > 500:
+            raise ValidationError('El texto no puede exceder los 500 caracteres.')
+        return content
 
 
 # Formulario para agregar un comentario

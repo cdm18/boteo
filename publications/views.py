@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from publications.models import Publication, Like, Comment
+from django.contrib import messages
+from publications.models import Publication, Like
 from publications.forms import PublicationForm, CommentForm
 
 
@@ -16,6 +17,7 @@ def publication_list(request):
 
     # Comprobar si la petición es un POST (cuando el usuario envía un formulario)
     if request.method == 'POST':
+        # Si el formulario es para crear una nueva publicación
         if 'publication_submit' in request.POST:
             publication_form = PublicationForm(request.POST)
             if publication_form.is_valid():
@@ -23,6 +25,8 @@ def publication_list(request):
                 # Asociar la publicación con el usuario actual
                 publication.user = request.user
                 publication.save()
+                # Usar messages.success directamente
+                messages.success(request, '¡Publicación exitosa!')
                 return redirect('publications:publication_list')
 
         # Si el formulario es para crear un nuevo comentario
@@ -37,6 +41,7 @@ def publication_list(request):
                 comment.user = request.user
                 comment.publication = publication
                 comment.save()
+                messages.success(request, '¡Comentario exitoso!')
                 return redirect('publications:publication_list')
 
         # Si el formulario es para agregar o quitar un like de una publicación
@@ -53,6 +58,7 @@ def publication_list(request):
                 like.delete()
             return redirect('publications:publication_list')
 
+    # Pasar todas las publicaciones y formularios al contexto
     context = {
         'publications': publications,
         'publication_form': publication_form,
