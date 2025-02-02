@@ -6,11 +6,25 @@ from reservations.models import Reservation
 
 
 @login_required
+@login_required
 def bill_list(request):
-    # Obtiene todas las facturas ordenadas por fecha de creación descendente
-    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+    selected_status = request.GET.get('status')
+
     bills = Bill.objects.all().order_by('-created_at')
-    return render(request, 'billing/bill_list.html', {'bills': bills, 'reservationCount': reservationCount})
+
+    # Aplicar filtro si se seleccionó un estado
+    if selected_status:
+        bills = bills.filter(status=selected_status)
+
+    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+
+    context = {
+        'bills': bills,
+        'selected_status': selected_status,
+        'reservationCount': reservationCount
+    }
+
+    return render(request, 'billing/bill_list.html', context)
 
 @login_required
 def update_bill_status(request, bill_id):
@@ -39,21 +53,3 @@ def update_bill_status(request, bill_id):
         return redirect('bill_list')
 
     return render(request, 'billing/update_bill_status.html', {'bill': bill})
-
-
-@login_required
-def bill_list(request):
-    selected_status = request.GET.get('status')
-
-    bills = Bill.objects.all().order_by('-created_at')
-
-    # Aplicar filtro si se seleccionó un estado
-    if selected_status:
-        bills = bills.filter(status=selected_status)
-
-    context = {
-        'bills': bills,
-        'selected_status': selected_status
-    }
-
-    return render(request, 'billing/bill_list.html', context)

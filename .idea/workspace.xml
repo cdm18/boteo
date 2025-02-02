@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac772af-a011-4e1b-98e1-a74a5fb3bd27" name="Changes" comment="Correción del modulo billing">
+      <change afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/boteoProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boteoProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BoteoProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/BoteoProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/account_settings/templates/account_settings/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/areas/templates/areas/areas_general_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/areas/templates/areas/areas_general_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications/templates/publications/publication_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/publications/templates/publications/publication_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/reservations/templates/reservations/owner_manage_reservations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +47,12 @@
     &quot;assignee&quot;: &quot;cdm18&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/cdm18/boteo.git&quot;,
-    &quot;accountId&quot;: &quot;9a994f95-e7ef-4fcc-8529-0c2148bea2c9&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/cdm18/boteo.git",
+    "accountId": "a0d571d5-41c2-4d13-8eaa-bc7baea7f593"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -50,42 +62,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;alex&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sebastián/Documents/CursoDjango/boteo/static/css&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "alex",
+    "last_opened_file_path": "C:/Users/Carlos Daniel Mejia/Desktop/boteo/static",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Carlos Daniel Mejia\Desktop\boteo\static" />
+      <recent name="C:\Users\Carlos Daniel Mejia\Desktop\boteo" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Carlos Daniel Mejia\Desktop\boteo\static" />
       <recent name="$PROJECT_DIR$/media/tournaments" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\css" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo\static\img" />
       <recent name="C:\Users\Sebastián\Documents\CursoDjango\boteo" />
-      <recent name="$PROJECT_DIR$/static/images" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
-        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.180" />
+        <option value="bundled-python-sdk-85c76a3b01b3-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.180" />
       </set>
     </attachedChunks>
   </component>
@@ -125,7 +140,8 @@
       <workItem from="1738241675569" duration="449000" />
       <workItem from="1738271062921" duration="181000" />
       <workItem from="1738440680152" duration="323000" />
-      <workItem from="1738513022595" duration="755000" />
+      <workItem from="1738513022595" duration="1232000" />
+      <workItem from="1738515621372" duration="1404000" />
     </task>
     <task id="LOCAL-00001" summary="apps faltantes, login y register funcionales &amp; guards">
       <option name="closed" value="true" />
@@ -239,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738513524435</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Correción del modulo billing">
+      <option name="closed" value="true" />
+      <created>1738513847456</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738513847456</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
