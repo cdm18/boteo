@@ -1,0 +1,68 @@
+/* Add this to your static/css/styles.css file */
+
+.hero-section {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.search-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item i {
+    font-size: 2.5rem;
+    color: #0d6efd;
+}
+
+.feature-item {
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tournament-card {
+    transition: transform 0.3s ease;
+}
+
+.tournament-card:hover {
+    transform: translateY(-5px);
+}
+
+.space-card {
+    transition: transform 0.3s ease;
+}
+
+.space-card:hover {
+    transform: translateY(-5px);
+}
+
+.community-post {
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.community-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+

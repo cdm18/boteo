@@ -1,0 +1,71 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Arial', sans-serif;
+    height: 60px;
+}
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0057ff;
+}
+
+/* Navbar links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin-left: 73%;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.navbar-links li {
+    margin: 0 15px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a.active,
+.navbar-links a:hover {
+    color: #0057ff;
+    font-weight: bold;
+}
+
+/* Profile button */
+.navbar-profile .btn-profile {
+    background-color: #0057ff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-profile .btn-profile:hover {
+    background-color: #003ea6;
+}

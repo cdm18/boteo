@@ -1,0 +1,61 @@
+body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            width: 180px;
+            margin: 20px auto;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .btn-deportista {
+            background-color: #3374F6;
+            color: white;
+        }
+        footer {
+            background-color: #15192A;
+            color: white;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+        .required-field::after {
+            content: "*";
+            color: red;
+            margin-left: 4px;
+        }
+        .field-hint {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+        .alert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            min-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .invalid-feedback {
+            display: none;
+            font-size: 0.8rem;
+        }
+        .password-examples {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }

@@ -1,0 +1,38 @@
+body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            width: 180px;
+            margin: 20px auto;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .btn-deportista {
+            background-color: #3374F6;
+            color: white;
+        }
+        .btn-gerente {
+            color: #3374F6;
+            background-color: white;
+            border: 1px solid #dee2e6;
+        }
+        footer {
+
+            background-color: #15192A;
+            color: white;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
