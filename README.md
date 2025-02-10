@@ -67,3 +67,30 @@ Boteo es una aplicación web diseñada para facilitar la reserva de espacios dep
 ```sh
 git clone https://github.com/tuusuario/boteo.git
 cd boteo
+```
+
+### **2️⃣ Crear y Activar un Entorno Virtual**
+```sh
+python -m venv venv
+source venv/bin/activate  # En macOS/Linux
+venv\Scripts\activate  # En Windows
+```
+
+### **3️⃣ Instalar Dependencias**  
+```sh
+pip install -r requirements.txt
+```
+
+
+### **4️⃣ Configurar la Base de Datos**
+Modificar settings.py con las credenciales correctas y ejecutar migraciones:
+```sh
+python manage.py migrate
+```
+
+
+### **5️⃣ Iniciar el Servidor**
+```sh
+python manage.py runserver
+```
+
