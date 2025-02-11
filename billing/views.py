@@ -3,14 +3,32 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from billing.models import Bill
 from reservations.models import Reservation
+from django.contrib.auth.decorators import user_passes_test
+
+def is_staff_user(user):
+    return user.is_staff
 
 
 @login_required
+@user_passes_test(is_staff_user)
 def bill_list(request):
-    # Obtiene todas las facturas ordenadas por fecha de creación descendente
+    selected_status = request.GET.get('status')
+
+    bills = Bill.objects.filter(reservation__space__area__user = request.user).order_by('-created_at')
+
+    # Aplicar filtro si se seleccionó un estado
+    if selected_status:
+        bills = bills.filter(status=selected_status)
+
     reservationCount = Reservation.objects.filter(status='Pendiente').count()
-    bills = Bill.objects.all().order_by('-created_at')
-    return render(request, 'billing/bill_list.html', {'bills': bills, 'reservationCount': reservationCount})
+
+    context = {
+        'bills': bills,
+        'selected_status': selected_status,
+        'reservationCount': reservationCount
+    }
+
+    return render(request, 'billing/bill_list.html', context)
 
 @login_required
 def update_bill_status(request, bill_id):

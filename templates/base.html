@@ -113,9 +113,11 @@
         <nav class="nav flex-column mt-4">
             <a class="nav-link {% if request.path == '/admin_panel/' %} active {% endif %}"
                href="{% url 'admin_panel' %}"><i class="bi bi-grid"></i> <span>Dashboard</span></a>
+
             <a class="nav-link {% if 'manage/' in request.path %} active {% endif %}"
                href="{% url 'manage_reservations' %}"><i class="bi bi-calendar"></i>
-                <span>Gestión de Reservas</span></a>
+                <span>Gestión de Reservas {% if 'reservations' not in request.path  %}{% if reservationCount %}<span class="m-1 rounded-2 bi-circle-fill text-primary"></span>{% endif %}{% endif %}</a>
+
             <a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> <span>Análisis y Reportes</span></a>
             <a class="nav-link" href="#"><i class="bi bi-people"></i> <span>Gestión de Clientes</span></a>
             <a class="nav-link {% if 'billing' in request.path %} active {% endif %}" href="{% url 'bill_list' %}"><i

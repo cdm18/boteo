@@ -16,7 +16,7 @@ def is_staff_user(user):
 @login_required
 @user_passes_test(is_staff_user)
 def sport_space_detail_view(request, pk):
-    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+    reservationCount = Reservation.objects.filter(space__area__user = request.user).filter(status='Pendiente').count()
     sport_space = SportsSpace.objects.get(pk=pk)
     area = SportsSpace.objects.get(pk=pk).area
     form = SportsSpaceForm(request.POST, instance=sport_space)
@@ -26,7 +26,7 @@ def sport_space_detail_view(request, pk):
 
         if action == 'delete':
             sport_space.delete()
-            messages.success(request, 'Área deportiva eliminada exitosamente.')
+            messages.success(request, 'Espacio deportivo eliminado exitosamente.')
             return redirect('area_detail', area.pk)
 
         else:
@@ -49,7 +49,7 @@ def sport_space_detail_view(request, pk):
 @login_required
 @user_passes_test(is_staff_user)
 def create_space_view(request, pk):
-    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+    reservationCount = Reservation.objects.filter(space__area__user = request.user).filter(status='Pendiente').count()
     area = Area.objects.get(pk=pk)
     if request.method == 'POST':
         form = SportsSpaceForm(request.POST)

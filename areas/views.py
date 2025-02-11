@@ -18,7 +18,7 @@ def is_staff_user(user):
 @login_required
 @user_passes_test(is_staff_user)
 def areas_list_view(request):
-    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+    reservationCount = Reservation.objects.filter(space__area__user = request.user).filter(status='Pendiente').count()
     areas = Area.objects.filter(user=request.user)
     return render(request, "areas/areas.html", {'areas': areas, 'reservationCount': reservationCount})
 
@@ -26,7 +26,7 @@ def areas_list_view(request):
 @login_required
 @user_passes_test(is_staff_user)
 def area_detail(request, pk):
-    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+    reservationCount = Reservation.objects.filter(space__area__user = request.user).filter(status='Pendiente').count()
     area = get_object_or_404(Area, pk=pk)
     sports_spaces = SportsSpace.objects.filter(area=area)
     additional_services = AreaService.objects.filter(area=area).select_related('service')
@@ -99,7 +99,7 @@ def area_detail(request, pk):
 @login_required
 @user_passes_test(is_staff_user)
 def create_area(request):
-    reservationCount = Reservation.objects.filter(status='Pendiente').count()
+    reservationCount = Reservation.objects.filter(space__area__user = request.user).filter(status='Pendiente').count()
     if request.method == 'POST':
         form = AreaCreationForm(request.POST, request.FILES)
         if form.is_valid():

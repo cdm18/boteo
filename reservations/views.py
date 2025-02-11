@@ -86,7 +86,8 @@ def create_reservation(request):
 @login_required
 @user_passes_test(is_staff_user)
 def manage_reservations(request):
-    reservations = Reservation.objects.all().order_by('-date', 'start_time')
+    reservations =  Reservation.objects.filter(space__area__user = request.user).order_by('-date', 'start_time')
+
 
     if request.method == 'POST':
         reservation_id = request.POST.get('reservation_id')
